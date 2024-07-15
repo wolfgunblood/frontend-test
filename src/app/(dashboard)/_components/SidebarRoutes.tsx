@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { BarChart3, Compass, Layout, CircleDollarSign, Tv, Import, Settings } from 'lucide-react';
-import { usePathname } from 'next/navigation';
 import SidebarItems from './SidebarItems';
 
 // type Props = {}
@@ -43,10 +42,9 @@ const mainRoutes = [
 
 
 const SidebarRoutes = () => {
-    const pathname = usePathname();
     const routes = mainRoutes;
     return (
-        <div className='flex flex-col w-full'>
+        <div className='flex flex-col gap-8 w-full'>
             {routes.map((route, index) => (
                 <SidebarItems
                     key={index}

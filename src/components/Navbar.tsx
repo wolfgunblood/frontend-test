@@ -19,7 +19,7 @@ const Navbar = () => {
         "sticky h-14 inset-x-0 top-0 z-30 border-b  bg-white/40 backdrop-blur-lg transition-all dark:bg-inherit"
       )}
     >
-      <div className="mx-auto w-full max-w-screen-xl px-2.5 md:px-20">
+      <div className="mx-auto w-full max-w-full py-2 px-10">
         <div className="flex h-14 items-center justify-between border-b">
           <Link
             href="/"

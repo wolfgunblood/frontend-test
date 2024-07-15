@@ -12,7 +12,7 @@ const Sidebar = () => {
       width: '320px', 
       // height: '1286px', 
       padding: '32px',
-      borderRight: '1px solid',
+      borderRight: '1px solid #E4E4E7',
     
     }}
     className='flex flex-col justify-between overflow-y-auto shadow-sm'
@@ -32,7 +32,7 @@ const Sidebar = () => {
       </div>
 
       <div>
-        Charts
+        {/* Charts */}
       </div>
       <div>
         <SidebarRoutesBottom />
