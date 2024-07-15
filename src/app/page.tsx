@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 import { LatestPost } from "~/app/_components/post";
+import Footer from "~/components/Footer";
+import Navbar from "~/components/Navbar";
 import { getServerAuthSession } from "~/server/auth";
 import { api, HydrateClient } from "~/trpc/server";
 
@@ -13,9 +15,8 @@ export default async function Home() {
   return (
     <HydrateClient>
       <main>
-        <h1 className="text-red-500">
-          Hello World!!!
-        </h1>
+       <Navbar />
+       <Footer />
       </main>
     </HydrateClient>
   );
