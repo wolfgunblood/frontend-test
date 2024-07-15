@@ -11,20 +11,6 @@ interface VideoState {
   setSeeking: (seeking: boolean) => void;
 }
 
-interface ModalState {
-  step: number;
-  selections: {
-      stepOne: string;
-      stepTwo: string[];
-      stepThree: string;
-  };
-  setStep: (step: number) => void;
-  nextStep: () => void;
-  prevStep: () => void;
-  setSelection: (step: keyof ModalState['selections'], value: string | string[]) => void;
-  toggleSelection: (option: string) => void;
-  reset: () => void;
-}
 
 export const useVideoStore = create<VideoState>((set) => ({
   playing: false,
@@ -36,26 +22,63 @@ export const useVideoStore = create<VideoState>((set) => ({
   setDuration: (duration) => set({ duration }),
   setSeeking: (seeking) => set({ seeking }),
 }));
+interface Option {
+  id: string;
+  name: string;
+  createdOn: string;
+  createdBy: {
+    picture: string;
+    name: string;
+  };
+  badge: {
+    category: string;
+    subCategory: string;
+  };
+}
 
-const useModalStore = create<ModalState>(set => ({
+interface ModalState {
+  step: number;
+  selections: {
+    stepOne: string;
+    stepTwo: Option[];
+    stepThree: string;
+  };
+  options: Option[];
+  searchTerm: string; 
+  setSearchTerm: (term: string) => void; 
+  setOptions: (options: Option[]) => void;
+  setStep: (step: number) => void;
+  nextStep: () => void;
+  previousStep: () => void;
+  setSelection: (step: keyof ModalState['selections'], value: string | Option[]) => void;
+  toggleSelection: (option: Option) => void;
+  reset: () => void;
+}
+
+const useModalStore = create<ModalState>((set, get) => ({
   step: 1,
   selections: {
-      stepOne: '',
-      stepTwo: [],
-      stepThree: ''
+    stepOne: '',
+    stepTwo: [],
+    stepThree: ''
   },
+  options: [],
+  searchTerm: '', 
+  setSearchTerm: (term) => set({ searchTerm: term }),
+  setOptions: (options) => set({ options }),
   setStep: (step) => set({ step }),
   nextStep: () => set(state => ({ step: state.step + 1 })),
-  prevStep: () => set(state => ({ step: state.step > 1 ? state.step - 1 : 1 })),
+  previousStep: () => set(state => ({ step: state.step > 1 ? state.step - 1 : 1 })),
   setSelection: (step, value) => set(state => ({
-      selections: { ...state.selections, [step]: value }
+    selections: { ...state.selections, [step]: value }
   })),
   toggleSelection: (option) => set(state => ({
-      selections: {
-          ...state.selections,
-          stepTwo: state.selections.stepTwo.includes(option) ?
-              state.selections.stepTwo.filter(item => item !== option) : [...state.selections.stepTwo, option]
-      }
+    selections: {
+      ...state.selections,
+      stepTwo: state.selections.stepTwo.some(item => item.id === option.id)
+        ? state.selections.stepTwo.filter(item => item.id !== option.id)
+        : [...state.selections.stepTwo, option]
+    }
   })),
   reset: () => set({ step: 1, selections: { stepOne: '', stepTwo: [], stepThree: '' } })
 }));
