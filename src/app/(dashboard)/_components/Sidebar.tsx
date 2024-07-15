@@ -11,7 +11,7 @@ const Sidebar = () => {
     style={{
       width: '320px', 
       // height: '1286px', 
-      padding: '32px 0 0 0',
+      padding: '32px',
       borderRight: '1px solid',
     
     }}
