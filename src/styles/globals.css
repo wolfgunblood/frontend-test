@@ -1,9 +1,7 @@
 @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+@tailwind components;
+@tailwind utilities;
 
-  
-   
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -31,6 +29,10 @@
     --chart-3: ;
     --chart-4: ;
     --chart-5: ; */
+
+    --scrollbar-track-color: #f0f0f0;
+    --scrollbar-thumb-color: #888;
+    --scrollbar-thumb-hover-color: #555;
   }
 
   .dark {
@@ -61,14 +63,30 @@
   }
 }
 
-
-  @layer base {
-    * {
-      @apply border-border;
-    }
-    body {
-      @apply bg-background text-foreground;
-    }
+@layer base {
+  * {
+    @apply border-border;
   }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
 
- 
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-color);
+  border-radius: 6px;
+  border: 3px solid var(--scrollbar-track-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover-color);
+}
