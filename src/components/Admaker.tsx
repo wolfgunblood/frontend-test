@@ -11,6 +11,9 @@ import { Button } from '~/components/ui/button';
 import { Badge } from '~/components/ui/badge';
 import { Trash2 } from 'lucide-react';
 
+
+import Modal from './Modal';
+
 const badgeColors: Record<string, string> = {
     auto: '#4CAF50',  // Green
     static: '#2196F3', // Blue
@@ -50,8 +53,8 @@ const Admaker = () => {
                     ))}
                 </ol>
             </CardContent>
-            <CardFooter className='flex flex-col'>
-                <Button variant="default">Create Ad Marker</Button>
+            <CardFooter className='w-full flex flex-col'>
+                <Modal />
                 <Button variant="secondary">Automatically Place</Button>
             </CardFooter>
         </Card>
