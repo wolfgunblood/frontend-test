@@ -1,24 +1,23 @@
-"use client"
+"use client";
 import Link from "next/link";
 import Image from "next/image";
-
 
 // import { MobileNav } from "@/components/MobileNav";
 import { cn } from "~/lib/utils";
 
 const Footer = () => {
-  // Replace with your auth of choice, e.g. Clerk: const { userId } = auth();
 
   return (
-    <nav
+    <footer
       className={cn(
-        "sticky h-14 inset-x-0 top-0 z-30 border-b  bg-white/40 backdrop-blur-lg transition-all dark:bg-inherit"
+        "fixed inset-x-0 bottom-0 z-30 h-14 border-t bg-white/40 backdrop-blur-lg transition-all dark:bg-inherit"
       )}
     >
       <div className="mx-auto w-full max-w-screen-xl px-2.5 md:px-20">
-        <div className="flex h-14 items-center justify-between border-b">
-       
-            <span className="text-base text-secondary-foreground font-normal">Video first podcasts </span>
+        <div className="flex h-14 items-center justify-between">
+          <span className="text-base text-secondary-foreground font-normal">
+            Video first podcasts
+          </span>
           <div className="flex gap-1 sm:gap-4 items-center">
             <Link
               href="/"
@@ -37,7 +36,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </nav>
+    </footer>
   );
 };
 

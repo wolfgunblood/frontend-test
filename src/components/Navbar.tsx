@@ -11,7 +11,6 @@ import { UserAccountNav } from "./useAccountNav";
 import { Settings,Bell } from "lucide-react";
 
 const Navbar = () => {
-  // Replace with your auth of choice, e.g. Clerk: const { userId } = auth();
   const [user, setUser] = useState(null)
   
   return (
