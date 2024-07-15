@@ -19,7 +19,7 @@ const Modal: React.FC = () => {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="default" aria-label="Create Ad">Create Ad Marker</Button>
+                <Button className='w-full' variant="default" aria-label="Create Ad">Create Ad Marker</Button>
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader>

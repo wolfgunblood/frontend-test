@@ -15,7 +15,7 @@ import { Trash2 } from 'lucide-react';
 import Modal from './Modal';
 
 const badgeColors: Record<string, string> = {
-    auto: '#4CAF50',  // Green
+    auto: '#BBF7D0',  // Green
     static: '#2196F3', // Blue
     AB: '#795548'     // Brown
 };
@@ -29,7 +29,13 @@ const Admaker = () => {
     ];
 
     return (
-        <Card>
+        <Card style={{
+            width: '412px',  
+            height: '552px', 
+            padding: '32px', 
+            borderRadius: '16px 0px 0px 0px', 
+            // borderRight: '1px solid', 
+        }}>
             <CardHeader>
                 <CardTitle>Admakers</CardTitle>
                 <CardDescription>Manage your ad markers</CardDescription>
@@ -55,7 +61,7 @@ const Admaker = () => {
             </CardContent>
             <CardFooter className='w-full flex flex-col'>
                 <Modal />
-                <Button variant="secondary">Automatically Place</Button>
+                <Button className='w-full' variant="secondary">Automatically Place</Button>
             </CardFooter>
         </Card>
     );
