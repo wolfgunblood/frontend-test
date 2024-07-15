@@ -6,6 +6,7 @@ import Navbar from "~/components/Navbar";
 import { getServerAuthSession } from "~/server/auth";
 import { api, HydrateClient } from "~/trpc/server";
 import Sidebar from "./_components/Sidebar";
+import Hero from "~/components/Hero";
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
@@ -18,9 +19,7 @@ export default async function Home() {
       <Navbar />
       <main className="flex">
         <Sidebar />
-        <div>
-          <p>Hello World</p>
-        </div>
+       <Hero />
       </main>
       <Footer />
     </HydrateClient>
