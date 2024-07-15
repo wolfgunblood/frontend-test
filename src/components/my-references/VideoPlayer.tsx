@@ -1,14 +1,19 @@
-"use client";
-import React, { useEffect, useRef } from 'react';
+"use client"
+import React, { useEffect, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
-import { Button } from './ui/button';
-import { Play, Pause, ArrowLeftToLine, ArrowRightToLine, Rewind, FastForward } from 'lucide-react';
+import { Button } from '../ui/button';
+import { Play, Pause, ArrowLeftToLine, ArrowRightToLine, Rewind, FastForward, History } from 'lucide-react';
 import { useVideoStore } from 'store/useStore';
-import Timeline from './Timeline';
+import Timeline from '../Timeline';
 
 const VideoPlayer: React.FC = () => {
     const playerRef = useRef<ReactPlayer | null>(null);
     const { playing, currentTime, duration, seeking, setPlaying, setCurrentTime, setDuration, setSeeking } = useVideoStore();
+    // const [playing, setPlaying] = useState<boolean>(false);
+
+    // const [currentTime, setCurrentTime] = useState<number>(0);
+    // const [duration, setDuration] = useState<number>(0);
+    // const [seeking, setSeeking] = useState<boolean>(false); // State to handle if seeking is active
 
     const handlePlayPause = () => {
         setPlaying(!playing);
@@ -106,7 +111,13 @@ const VideoPlayer: React.FC = () => {
                     Jump to end
                 </Button>
             </div>
-
+            <Timeline
+                currentTime={currentTime}
+                duration={duration}
+                onSeekChange={handleSeekChange}
+                onSeekMouseDown={handleSeekMouseDown}
+                onSeekMouseUp={handleSeekMouseUp}
+            />
         </div>
     );
 };

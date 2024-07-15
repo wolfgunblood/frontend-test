@@ -1,13 +1,14 @@
 import React from 'react'
 import { Button } from './ui/button'
 import { ArrowLeft } from 'lucide-react';
-import Editor from './Editor';
+import Editor from './my-references/Editor';
+import VideoEditor from './VIdeoEditor';
 
 // type Props = {}
 
 const Hero = () => {
     return (
-        <div className="p-10 spcae-y-5">
+        <div className="w-full p-10 spcae-y-5">
             <Button variant="ghost" size="icon">
                 <ArrowLeft />
                 {" "}
@@ -19,7 +20,8 @@ const Hero = () => {
             <p>
             Episode 503 • 12 April 2024
             </p>
-            <Editor />
+            {/* <Editor /> */}
+            <VideoEditor />
         </div>
     )
 }
