@@ -26,6 +26,7 @@ interface Option {
   id: string;
   name: string;
   createdOn: string;
+  picture : string,
   createdBy: {
     picture: string;
     name: string;
