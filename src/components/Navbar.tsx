@@ -15,8 +15,9 @@ const Navbar = () => {
 
   return (
     <nav
-      className="px-16 py-6 border-b border-zinc-200"
+      className="w-full px-16 py-6 border-b border-zinc-200 "
     >
+
       <div className="flex items-center justify-between">
         <Link
           href="/"
@@ -76,7 +77,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-    </nav>
+    </nav >
   );
 };
 

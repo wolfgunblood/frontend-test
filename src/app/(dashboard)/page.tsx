@@ -21,7 +21,7 @@ export default async function Home() {
         <Sidebar />
         {/* <Hero /> */}
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </HydrateClient>
   );
 }
