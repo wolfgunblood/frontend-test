@@ -13,9 +13,17 @@ import { options } from "../../constants/data"
 const Modal: React.FC = () => {
     const { step, nextStep, previousStep, reset } = useModalStore();
     const setOptions = useModalStore(state => state.setOptions);
+
+    const headerOptions = [
+        { title: 'Create Ad Marker', description: 'Insert a new ad maker to the episodes' },
+        { title: 'Configure Ad', description: 'Set up your ad configurations' },
+        { title: 'Review & Submit', description: 'Review your settings before submitting' }
+    ];
     useEffect(() => {
         setOptions(options);
     }, [setOptions]);
+
+    const currentOption = headerOptions[step - 1] ?? headerOptions[0];
 
     return (
         <Dialog>
@@ -23,15 +31,13 @@ const Modal: React.FC = () => {
                 <Button className='w-full text-sm font-semibold font-manrope inline-flex gap-2 items-center' variant="default" aria-label="Create Ad">
                     Create Ad Marker
                     {" "}
-                    <Plus size={16}/>
+                    <Plus size={16} />
                 </Button>
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>Create Ad Maker</DialogTitle>
-                    <DialogDescription>
-                        Insert a new ad maker to the episodes
-                    </DialogDescription>
+                    <DialogTitle className='text-base text-zinc-800 font-bold font-manrope'>{currentOption?.title}</DialogTitle>
+                    <DialogDescription className='text-sm text-muted-foreground font-semibold font-manrope'>{currentOption?.description}</DialogDescription>
                 </DialogHeader>
 
                 <div className="py-4">

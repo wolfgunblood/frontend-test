@@ -38,21 +38,21 @@ const StepOne: React.FC = () => {
     return (
         <RadioGroup defaultValue={selections.stepOne} onChange={handleSelectionChange}>
             {options.map(option => (
-                <div key={option.value} className="p-2">
-                    <div className="p-2 flex justify-between items-center border-2 rounded-md">
-                        <div className='flex items-center gap-2'>
+                <div key={option.value}>
+                    <div className="py-3 px-4  rounded-lg border border-zinc-200 shadow-sm flex justify-between items-center gap-4">
+                        <div className='flex items-center gap-4'>
 
                             <Image
                                 src={option.src}
                                 alt={option.alt}
-                                width={60}
-                                height={60}
+                                width={40}
+                                height={40}
                                 quality={100}
                                 className="w-7 h-7"
                             />
                             <div>
-                                <h4>{option.title}</h4>
-                                <p>{option.description}</p>
+                                <h3 className='text-base text-zinc-800 font-bold font-manrope'>{option.title}</h3>
+                                <p className='text-sm text-muted-foreground font-semibold font-manrope'>{option.description}</p>
                             </div>
                         </div>
                         <div>
