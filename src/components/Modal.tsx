@@ -25,9 +25,9 @@ const Modal: React.FC = () => {
 
     const currentOption = headerOptions[step - 1] ?? headerOptions[0];
 
-    const dialogContentClass = `flex flex-col p-8 gap-6 bg-white shadow-lg ${step === 1 ? ' w-[462px]' :
-            step === 2 ? 'justify-between max-w-4xl h-[816px]' :
-                step === 3 ? 'w-[577px]' : ''
+    const dialogContentClass = `flex flex-col p-8 bg-white shadow-lg ${step === 1 ? 'gap-6  w-[462px]' :
+            step === 2 ? 'gap-6  max-w-4xl ' :
+                step === 3 ? 'gap-6 w-[577px]' : ''
         }`;
 
     return (
@@ -90,7 +90,7 @@ const Modal: React.FC = () => {
                     {step === 2 && (
                         <div className="flex justify-between">
                             <Button variant="outline" onClick={reset}>Cancel</Button>
-                            <div className='inline-flex gap-2'>
+                            <div className='inline-flex gap-2 items-center'>
                                 <p className='text-sm text-zinc-800 font-semibold font-manrope'>
                                     {selectionCount}{" "} ads selected
                                 </p>
