@@ -7,7 +7,7 @@ import Modal from './Modal';
 const badgeStyles: Record<string, { backgroundColor: string; color: string }> = {
     auto: { backgroundColor: '#BBF7D0', color: '#166534' },
     static: { backgroundColor: '#BFDBFE', color: '#1E40AF' },
-    "A/B": { backgroundColor: '#FED7AA', color: '#9A3412' }
+    "a/b": { backgroundColor: '#FED7AA', color: '#9A3412' }
 };
 
 const Admaker = () => {
