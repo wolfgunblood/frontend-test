@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>VidPod</h1>
+  <h1>VP</h1>
   <p>🔥 Build using T3 Stack</p>
 
 </div>
