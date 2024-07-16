@@ -8,6 +8,7 @@ import useModalStore from 'store/useStore';
 import { Plus } from 'lucide-react';
 
 import { options } from "../../constants/data"
+import Image from 'next/image';
 
 const Modal: React.FC = () => {
     const { step, nextStep, previousStep, reset } = useModalStore();
@@ -24,11 +25,11 @@ const Modal: React.FC = () => {
 
     const currentOption = headerOptions[step - 1] ?? headerOptions[0];
 
-    const dialogContentClass = `flex flex-col p-8 gap-6 ${
-        step === 1 ? 'w-[462px]' : 
-        step === 2 ? ' max-w-4xl' : 
+    const dialogContentClass = `flex flex-col p-8 gap-6 bg-white shadow-lg ${
+        step === 1 ? ' w-[462px]' :
+        step === 2 ? 'justify-between max-w-4xl h-[816px]' :
         step === 3 ? 'w-[577px]' : ''
-    }`;
+        }`;
 
     return (
         <Dialog>
@@ -39,10 +40,25 @@ const Modal: React.FC = () => {
                 </Button>
             </DialogTrigger>
             <DialogContent className={dialogContentClass}>
-                <div>
+                <div className='flex flex-col gap-2'>
                     <h3 className='text-base text-zinc-800 font-bold font-manrope'>{currentOption?.title}</h3>
                     <p className='text-sm text-muted-foreground font-semibold font-manrope'>{currentOption?.description}</p>
                 </div>
+
+                <>
+                    {
+                        step === 2 &&
+                        <div className="relative w-full h-1 bg-zinc-200">
+                            <Image
+                                src="/Line.svg"
+                                alt="line"
+                                layout="fill"
+                                objectFit="cover"
+                                quality={100}
+                            />
+                        </div>
+                    }
+                </>
 
                 <div>
                     {step === 1 && <StepOne />}
@@ -50,8 +66,22 @@ const Modal: React.FC = () => {
                     {step === 3 && <StepThree />}
                 </div>
 
-                <div>
+                <>
+                    {
+                        step === 2 &&
+                        <div className="relative w-full h-1 bg-zinc-200">
+                            <Image
+                                src="/Line.svg"
+                                alt="line"
+                                layout="fill"
+                                objectFit="cover"
+                                quality={100}
+                            />
+                        </div>
+                    }
+                </>
 
+                <div>
                     {step === 1 && (
                         <div className="flex justify-end gap-4">
                             <Button variant="outline" onClick={reset}>Cancel</Button>
