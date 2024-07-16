@@ -4,6 +4,7 @@ import useModalStore from 'store/useStore';
 import { Input } from '../ui/input';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
 import { Search } from 'lucide-react';
+import { Button } from '../ui/button';
 
 
 const StepTwo: React.FC = () => {
@@ -55,17 +56,23 @@ const StepTwo: React.FC = () => {
             </div>
 
             <div className='flex flex-col'>
-                <div className="relative mb-4">
-                    <div style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', fontSize: '24px', cursor: 'pointer' }}>
-                        <Search />
+                <div className='flex'>
+                    <Button variant="outline">
+                        Upload
+                    </Button>
+
+                    <div className="relative">
+                        <div style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', fontSize: '24px', cursor: 'pointer' }}>
+                            <Search />
+                        </div>
+                        <input
+                            type="text"
+                            placeholder="Search ads..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="max-w-sm p-2 border rounded w-full pl-10 pr-2"
+                        />
                     </div>
-                    <input
-                        type="text"
-                        placeholder="Search ads..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="max-w-sm p-2 border rounded w-full pl-10 pr-2"
-                    />
                 </div>
                 <div className="max-h-96 overflow-y-auto">
                     {filteredOptions.map(option => (

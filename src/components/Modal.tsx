@@ -26,7 +26,7 @@ const Modal: React.FC = () => {
 
     const dialogContentClass = `flex flex-col p-8 gap-6 ${
         step === 1 ? 'w-[462px]' : 
-        step === 2 ? 'h-[816px] max-w-4xl' : 
+        step === 2 ? ' max-w-4xl' : 
         step === 3 ? 'w-[577px]' : ''
     }`;
 

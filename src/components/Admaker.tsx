@@ -44,9 +44,9 @@ const Admaker = () => {
                     ))}
                 </ol>
             </div>
-            <div className="w-full flex flex-col">
+            <div className="w-full flex flex-col gap-4">
                 <Modal />
-                <Button className="text-sm font-semibold font-manrope inline-flex gap-2 items-center" variant="secondary">
+                <Button className="text-sm font-semibold font-manrope inline-flex gap-2 items-center" variant="outline">
                     Automatically Place
                     {" "}
                     <Wand size={16} />
