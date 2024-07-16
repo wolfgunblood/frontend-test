@@ -11,7 +11,7 @@ import { options } from "../../constants/data"
 import Image from 'next/image';
 
 const Modal: React.FC = () => {
-    const { step, nextStep, previousStep, reset, selectionCount } = useModalStore();
+    const { step, nextStep, reset, selectionCount } = useModalStore();
     const setOptions = useModalStore(state => state.setOptions);
 
     const headerOptions = [
