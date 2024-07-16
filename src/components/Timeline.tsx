@@ -24,6 +24,32 @@ const Timeline: React.FC<TimelineProps> = ({
 }) => {
     const [sliderValue, setSliderValue] = useState(1);
 
+    const DisplayTime = (seconds :number) => {
+        const h = Math.floor(seconds / 3600);
+        const m = Math.floor((seconds % 3600) / 60);
+        const s = Math.floor(seconds % 60);
+        return [h, m, s].map(v => v < 10 ? '0' + v : v).join(':');
+    };
+    
+
+    const formatTime = (seconds: number) => {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);  
+        return `${minutes < 10 ? '0' + minutes : minutes}:${secs < 10 ? '0' + secs : secs}`;
+    };
+    
+
+    const generateTimeLabels = (duration :number) => {
+        const interval = 10;
+        const timeLabels = [];
+        for (let time = 0; time <= duration; time += interval) {
+            timeLabels.push(formatTime(time));
+        }
+        return timeLabels;
+    };
+    const timeLabels = generateTimeLabels(duration);
+
+
     return (
         <div className='p-8 bg-white rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between gap-8'>
             <div className='flex justify-between items-center'>
@@ -56,14 +82,14 @@ const Timeline: React.FC<TimelineProps> = ({
                     </Button>
                 </div>
                 <div className='py-2 px-3 rounded-md border'>
-                    <p className=''>00:02:10</p>
+                <p className=''>{DisplayTime(currentTime)}</p>
                 </div>
                 <div className='flex gap-6'>
                     <ZoomOut size={20} />
                     <div>
                         <input
                             type="range"
-                            className="slider-thumb w-full cursor-pointer"
+                            className="w-full cursor-pointer"
                             value={sliderValue}
                             // onChange={(e) => setSliderValue(e.target.value)}
                             min="1"
@@ -74,16 +100,25 @@ const Timeline: React.FC<TimelineProps> = ({
                     <ZoomIn size={20} />
                 </div>
             </div>
-            <input
-                type="range"
-                min="0"
-                max="100"
-                value={(currentTime / duration) * 100 || 0} // Ensure the calculation doesn't result in NaN
-                onChange={onSeekChange}
-                onMouseDown={onSeekMouseDown}
-                onMouseUp={onSeekMouseUp}
-                className="timeline-slider w-full h-2 appearance-none cursor-pointer"
-            />
+            <div>
+                <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={(currentTime / duration) * 100 || 0}
+                    onChange={onSeekChange}
+                    onMouseDown={onSeekMouseDown}
+                    onMouseUp={onSeekMouseUp}
+                    className="timeline-slider w-full h-2 appearance-none cursor-pointer"
+                />
+                <div className="flex justify-between mt-2">
+                {timeLabels.map((label, index) => (
+                    <div key={index} className="text-xs">
+                        {label}
+                    </div>
+                ))}
+            </div>
+            </div>
             <div className="relative w-full h-2">
                 <Image
                     src="/Frame.svg"

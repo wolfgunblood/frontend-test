@@ -1,14 +1,15 @@
 .timeline-slider {
     -webkit-appearance: none;
     appearance: none;
-    height: 112px; 
+    height: 128px; 
     padding: 10px 0 0 0; 
     gap: 10px; 
     border-style: solid;
-    border-color: black;
-    border-width: 2px 4px;
-    border-radius: 6px;
-    background: url('../../public/marker.svg') no-repeat center;
+    border-color: #18181B;
+    border-width: 1px;
+    border-radius: 8px;
+    background: url('../../public/waveforms.svg') no-repeat center bottom / 100% 50%, 
+                url('../../public/marker.svg') no-repeat center / 100% 100%; 
     background-size: cover;
 }
 
@@ -17,21 +18,24 @@
     -webkit-appearance: none;
     appearance: none;
     width: 2px;
-    height: 132px;
-    background: #EF4444;
+    height: 167px;
+    background: #EF4444 url('../../public/ThumbTip.svg') no-repeat center 2px;
     cursor: pointer;
+    background-size: 10px 10px;
 }
 
 .timeline-slider::-moz-range-thumb {
     width: 2px;
-    height: 132px;
-    background: #EF4444;
+    height: 167px;
+    background: #EF4444 url('../../public/ThumbTip.svg') no-repeat center 2px;
     cursor: pointer;
+    background-size: 10px 10px;
 }
 
 .timeline-slider::-ms-thumb {
     width: 2px;
-    height: 132px;
-    background: #EF4444;
+    height: 167px;
+    background: #EF4444 url('../../public/ThumbTip.svg') no-repeat center 2px;
     cursor: pointer;
+    background-size: 10px 10px;
 }
