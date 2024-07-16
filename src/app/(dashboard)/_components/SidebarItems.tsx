@@ -21,23 +21,21 @@ const SidebarItems = ({ icon: Icon, label, href }: SidebarItemProps) => {
     return (
         <button
             type='button'
-            className={cn("flex text-secondary-foreground items-center gap-x-2 text-slate-500 pl-6 transition-all hover:text-slate-600 hover:bg-slate-300/20",
-                isActive && "text-primary"
+            className={cn("text-zinc-500 transition-all hover:text-zinc-600 hover:bg-zinc-300/20",
+                isActive && "text-zinc-800 hover:text-zinc-800/90 "
+                
             )}
         >
             <div
-                className='flex items-center gap-x-2 py-4'
+                className='flex items-center gap-4'
             >
-                <Icon size={16} className={cn("text-slate-500" )} />
+                <Icon size={20} />
+                <p className='text-base font-bold font-manrope'>
+
                 {label}
+                </p>
             </div>
-            <div
-                className={cn(
-                    "ml-auto opacity-0 border-2 border-sky-700 h-full transition-all",
-                    isActive && "opacity-100"
-                )}
-            >
-            </div>
+       
         </button>
     )
 }

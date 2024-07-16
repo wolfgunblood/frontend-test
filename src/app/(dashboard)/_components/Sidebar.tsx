@@ -11,7 +11,7 @@ import { ChevronDown } from 'lucide-react';
 const Sidebar = () => {
   return (
     <div
-      className="w-80 p-8 border-r border-zinc-200 overflow-y-auto flex flex-col justify-between"
+      className="w-80 p-8 border-r border-zinc-200 overflow-y-auto flex flex-col justify-between gap-8"
     >
       <div className='flex flex-col items-center gap-8'>
         <div className='flex flex-col gap-4'>
@@ -42,17 +42,14 @@ const Sidebar = () => {
 
           </button>
         </div>
-        <div className='flex flex-col w-full'>
+      
           <SidebarRoutes />
-        </div>
       </div>
 
       <div>
         Charts
       </div>
-      <div>
         <SidebarRoutesBottom />
-      </div>
     </div>
   )
 }

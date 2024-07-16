@@ -1,21 +1,21 @@
 "use client"
 
 import React from 'react';
-import { BarChart3, Compass, Layout, CircleDollarSign, Tv, Import, Settings } from 'lucide-react';
+import { BarChart3,House , CircleDollarSign, Tv, Import, Settings } from 'lucide-react';
 import SidebarItems from './SidebarItems';
 
 // type Props = {}
 
 const mainRoutes = [
     {
-        icon: Layout,
+        icon: House,
         label: 'Dashboard',
-        href: '/'
+        href: '/dashboard'
     },
     {
         icon: BarChart3,
         label: "Analytics",
-        href: '/analytics'
+        href: '/'
     },
     {
         icon: CircleDollarSign,
@@ -44,7 +44,7 @@ const mainRoutes = [
 const SidebarRoutes = () => {
     const routes = mainRoutes;
     return (
-        <div className='flex flex-col gap-8 w-full'>
+        <div className='flex flex-col gap-8 py-0 px-8'>
             {routes.map((route, index) => (
                 <SidebarItems
                     key={index}
