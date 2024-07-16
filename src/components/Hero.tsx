@@ -8,7 +8,7 @@ import VideoEditor from './VIdeoEditor';
 
 const Hero = () => {
     return (
-        <div className="w-full p-16 flex flex-col gap-8">
+        <div className="p-16 flex flex-col gap-8">
             <div className='w-[616px] flex flex-col items-start gap-4'>
                 <Button variant="ghost" size="icon">
                     <ArrowLeft />

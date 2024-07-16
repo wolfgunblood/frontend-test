@@ -86,8 +86,8 @@ const VideoEditor: React.FC = () => {
         <div className='flex flex-col gap-8'>
             <div className='flex gap-8'>
                 <Admaker />
-                <div className='p-8 bg-white rounded-2xl border border-zinc-200 shadow-sm flex flex-col gap-4'>
-                    <div className="w-[724px] h-[408px] rounded-lg overflow-hidden ">
+                <div className='p-8 bg-white rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between gap-4'>
+                    <div className="rounded-lg overflow-hidden ">
                         <ReactPlayer
                             ref={playerRef}
                             url='https://utfs.io/f/37835069-4b3e-48e8-97b5-da654c1de85b-m0d2yz.mp4'
@@ -144,13 +144,13 @@ const VideoEditor: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <Timeline
+            {/* <Timeline
                 currentTime={currentTime}
                 duration={duration}
                 onSeekChange={handleSeekChange}
                 onSeekMouseDown={handleSeekMouseDown}
                 onSeekMouseUp={handleSeekMouseUp}
-            />
+            /> */}
         </div>
     );
 };

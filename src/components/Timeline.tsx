@@ -18,7 +18,7 @@ const Timeline: React.FC<TimelineProps> = ({
     onSeekMouseUp
 }) => {
     return (
-        <div className='w-full'>
+        <div>
             <input
                 type="range"
                 min="0"
