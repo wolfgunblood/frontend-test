@@ -5,6 +5,7 @@ import StepOne from './steps/StepOne';
 import StepTwo from './steps/StepTwo';
 import StepThree from './steps/StepThree';
 import useModalStore from 'store/useStore';
+import { Plus } from 'lucide-react';
 
 import { options } from "../../constants/data"
 
@@ -19,7 +20,11 @@ const Modal: React.FC = () => {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button className='w-full' variant="default" aria-label="Create Ad">Create Ad Marker</Button>
+                <Button className='w-full text-sm font-semibold font-manrope inline-flex gap-2 items-center' variant="default" aria-label="Create Ad">
+                    Create Ad Marker
+                    {" "}
+                    <Plus size={16}/>
+                </Button>
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader>

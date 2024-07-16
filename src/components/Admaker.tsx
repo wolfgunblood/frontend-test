@@ -1,25 +1,14 @@
 import React from 'react';
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from '~/components/ui/card';
 import { Button } from '~/components/ui/button';
 import { Badge } from '~/components/ui/badge';
-import { Trash2 } from 'lucide-react';
-
-
+import { Trash2, Wand } from 'lucide-react';
 import Modal from './Modal';
 
-const badgeColors: Record<string, string> = {
-    auto: '#BBF7D0',  // Green
-    static: '#2196F3', // Blue
-    AB: '#795548'     // Brown
+const badgeStyles: Record<string, { backgroundColor: string; color: string }> = {
+    auto: { backgroundColor: '#BBF7D0', color: '#166534' },
+    static: { backgroundColor: '#BFDBFE', color: '#1E40AF' },
+    "A/B": { backgroundColor: '#FED7AA', color: '#9A3412' }
 };
-
 
 const Admaker = () => {
     const items = [
@@ -29,41 +18,41 @@ const Admaker = () => {
     ];
 
     return (
-        <Card style={{
-            width: '412px',  
-            height: '552px', 
-            padding: '32px', 
-            borderRadius: '16px 0px 0px 0px', 
-            // borderRight: '1px solid', 
-        }}>
-            <CardHeader>
-                <CardTitle>Admakers</CardTitle>
-                <CardDescription>Manage your ad markers</CardDescription>
-            </CardHeader>
-            <CardContent>
-                <ol>
+        <div className="w-96 h-[552px] p-8 bg-white rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between">
+            <div className='flex flex-col gap-4'>
+                <div className="flex justify-between">
+                    <h2 className="text-base text-zinc-800 font-bold font-manrope">Admakers</h2>
+                    <p className="text-base text-zinc-500 font-semibold font-manrope">3 markers</p>
+                </div>
+                <ol className="flex flex-col gap-4">
                     {items.map((item) => (
-                        <li key={item.id}>
-                            <div style={{ padding: '10px' }} className='flex gap-5 items-center justify-between'>
-                                {item.id}
-                                <Badge style={{ backgroundColor: badgeColors[item.type.toLowerCase()]! }}>
-                                {item.type}
+                        <li key={item.id} className="flex items-center justify-between gap-4 w-full">
+                            <p className='text-base text-zinc-500 font-semibold font-manrope'>{item.id}</p>
+                            <div className='flex items-center gap-4 border border-zinc-200 rounded-lg py-3 px-4 flex-grow justify-between'>
+                                <p className='text-base text-zinc-800 font-semibold font-manrope'>{item.timestamp}</p>
+                                <Badge style={{
+                                    backgroundColor: badgeStyles[item.type.toLowerCase()]?.backgroundColor,
+                                    color: badgeStyles[item.type.toLowerCase()]?.color
+                                }}>
+                                    {item.type}
                                 </Badge>
-                                <div>{item.timestamp}</div>
-                                <div className='inline-flex items-center gap-2'>
-                                    <Button variant="outline" size="sm">Edit</Button>
-                                    <Button variant="destructive" size="sm"><Trash2 /></Button>
-                                </div>
+                                <Button variant="outline" size="sm" className='text-sm text-secondary-foreground font-semibold font-manrope'>Edit</Button>
+                                <Button variant="trash" size="sm" className='flex items-center'><Trash2 size={16} color='#7F1D1D' /></Button>
+
                             </div>
                         </li>
                     ))}
                 </ol>
-            </CardContent>
-            <CardFooter className='w-full flex flex-col'>
+            </div>
+            <div className="w-full flex flex-col">
                 <Modal />
-                <Button className='w-full' variant="secondary">Automatically Place</Button>
-            </CardFooter>
-        </Card>
+                <Button className="text-sm font-semibold font-manrope inline-flex gap-2 items-center" variant="secondary">
+                    Automatically Place
+                    {" "}
+                    <Wand size={16} />
+                </Button>
+            </div>
+        </div>
     );
 }
 
