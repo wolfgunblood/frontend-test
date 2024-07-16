@@ -11,25 +11,26 @@ interface SidebarItemProps {
 
 // type Props = {}
 
-const SidebarItemsBottom = ({ icon: Icon, label}: SidebarItemProps) => {
+const SidebarItemsBottom = ({ icon: Icon, label }: SidebarItemProps) => {
 
- 
+
     return (
         <button
             type='button'
-            className={cn("flex items-center gap-x-2 text-slate-500 pl-6 transition-all hover:text-slate-600 hover:bg-slate-300/20",
+            className={cn("text-zinc-500 transition-all hover:text-zinc-600 hover:bg-zinc-300/20",
+
             )}
         >
-            <div className='flex items-center gap-x-2 py-4'>
-                <Icon size={22} className={cn("text-slate-500" )} />
-                {label}
-            </div>
             <div
-            className={cn(
-                "ml-auto opacity-0 border-2 border-sky-700 h-full transition-all",
-            )}
+                className='flex items-center gap-3'
             >
+                <Icon size={20} />
+                <p className='text-base font-bold font-manrope'>
+
+                    {label}
+                </p>
             </div>
+
         </button>
     )
 }

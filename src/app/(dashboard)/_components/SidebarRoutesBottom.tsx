@@ -1,15 +1,14 @@
 "use client"
 
 import React from 'react';
-import { BarChart3, Compass, Layout, CircleDollarSign, Tv, Import, Settings } from 'lucide-react';
-import { usePathname } from 'next/navigation';
+import { BarChart3,  CirclePlay, CircleDollarSign, Tv,} from 'lucide-react';
 import SidebarItemsBottom from './SidebarItemsBottom';
 
 // type Props = {}
 
 const mainRoutes = [
     {
-        icon: Layout,
+        icon:  CirclePlay,
         label: 'Demo',
     },
     {
@@ -30,10 +29,9 @@ const mainRoutes = [
 
 
 const SidebarRoutesBottom = () => {
-    const pathname = usePathname();
     const routes = mainRoutes;
     return (
-        <div className='flex flex-col w-full'>
+        <div className='flex flex-col gap-4 py-0 px-8'>
             {routes.map((route, index) => (
                 <SidebarItemsBottom
                     key={index}

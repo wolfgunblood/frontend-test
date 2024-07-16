@@ -4,6 +4,7 @@ import { Button } from '~/components/ui/button'
 import SidebarRoutesBottom from './SidebarRoutesBottom'
 import Image from 'next/image'
 import { ChevronDown } from 'lucide-react';
+import Chart from './Chart'
 
 
 // type Props = {}
@@ -19,13 +20,7 @@ const Sidebar = () => {
             Create a podcast
           </Button>
           <button
-            className="
-           w-64 h-14 px-4 py-3
-           border  border-zinc-200
-           bg-white
-           flex justify-between
-           items-center
-         "
+            className="w-64 h-14 px-4 py-3 border border-zinc-200 bg-white flex justify-between items-center"
           >
             <Image
               src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/d9/d914572f48a082fea29673264f0eacddbe371462.jpg"
@@ -42,14 +37,12 @@ const Sidebar = () => {
 
           </button>
         </div>
-      
-          <SidebarRoutes />
+
+        <SidebarRoutes />
       </div>
 
-      <div>
-        Charts
-      </div>
-        <SidebarRoutesBottom />
+      <Chart />
+      <SidebarRoutesBottom />
     </div>
   )
 }
