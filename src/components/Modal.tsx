@@ -16,8 +16,8 @@ const Modal: React.FC = () => {
 
     const headerOptions = [
         { title: 'Create Ad Marker', description: 'Insert a new ad maker to the episodes' },
-        { title: 'Configure Ad', description: 'Set up your ad configurations' },
-        { title: 'Review & Submit', description: 'Review your settings before submitting' }
+        { title: 'A/B test', description: `Select which ads you'd like to A/B test` },
+        { title: 'A/B test results', description: '2 ads selected' }
     ];
     useEffect(() => {
         setOptions(options);
