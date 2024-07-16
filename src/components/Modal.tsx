@@ -11,13 +11,13 @@ import { options } from "../../constants/data"
 import Image from 'next/image';
 
 const Modal: React.FC = () => {
-    const { step, nextStep, previousStep, reset } = useModalStore();
+    const { step, nextStep, previousStep, reset, selectionCount } = useModalStore();
     const setOptions = useModalStore(state => state.setOptions);
 
     const headerOptions = [
         { title: 'Create Ad Marker', description: 'Insert a new ad maker to the episodes' },
         { title: 'A/B test', description: `Select which ads you'd like to A/B test` },
-        { title: 'A/B test results', description: '2 ads selected' }
+        { title: 'A/B test results', description: `${selectionCount} ads selected` }
     ];
     useEffect(() => {
         setOptions(options);
@@ -25,10 +25,9 @@ const Modal: React.FC = () => {
 
     const currentOption = headerOptions[step - 1] ?? headerOptions[0];
 
-    const dialogContentClass = `flex flex-col p-8 gap-6 bg-white shadow-lg ${
-        step === 1 ? ' w-[462px]' :
-        step === 2 ? 'justify-between max-w-4xl h-[816px]' :
-        step === 3 ? 'w-[577px]' : ''
+    const dialogContentClass = `flex flex-col p-8 gap-6 bg-white shadow-lg ${step === 1 ? ' w-[462px]' :
+            step === 2 ? 'justify-between max-w-4xl h-[816px]' :
+                step === 3 ? 'w-[577px]' : ''
         }`;
 
     return (
@@ -91,7 +90,12 @@ const Modal: React.FC = () => {
                     {step === 2 && (
                         <div className="flex justify-between">
                             <Button variant="outline" onClick={reset}>Cancel</Button>
-                            <Button variant="default" onClick={nextStep}>Select A/B Test</Button>
+                            <div className='inline-flex gap-2'>
+                                <p className='text-sm text-zinc-800 font-semibold font-manrope'>
+                                    {selectionCount}{" "} ads selected
+                                </p>
+                                <Button variant="default" onClick={nextStep} className='text-sm font-semibold font-manrope'>Select A/B Test</Button>
+                            </div>
                         </div>
                     )}
                     {step === 3 && (

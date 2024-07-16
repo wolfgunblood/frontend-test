@@ -44,6 +44,7 @@ interface ModalState {
     stepTwo: Option[];
     stepThree: string;
   };
+  selectionCount: number; 
   options: Option[];
   searchTerm: string; 
   setSearchTerm: (term: string) => void; 
@@ -63,6 +64,7 @@ const useModalStore = create<ModalState>((set, get) => ({
     stepTwo: [],
     stepThree: ''
   },
+  selectionCount: 0,
   options: [],
   searchTerm: '', 
   setSearchTerm: (term) => set({ searchTerm: term }),
@@ -73,14 +75,15 @@ const useModalStore = create<ModalState>((set, get) => ({
   setSelection: (step, value) => set(state => ({
     selections: { ...state.selections, [step]: value }
   })),
-  toggleSelection: (option) => set(state => ({
-    selections: {
-      ...state.selections,
-      stepTwo: state.selections.stepTwo.some(item => item.id === option.id)
+  toggleSelection: (option) => set(state => {
+    const newSelections = state.selections.stepTwo.some(item => item.id === option.id)
         ? state.selections.stepTwo.filter(item => item.id !== option.id)
-        : [...state.selections.stepTwo, option]
-    }
-  })),
+        : [...state.selections.stepTwo, option];
+    return {
+      selections: { ...state.selections, stepTwo: newSelections },
+      selectionCount: newSelections.length  
+    };
+  }),
   reset: () => set({ step: 1, selections: { stepOne: '', stepTwo: [], stepThree: '' } })
 }));
 
