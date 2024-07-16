@@ -45,15 +45,30 @@ const Modal: React.FC = () => {
                     {step === 2 && <StepTwo />}
                     {step === 3 && <StepThree />}
                 </div>
-                <div className="flex justify-end space-x-2 p-2">
-                    {step > 1 && <Button variant="default" onClick={previousStep}>Back</Button>}
-                    {step < 3 ? (
-                        <Button variant="default" onClick={nextStep}>Next</Button>
-                    ) : (
-                        <Button variant="default" onClick={reset}>Submit</Button>
+                <>
+                    {step === 1 && (
+                        <div className="flex justify-end gap-4">
+                            <Button variant="outline" onClick={reset}>Cancel</Button>
+                            <Button variant="default" onClick={nextStep}>Select Maker</Button>
+                        </div>
                     )}
-                    <Button variant="outline" onClick={reset}>Cancel</Button>
-                </div>
+                    {step === 2 && (
+
+                        <div className="flex justify-between">
+                            <Button variant="outline" onClick={reset}>Cancel</Button>
+                            <Button variant="default" onClick={nextStep}>Select A/B Test</Button>
+                        </div>
+                    )}
+                    {step === 3 && (
+
+                        <div className="flex justify-end gap-4">
+                            <Button variant="outline" onClick={() => { reset() }}>New Test</Button>
+                            <Button variant="default" onClick={reset}>Done</Button>
+
+                        </div>
+                    )}
+                </>
+
             </DialogContent>
         </Dialog>
     );
