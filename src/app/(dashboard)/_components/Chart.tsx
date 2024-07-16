@@ -4,13 +4,13 @@ import React from 'react'
 const Chart = () => {
     return (
         <div className='flex flex-col gap-4 items-center'>
-            <div className="w-full max-w-[256px] h-[201.74px] p-t-4 border-t border-gray-200 rounded-tl-[16px] flex gap-2">
+            <div className="w-full max-w-[256px] h-[201.74px] p-4 border border-zinc-200 rounded-2xl">
                 <Image
                     src="/chart-widget.svg"
                     alt="Chart"
-                    width={256} // Using the native width attribute for accurate rendering
-                    height={202} // Using rounded height to match CSS requirements
-                    className="object-cover w-full h-full rounded-tl-lg"
+                    width={256}
+                    height={202} 
+                    className="object-cover w-full h-full"
                 />
             </div>
 
