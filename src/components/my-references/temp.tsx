@@ -1,10 +1,10 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import { Play, Pause, ArrowLeftToLine, ArrowRightToLine, Rewind, FastForward, History } from 'lucide-react';
 import { useVideoStore } from 'store/useStore';
-import Timeline from './Timeline';
+import Timeline from '../Timeline';
 
 const VideoPlayer: React.FC = () => {
     const playerRef = useRef<ReactPlayer | null>(null);
