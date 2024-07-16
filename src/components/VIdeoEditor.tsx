@@ -82,7 +82,7 @@ const VideoEditor: React.FC = () => {
     };
 
     return (
-        <div className='w-full selection:pace-y-5'>
+        <div className=''>
             <div className='w-full flex gap-5'>
                 <Admaker />
                 <div className='flex flex-col items-center gap-5 p-10'>
