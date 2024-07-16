@@ -17,9 +17,9 @@ export default async function Home() {
   return (
     <HydrateClient>
       <Navbar />
-      <main className="w-full flex">
+      <main className="flex">
         <Sidebar />
-        <Hero />
+        {/* <Hero /> */}
       </main>
       {/* <Footer /> */}
     </HydrateClient>
