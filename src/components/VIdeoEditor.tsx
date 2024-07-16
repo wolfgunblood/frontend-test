@@ -101,7 +101,9 @@ const VideoEditor: React.FC = () => {
                     </div>
                     <div className='p-4 bg-white rounded-2xl border border-zinc-200 shadow-sm flex justify-between items-center gap-4'>
                         <Button className='inline-flex gap-2' variant="ghost" onClick={handleJumpStart}>
-                            <ArrowLeftToLine size={16} />
+                            <div className="w-8 h-8 gap-0 rounded-full border border-zinc-300">
+                                <ArrowLeftToLine size={16} />
+                            </div>
                             <p className='text-sm text-muted-foreground font-semibold font-manrope'>Jump to start</p>
 
                         </Button>
@@ -139,18 +141,20 @@ const VideoEditor: React.FC = () => {
 
                         <Button variant="ghost" onClick={handleJumpEnd}>
                             <p className='text-sm text-muted-foreground font-semibold font-manrope'>Jump to end</p>
-                            <ArrowRightToLine size={16} />
+                            <div className="w-8 h-8 gap-0 rounded-full border border-zinc-300">
+                                <ArrowRightToLine size={16} />
+                            </div>
                         </Button>
                     </div>
                 </div>
             </div>
-            {/* <Timeline
+            <Timeline
                 currentTime={currentTime}
                 duration={duration}
                 onSeekChange={handleSeekChange}
                 onSeekMouseDown={handleSeekMouseDown}
                 onSeekMouseUp={handleSeekMouseUp}
-            /> */}
+            />
         </div>
     );
 };
