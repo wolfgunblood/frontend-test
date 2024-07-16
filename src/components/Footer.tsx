@@ -9,9 +9,8 @@ const Footer = () => {
 
   return (
     <footer
-      className={cn(
-        "fixed inset-x-0 bottom-0 z-30 h-14 border-t bg-white/40 backdrop-blur-lg transition-all dark:bg-inherit"
-      )}
+    className="px-16 py-9 border-b border-zinc-200"
+
     >
       <div className="mx-auto w-full max-w-screen-xl px-2.5 md:px-20">
         <div className="flex h-14 items-center justify-between">
