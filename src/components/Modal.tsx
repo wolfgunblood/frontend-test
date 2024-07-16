@@ -26,7 +26,7 @@ const Modal: React.FC = () => {
     const currentOption = headerOptions[step - 1] ?? headerOptions[0];
 
     const dialogContentClass = `flex flex-col p-8 bg-white shadow-lg ${step === 1 ? 'gap-6  w-[462px]' :
-            step === 2 ? 'gap-6  max-w-4xl ' :
+            step === 2 ? 'gap-6  max-w-4xl' :
                 step === 3 ? 'gap-6 w-[577px]' : ''
         }`;
 

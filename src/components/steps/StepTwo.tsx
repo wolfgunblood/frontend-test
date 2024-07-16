@@ -14,6 +14,7 @@ const StepTwo: React.FC = () => {
     const filteredOptions = options.filter(option =>
         option.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+    
 
     const libraryItems = {
         'All folders': ['Product Launch', 'Customer Testimonials'],
