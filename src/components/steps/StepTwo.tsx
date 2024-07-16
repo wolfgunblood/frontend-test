@@ -11,12 +11,10 @@ import { Badge } from '../ui/badge';
 const StepTwo: React.FC = () => {
     const { selections, toggleSelection, options, searchTerm, setSearchTerm } = useModalStore();
 
-    // Filter options based on the search term
     const filteredOptions = options.filter(option =>
         option.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    // Each library item now has its own list, potentially fetched or defined elsewhere
     const libraryItems = {
         'All folders': ['Product Launch', 'Customer Testimonials'],
         'Eigth Sleep': ['Pod 3', 'Q3 Promo', 'Athlete Campaign'],
