@@ -19,7 +19,7 @@ export default async function Home() {
       <Navbar />
       <main className="flex">
         <Sidebar />
-        {/* <Hero /> */}
+        <Hero />
       </main>
       <Footer />
     </HydrateClient>

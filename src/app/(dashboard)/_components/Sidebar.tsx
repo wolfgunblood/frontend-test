@@ -23,7 +23,7 @@ const Sidebar = () => {
             className="w-64 h-14 px-4 py-3 border border-zinc-200 bg-white flex justify-between items-center"
           >
             <Image
-              src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/d9/d914572f48a082fea29673264f0eacddbe371462.jpg"
+              src="https://s3-alpha-sig.figma.com/img/5bfd/2e19/f00cb43c501ce9855962fd332c2aaaf0?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=AWBEGN23L0qlkPJMBspltYDkmXGBSyZryCtlb3RZWPNIm2SZx-2CQDzQKovyrKsRX9S7kUtJCwfHReQ2875FDB6iko2Lcf8zfLWdzumIvW5nrLSPdSQqfN1wPUbZ1jyFNa1wjJvefBIqfR9YXhDhkSStLh~TuM8MJKXzMbH-9~Q0oPjyySJFjAQMrTVoR9ZlB85cSHoiBBf8vJAhyGTJZN8HnrI1T5cMljLz9X8WVnAKZRXwcA3uekYWeeTAJZE~C-ejvtGIrzU2GHnPj3~NQTZCoc8Xxezrdv3Frjy~aLL34D3b8mYTY9TvQ~mW5kJU0VwxfrtjHpyx9kaELTmH3Q__"
               alt="CEO"
               width={32}
               height={32}

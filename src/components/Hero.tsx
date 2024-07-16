@@ -8,19 +8,21 @@ import VideoEditor from './VIdeoEditor';
 
 const Hero = () => {
     return (
-        <div className="w-full p-10 spcae-y-5">
-            <Button variant="ghost" size="icon">
-                <ArrowLeft />
-                {" "}
-                Ads
-            </Button>
-            <h1>
-                The Longevity Expert: The Truth About Ozempic, The Magic Weight Loss Drug & The Link Between Milk & Cancer!
-            </h1>
-            <p>
-            Episode 503 • 12 April 2024
-            </p>
-            {/* <Editor /> */}
+        <div className="w-full p-16 gap-8">
+            <div>
+
+                <Button variant="ghost" size="icon">
+                    <ArrowLeft />
+                    {" "}
+                    Ads
+                </Button>
+                <h1>
+                    The Longevity Expert: The Truth About Ozempic, The Magic Weight Loss Drug & The Link Between Milk & Cancer!
+                </h1>
+                <p>
+                    Episode 503 • 12 April 2024
+                </p>
+            </div>
             <VideoEditor />
         </div>
     )

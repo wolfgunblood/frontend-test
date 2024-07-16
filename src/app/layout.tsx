@@ -16,7 +16,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="font-inter">
+    <html lang="en" className="bg-zinc-50 font-inter">
 
       <body>
         <TRPCReactProvider>{children}</TRPCReactProvider>
