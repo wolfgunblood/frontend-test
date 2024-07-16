@@ -10,18 +10,22 @@ const mainRoutes = [
     {
         icon:  CirclePlay,
         label: 'Demo',
+        flag: true,
     },
     {
         icon: BarChart3,
         label: "Invite your team",
+        flag: false,
     },
     {
         icon: CircleDollarSign,
         label: "Give feedback",
+        flag: false,
     },
     {
         icon: Tv,
-        label: "Help $ support",
+        label: "Help & support",
+        flag: false,
     },
 
 ];
@@ -37,6 +41,7 @@ const SidebarRoutesBottom = () => {
                     key={index}
                     icon={route.icon}
                     label={route.label}
+                    flag={route.flag}
                 />
             ))}
         </div>
