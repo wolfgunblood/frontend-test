@@ -7,8 +7,7 @@ import Image from "next/image";
 import { cn } from "~/lib/utils";
 import { useState } from "react";
 import { Button, buttonVariants } from "./ui/button";
-import { UserAccountNav } from "./useAccountNav";
-import { Settings, Bell } from "lucide-react";
+import { Settings, Bell, ChevronDown } from "lucide-react";
 
 const Navbar = () => {
   const [user, setUser] = useState(null)
@@ -50,31 +49,23 @@ const Navbar = () => {
           >
             <Bell size={20} />
           </Button>
-          {!user && (
-            <>
+          <button
+            className="px-4 py-3 border border-zinc-200 bg-white rounded-lg shadow-sm flex gap-2 justify-between items-center"
+          >
+            <Image
+              src="https://s3-alpha-sig.figma.com/img/d10f/5275/68fe79886fa0385f81459fd752af3d44?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=RtfLvIVvYUrdpyzKMy8gcwK8XlPXxmwwTtU6SF1ozB-b6PZvY59y0TBo4EDd~Fw4tClZxvqn0ubJE4HVjaYUdYvMXbDEO6GKOfhJKrTQ2Q558A2s5VReKF9P9c9CEuG9Q1flXS7tFtsYUqgqmLQ5QED7cureUHWg4WHpsBpjc8EbG09TXupXyd3NdxGl2YMqlfj~hRJ-rbWjLwyKMSOVMOzGh29~boAdE7vIQdhRzi9wfVCIUvj2JD3nFFiMP6hc5Ds3Zgd~vZwlB~mN6GzFTBZFzVWAKrFmDOtfeNXuWTWuKnQh73VQbMqsmCktW974nH~ikjka8h03YJh2RSgYFw__"
+              alt="Emma Warren"
+              width={32}
+              height={32}
+              className="w-8 h-8 rounded-full"
+            />
+            <p className='text-base text-zinc-800 font-bold font-manrope'>
 
-              {/* <Link
-                    className={buttonVariants({
-                      variant: "ghost",
-                      size: "sm",
-                    })}
-                    href="/handler/signin"
-                  >
-                    Sign in
-                  </Link> */}
-              <Link
-                className={buttonVariants({
-                  size: "sm",
-                })}
-                href="/handler/signup"
-              >
-                Sign Up
-              </Link>
-            </>
-          )}
-          {user && (
-            <UserAccountNav />
-          )}
+              Emma Warren
+            </p>
+            <ChevronDown size={16} />
+
+          </button>
         </div>
       </div>
     </nav >
