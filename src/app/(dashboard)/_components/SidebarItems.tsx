@@ -30,7 +30,7 @@ const SidebarItems = ({ icon: Icon, label, href }: SidebarItemProps) => {
                 className='flex items-center gap-4'
             >
                 <Icon size={20} />
-                <p className='text-base font-bold font-manrope'>
+                <p className='text-2xl font-bold font-manrope'>
 
                 {label}
                 </p>
