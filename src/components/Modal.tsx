@@ -59,7 +59,7 @@ const Modal: React.FC = () => {
             </DialogTrigger>
             <DialogContent className={dialogContentClass}>
                 <div className='flex flex-col gap-2'>
-                    <h3 className='text-base text-zinc-800 font-bold font-manrope'>{currentOption?.title}</h3>
+                    <h2 className='text-base text-zinc-800 font-bold font-manrope'>{currentOption?.title}</h2>
                     <p className='text-sm text-muted-foreground font-semibold font-manrope'>{currentOption?.description}</p>
                 </div>
 

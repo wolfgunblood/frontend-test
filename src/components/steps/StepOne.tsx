@@ -15,7 +15,7 @@ const options = [
     {
         value: "option-two",
         src: "/locate-fixed.svg",
-        alt: "Option Two Logo",
+        alt: "Static Logo",
         title: "Static",
         description: "A marker for a specific ad that you select",
         type: "STATIC",
@@ -23,7 +23,7 @@ const options = [
     {
         value: "option-three",
         src: "/test-tubes.svg",
-        alt: "Option Three Logo",
+        alt: "A/B Test Logo",
         title: "A/B test",
         description: "Compare the performace of multiple ads",
         type: "AB",
@@ -56,7 +56,7 @@ const StepOne: React.FC = () => {
                                 quality={100}
                                 className="w-7 h-7"
                             />
-                            <div>
+                            <div className='flex flex-col gap-1'>
                                 <h3 className='text-base text-zinc-800 font-bold font-manrope'>{option.title}</h3>
                                 <p className='text-sm text-muted-foreground font-semibold font-manrope'>{option.description}</p>
                             </div>
