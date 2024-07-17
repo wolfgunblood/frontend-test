@@ -102,25 +102,25 @@ const Modal: React.FC = () => {
                 <div>
                     {step === 1 && (
                         <div className="flex justify-end gap-4">
-                            <Button variant="outline" onClick={reset}>Cancel</Button>
-                            <Button variant="default" onClick={nextStep}>Select Maker</Button>
+                            <Button variant="outline" className='text-sm text-secondary-foreground font-semibold font-manrope' onClick={reset}>Cancel</Button>
+                            <Button variant="default" className='text-sm text-primary-foreground font-semibold font-manrope' onClick={nextStep}>Select Maker</Button>
                         </div>
                     )}
                     {step === 2 && (
                         <div className="flex justify-between">
-                            <Button variant="outline" onClick={reset}>Cancel</Button>
+                            <Button variant="outline" className='text-sm text-secondary-foreground font-semibold font-manrope' onClick={reset}>Cancel</Button>
                             <div className='inline-flex gap-2 items-center'>
-                                <p className='text-sm text-zinc-800 font-semibold font-manrope'>
+                                <span className='text-sm text-zinc-800 font-semibold font-manrope'>
                                     {selectionCount}{" "} ads selected
-                                </p>
+                                </span>
                                 <Button variant="default" onClick={nextStep} className='text-sm font-semibold font-manrope'>Select A/B Test</Button>
                             </div>
                         </div>
                     )}
                     {step === 3 && (
                         <div className="flex justify-end gap-4">
-                            <Button variant="outline" onClick={() => { reset() }}>New Test</Button>
-                            <Button variant="default" onClick={submitAds}>Done</Button>
+                            <Button variant="outline" className='text-sm text-secondary-foreground font-semibold font-manrope' onClick={() => { reset() }}>New Test</Button>
+                            <Button variant="default" className='text-sm text-primary-foreground font-semibold font-manrope' onClick={submitAds}>Done</Button>
                         </div>
                     )}
                 </div>
