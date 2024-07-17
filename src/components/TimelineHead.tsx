@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import { Button } from './ui/button'
 import { DisplayTime } from '~/helpers/timeformat'
+import "../styles/TimelineHead.css"
 
 interface TimelineHeadProps {
     currentTime: number;
@@ -40,7 +41,7 @@ const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime }) => {
             <div className='py-2 px-3 rounded-md border'>
                 <span className='text-base text-zinc-500 font-semibold font-manrope'>{DisplayTime(currentTime)}</span>
             </div>
-            <div className='flex gap-6'>
+            <div className="flex items-center justify-center gap-6">
                 <Image
                     src="/MagnifyingGlassMinus.svg"
                     alt="Zoom Out"
@@ -48,12 +49,11 @@ const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime }) => {
                     height={20}
                     quality={100}
                 />
-                <div>
+                <div className="custom-range w-full h-full relative">
                     <input
                         type="range"
-                        className="w-full cursor-pointer"
-                        value={0}
-                        // onChange={(e) => setSliderValue(e.target.value)}
+                        //   value={sliderValue}
+                        //   onChange={(e) => setSliderValue(e.target.value)}
                         min="1"
                         max="10"
                         step="1"
