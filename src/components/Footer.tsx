@@ -11,7 +11,6 @@ const Footer = () => {
         <span className="text-base text-zinc-500 font-semibold font-manrope">
           Video first podcasts
         </span>
-        <div className="flex items-center">
           <Link
             href="/"
             className="flex justify-center items-center gap-4"
@@ -26,7 +25,6 @@ const Footer = () => {
             />
             <span className="text-2xl text-zinc-800 font-bold font-manrope">Vidpod</span>
           </Link>
-        </div>
       </div>
     </footer>
   );
