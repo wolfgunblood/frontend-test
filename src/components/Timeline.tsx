@@ -5,7 +5,7 @@ import { ZoomIn, ZoomOut } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from './ui/button';
 import "../styles/Slider.css"
-import { DisplayTime } from '~/helpers/timeformat';
+import { DisplayTime, generateTimeLabels } from '~/helpers/timeformat';
 
 
 interface TimelineProps {
@@ -25,23 +25,7 @@ const Timeline: React.FC<TimelineProps> = ({
 }) => {
     const [sliderValue, setSliderValue] = useState(1);
 
-    
-
-    const formatTime = (seconds: number) => {
-        const minutes = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);  
-        return `${minutes < 10 ? '0' + minutes : minutes}:${secs < 10 ? '0' + secs : secs}`;
-    };
-    
-
-    const generateTimeLabels = (duration :number) => {
-        const interval = 10;
-        const timeLabels = [];
-        for (let time = 0; time <= duration; time += interval) {
-            timeLabels.push(formatTime(time));
-        }
-        return timeLabels;
-    };
+   
     const timeLabels = generateTimeLabels(duration);
 
 
