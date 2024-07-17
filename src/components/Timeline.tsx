@@ -1,7 +1,6 @@
 // Timeline component
 import React, { useState } from 'react';
 import "../styles/Timeline.css"
-import { ZoomIn, ZoomOut } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from './ui/button';
 import "../styles/Slider.css"
@@ -56,7 +55,7 @@ const Timeline: React.FC<TimelineProps> = ({
                                 quality={100}
                             />
                         </div>
-                        <p className='text-sm text-muted-foreground font-semibold font-manrope'>Undo</p>
+                        <span className='text-sm text-muted-foreground font-semibold font-manrope'>Undo</span>
                     </Button>
                     <Button className='inline-flex gap-3' variant="ghost">
                         <div className="w-8 h-8 gap-0 rounded-full border border-zinc-300 flex items-center justify-center">
@@ -69,14 +68,20 @@ const Timeline: React.FC<TimelineProps> = ({
                                 quality={100}
                             />
                         </div>
-                        <p className='text-sm text-muted-foreground font-semibold font-manrope'>Redo</p>
+                        <span className='text-sm text-muted-foreground font-semibold font-manrope'>Redo</span>
                     </Button>
                 </div>
                 <div className='py-2 px-3 rounded-md border'>
                     <p className=''>{DisplayTime(currentTime)}</p>
                 </div>
                 <div className='flex gap-6'>
-                    <ZoomOut size={20} />
+                    <Image
+                        src="/MagnifyingGlassMinus.svg"
+                        alt="Zoom Out"
+                        width={20}
+                        height={20}
+                        quality={100}
+                    />
                     <div>
                         <input
                             type="range"
@@ -88,7 +93,13 @@ const Timeline: React.FC<TimelineProps> = ({
                             step="1"
                         />
                     </div>
-                    <ZoomIn size={20} />
+                    <Image
+                        src="/MagnifyingGlassPlus.svg"
+                        alt="Zoom In"
+                        width={20}
+                        height={20}
+                        quality={100}
+                    />
                 </div>
             </div>
             <div className="relative w-full h-128px ">
@@ -121,9 +132,9 @@ const Timeline: React.FC<TimelineProps> = ({
                         <div className="flex justify-between items-center overflow-x-hidden ">
                             {timeLabels.map((label, index) => (
                                 <div key={index} className='border-r px-2'>
-                                    <p className="text-sm font-manrope font-semibold text-muted-foreground">
+                                    <span className="text-sm font-manrope font-semibold text-muted-foreground">
                                         {label}
-                                    </p>
+                                    </span>
                                 </div>
                             ))}
                         </div>
