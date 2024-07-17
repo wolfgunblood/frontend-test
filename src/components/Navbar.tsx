@@ -7,14 +7,14 @@ import Image from "next/image";
 import { cn } from "~/lib/utils";
 import { useState } from "react";
 import { Button, buttonVariants } from "./ui/button";
-import { Settings, Bell, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 const Navbar = () => {
   const [user, setUser] = useState(null)
 
   return (
     <nav
-      className="w-full px-16 py-6 border-b border-zinc-200 "
+      className="w-full py-6 px-16 border-b border-zinc-200 "
     >
 
       <div className="flex items-center justify-between">
@@ -39,7 +39,14 @@ const Navbar = () => {
             className="cursor-pointer transition-all ease-in-out"
             aria-label="Settings"
           >
-            <Settings size={20} />
+            <Image
+              src="/settings.svg"
+              alt="setting"
+              width={20}
+              height={20}
+              quality={100}
+
+            />
           </Button>
           <Button
             variant="ghost"
@@ -49,7 +56,7 @@ const Navbar = () => {
           >
             <Image
               src="/bell-dot.svg"
-              alt="logo"
+              alt="Notification"
               width={20}
               height={20}
               quality={100}
@@ -65,11 +72,15 @@ const Navbar = () => {
               height={32}
               className="w-8 h-8 rounded-full"
             />
-            <p className='text-base text-zinc-800 font-bold font-manrope'>
-
+            <span className='text-base text-zinc-800 font-bold font-manrope'>
               Emma Warren
-            </p>
-            <ChevronDown size={16} />
+            </span>
+            <Image
+              src="/chevron-down.svg"
+              alt="Chevron Down"
+              width={16}
+              height={16}
+            />
 
           </button>
         </div>
