@@ -37,6 +37,7 @@ interface Option {
   };
 }
 
+
 interface ModalState {
   step: number;
   selections: {
@@ -49,6 +50,7 @@ interface ModalState {
   searchTerm: string; 
   setSearchTerm: (term: string) => void; 
   setOptions: (options: Option[]) => void;
+  setStepOneType : (type : string) => void;
   setStep: (step: number) => void;
   nextStep: () => void;
   previousStep: () => void;
@@ -74,6 +76,9 @@ const useModalStore = create<ModalState>((set, get) => ({
   previousStep: () => set(state => ({ step: state.step > 1 ? state.step - 1 : 1 })),
   setSelection: (step, value) => set(state => ({
     selections: { ...state.selections, [step]: value }
+  })),
+  setStepOneType: (type) => set(state => ({
+    selections: { ...state.selections, stepOne: type }
   })),
   toggleSelection: (option) => set(state => {
     const newSelections = state.selections.stepTwo.some(item => item.id === option.id)

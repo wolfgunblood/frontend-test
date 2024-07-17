@@ -11,7 +11,7 @@ import { options } from "../../constants/data"
 import Image from 'next/image';
 
 const Modal: React.FC = () => {
-    const { step, nextStep, reset, selectionCount } = useModalStore();
+    const { step, nextStep, reset,selections, selectionCount } = useModalStore();
     const setOptions = useModalStore(state => state.setOptions);
 
     const headerOptions = [
@@ -32,14 +32,17 @@ const Modal: React.FC = () => {
 
     const submitAds = async () => {
         try {
+           
             const response = await fetch('/api/ads', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ ads: selection }) // Assuming `selection` is your array of selected ads
+                body: JSON.stringify({type : "AUTO",value : "10:08:00"} )
             });
             if (!response.ok) throw new Error('Network response was not ok');
+
+            // console.log(selections)
             console.log("Ads successfully added");
         } catch (error) {
             console.error("Failed to add ads:", error);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { RadioGroup, RadioGroupItem } from '~/components/ui/radio-group';
 import Image from 'next/image';
 import useModalStore from 'store/useStore';
@@ -9,30 +9,37 @@ const options = [
         src: "/circle-dashed.svg",
         alt: "Auto Logo",
         title: "Auto",
-        description: "Automatic ad insertions"
+        description: "Automatic ad insertions",
+        type: "AUTO",
     },
     {
         value: "option-two",
         src: "/locate-fixed.svg",
         alt: "Option Two Logo",
         title: "Static",
-        description: "A marker for a specific ad that you select"
+        description: "A marker for a specific ad that you select",
+        type: "STATIC",
     },
     {
         value: "option-three",
         src: "/test-tubes.svg",
         alt: "Option Three Logo",
         title: "A/B test",
-        description: "Compare the performace of multiple ads"
+        description: "Compare the performace of multiple ads",
+        type: "AB",
     }
 ];
 
 const StepOne: React.FC = () => {
-    const { selections, setSelection } = useModalStore();
+    const { selections, setSelection} = useModalStore();
+    // const setStepOneType = useModalStore(state => state.setStepOneType);
+
 
     const handleSelectionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSelection('stepOne', event.target.value);
+        console.log(event.target.value)
+        // setSelection('stepOne', event.target.value);
     };
+
 
     return (
         <RadioGroup defaultValue={selections.stepOne} onChange={handleSelectionChange}>

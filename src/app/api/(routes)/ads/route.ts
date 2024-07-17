@@ -12,8 +12,8 @@ export async function POST(req: Request) {
   try {
     const ads= await req.json() as Ad;
   
-    const validatedAds = adSchema.parse(ads)
     // console.log(ads);
+    const validatedAds = adSchema.parse(ads)
 
     const result = await db.ads.create({
       data: validatedAds,
