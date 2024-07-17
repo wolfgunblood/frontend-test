@@ -43,8 +43,8 @@ const StepThree: React.FC = () => {
                             </div>
                         </div>
                         <div>
-                            <Badge variant="outline" >
-                                <span className={`text-xs font-semibold font-manrope ${index === 0 ? 'bg-green-200' : 'text-zinc-800'}`}>
+                            <Badge variant="outline" className={`${index === 0 ? 'bg-green-200' : ''}`} >
+                                <span className={`text-xs font-semibold font-manrope ${index === 0 ? 'text-green-800' : 'text-zinc-800'}`}>
                                     #{index + 1}
                                 </span>
                             </Badge>
