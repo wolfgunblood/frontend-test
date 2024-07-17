@@ -1,29 +1,27 @@
 "use client"
 
 import React from 'react';
-import { BarChart3,  CirclePlay, CircleDollarSign, Tv,} from 'lucide-react';
 import SidebarItemsBottom from './SidebarItemsBottom';
 
-// type Props = {}
 
 const mainRoutes = [
     {
-        icon:  CirclePlay,
+        icon:  '/play-circle.svg',
         label: 'Demo',
         flag: true,
     },
     {
-        icon: BarChart3,
+        icon: '/mail-plus.svg',
         label: "Invite your team",
         flag: false,
     },
     {
-        icon: CircleDollarSign,
+        icon: '/lightbulb.svg',
         label: "Give feedback",
         flag: false,
     },
     {
-        icon: Tv,
+        icon: '/help-circle.svg',
         label: "Help & support",
         flag: false,
     },
@@ -35,7 +33,7 @@ const mainRoutes = [
 const SidebarRoutesBottom = () => {
     const routes = mainRoutes;
     return (
-        <div className='flex flex-col gap-4 py-0 px-8'>
+        <div className='flex flex-col gap-4 px-8 py-0'>
             {routes.map((route, index) => (
                 <SidebarItemsBottom
                     key={index}

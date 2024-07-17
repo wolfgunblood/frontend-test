@@ -1,20 +1,19 @@
 "use client"
 
 import React from 'react'
-import { LucideIcon } from "lucide-react";
 import { cn } from '~/lib/utils';
 import { Switch } from "~/components/ui/switch"
+import Image from 'next/image';
 
 
 interface SidebarItemProps {
-    icon: LucideIcon,
+    icon: string,
     label: string,
     flag: boolean
 }
 
-// type Props = {}
 
-const SidebarItemsBottom = ({ icon: Icon, label, flag }: SidebarItemProps) => {
+const SidebarItemsBottom = ({ icon, label, flag }: SidebarItemProps) => {
 
     return (
 
@@ -23,15 +22,19 @@ const SidebarItemsBottom = ({ icon: Icon, label, flag }: SidebarItemProps) => {
         >
             <button
                 type='button'
-                className={cn("text-zinc-500 transition-all hover:text-zinc-600 hover:bg-zinc-300/20",
+                className={cn("text-base font-bold font-manrope text-zinc-500 transition-all hover:text-zinc-600 hover:bg-zinc-300/20",
                     'flex items-center gap-3'
                 )}
             >
-                <Icon size={20} />
-                <p className='text-base font-bold font-manrope'>
-
+                <Image
+                    src={icon}
+                    alt={label}
+                    width={20}
+                    height={20}
+                />
+                <span>
                     {label}
-                </p>
+                </span>
 
 
             </button>
