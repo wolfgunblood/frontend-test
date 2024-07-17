@@ -1,39 +1,39 @@
 "use client"
 
 import React from 'react';
-import { BarChart3,House , CircleDollarSign, Tv, Import, Settings } from 'lucide-react';
+// import { BarChart3,House , CircleDollarSign, Tv, Import, Settings } from 'lucide-react';
 import SidebarItems from './SidebarItems';
 
 // type Props = {}
 
 const mainRoutes = [
     {
-        icon: House,
+        icon: "/home.svg",
         label: 'Dashboard',
         href: '/dashboard'
     },
     {
-        icon: BarChart3,
+        icon: "/bar-chart-3.svg",
         label: "Analytics",
         href: '/'
     },
     {
-        icon: CircleDollarSign,
+        icon: "/circle-dollar-sign.svg",
         label: "Ads",
         href: '/ads'
     },
     {
-        icon: Tv,
+        icon: "/tv.svg",
         label: "Channels",
         href: '/channels'
     },
     {
-        icon: Import,
+        icon: "/import.svg",
         label: "Import",
         href: '/import'
     },
     {
-        icon: Settings,
+        icon: "/settings.svg",
         label: "Settings",
         href: '/settings'
     },

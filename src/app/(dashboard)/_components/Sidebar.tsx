@@ -6,8 +6,6 @@ import Chart from './Chart'
 import SidebarTop from './SidebarTop'
 
 
-// type Props = {}
-
 const Sidebar = () => {
   return (
     <div
