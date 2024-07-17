@@ -37,16 +37,20 @@ const Admaker = () => {
                                 }}>
                                     {item.type}
                                 </Badge>
-                                <Button variant="outline" size="sm" className='text-sm text-secondary-foreground font-semibold font-manrope'>
-                                    Edit
+                                <Button variant="outline" size="sm" >
+                                    <span className='text-sm text-secondary-foreground font-semibold font-manrope'>
+                                        Edit
+                                    </span>
                                 </Button>
                                 <Button variant="trash" size="sm" className='flex items-center justify-center'>
-                                    <Image
+                                    {/* style Error in producttion */}
+                                    {/* <Image
                                         src="/trash-2.svg"
                                         alt="Trash 2"
                                         width={16}
                                         height={16}
-                                    />
+                                    /> */}
+                                    <Trash2 size={16} color='#7F1D1D' />
                                 </Button>
 
                             </div>
