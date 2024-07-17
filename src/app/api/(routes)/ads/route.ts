@@ -1,27 +1,22 @@
 import { NextResponse } from "next/server";
 import { db } from "~/server/db";
 import { adSchema } from "~/lib/schema";
-import { error } from "console";
 
 interface Ad {
   id: number;
   type: "AUTO" | "STATIC" | "AB";
-  value: number;
-  timestamp: Date;
-  updatedAt: Date;
+  value: string;
 }
 
 export async function POST(req: Request) {
   try {
-    const ads= await req.json();
+    const ads= await req.json() as Ad;
   
-    // const { ads } = adSchema.parse(body)
-    console.log(ads);
-
-    // const validatedAds = ads.filter(ad => adSchema.safeParse(ad).success);
+    const validatedAds = adSchema.parse(ads)
+    // console.log(ads);
 
     const result = await db.ads.create({
-      data: ads,
+      data: validatedAds,
     });
 
     return new NextResponse(JSON.stringify({ result: result }), {
