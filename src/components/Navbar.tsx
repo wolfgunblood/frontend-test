@@ -2,12 +2,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
-
-// import { MobileNav } from "@/components/MobileNav";
-import { cn } from "~/lib/utils";
 import { useState } from "react";
-import { Button, buttonVariants } from "./ui/button";
-import { ChevronDown } from "lucide-react";
+import { Button } from "./ui/button";
 
 const Navbar = () => {
   const [user, setUser] = useState(null)
