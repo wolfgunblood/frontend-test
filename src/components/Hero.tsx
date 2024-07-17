@@ -2,7 +2,6 @@ import React from 'react'
 import VideoEditor from './VIdeoEditor';
 import Intro from './Intro';
 
-// type Props = {}
 
 const Hero = () => {
     return (

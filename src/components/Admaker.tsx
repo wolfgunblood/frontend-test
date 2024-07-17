@@ -3,6 +3,7 @@ import { Button } from '~/components/ui/button';
 import { Badge } from '~/components/ui/badge';
 import { Trash2, Wand } from 'lucide-react';
 import Modal from './Modal';
+import Image from 'next/image';
 
 const badgeStyles: Record<string, { backgroundColor: string; color: string }> = {
     auto: { backgroundColor: '#BBF7D0', color: '#166534' },
@@ -27,17 +28,26 @@ const Admaker = () => {
                 <ol className="flex flex-col gap-4">
                     {items.map((item) => (
                         <li key={item.id} className="flex items-center justify-between gap-4 w-full">
-                            <p className='text-base text-zinc-500 font-semibold font-manrope'>{item.id}</p>
-                            <div className='flex items-center gap-4 border border-zinc-200 rounded-lg py-3 px-4 flex-grow justify-between'>
-                                <p className='text-base text-zinc-800 font-semibold font-manrope'>{item.timestamp}</p>
+                            <span className='text-base text-zinc-500 font-semibold font-manrope'>{item.id}</span>
+                            <div className='flex items-center gap-4 border border-zinc-200 rounded-lg py-3 px-4 shadow-sm flex-grow justify-between'>
+                                <span className='text-base text-zinc-800 font-semibold font-manrope'>{item.timestamp}</span>
                                 <Badge style={{
                                     backgroundColor: badgeStyles[item.type.toLowerCase()]?.backgroundColor,
                                     color: badgeStyles[item.type.toLowerCase()]?.color
                                 }}>
                                     {item.type}
                                 </Badge>
-                                <Button variant="outline" size="sm" className='text-sm text-secondary-foreground font-semibold font-manrope'>Edit</Button>
-                                <Button variant="trash" size="sm" className='flex items-center'><Trash2 size={16} color='#7F1D1D' /></Button>
+                                <Button variant="outline" size="sm" className='text-sm text-secondary-foreground font-semibold font-manrope'>
+                                    Edit
+                                </Button>
+                                <Button variant="trash" size="sm" className='flex items-center justify-center'>
+                                    <Image
+                                        src="/trash-2.svg"
+                                        alt="Trash 2"
+                                        width={16}
+                                        height={16}
+                                    />
+                                </Button>
 
                             </div>
                         </li>
