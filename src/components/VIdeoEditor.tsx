@@ -103,9 +103,14 @@ const VideoEditor: React.FC = () => {
                     <div className='p-4 bg-white rounded-2xl border border-zinc-200 shadow-sm flex justify-between items-center gap-4'>
                         <Button className='inline-flex gap-2' variant="ghost" onClick={handleJumpStart}>
                             <div className="w-8 h-8 gap-0 rounded-full border border-zinc-300 flex items-center justify-center">
-                                <ArrowLeftToLine size={16} />
+                                <Image
+                                    src="/ArrowLineLeft.svg"
+                                    alt='Jump to Start'
+                                    width={16}
+                                    height={16}
+                                />
                             </div>
-                            <p className='text-sm text-muted-foreground font-semibold font-manrope'>Jump to start</p>
+                            <span className='text-sm text-muted-foreground font-semibold font-manrope'>Jump to start</span>
 
                         </Button>
                         <div className='flex justify-between items-center'>
@@ -117,22 +122,46 @@ const VideoEditor: React.FC = () => {
                                     height={20}
                                     quality={100}
                                 />
-                                <p className='text-sm text-muted-foreground font-semibold font-manrope'>10s</p>
+                                <span className='text-sm text-muted-foreground font-semibold font-manrope'>10s</span>
                             </Button>
                             <Button variant="ghost" onClick={handleRewind}>
-                                <Rewind size={20} style={darkIconStyle} />
+                                <Image
+                                    src="/Rewind.svg"
+                                    alt="rewind"
+                                    width={20}
+                                    height={20}
+                                    quality={100}
+                                />
                             </Button>
                             <Button variant="ghost" onClick={handlePlayPause}>
-                                {playing ? <Pause size={32} style={darkIconStyle} /> : <Play size={32} style={darkIconStyle} />}
+                                {
+                                    playing ?
+                                        <Pause size={32} style={darkIconStyle} />
+                                        :
+                                        <Image
+                                            src="/Play.svg"
+                                            alt="Play"
+                                            width={32}
+                                            height={32}
+                                            quality={100}
+                                        />
+
+                                }
                             </Button>
                             <Button variant="ghost" onClick={handleFastForward}>
-                                <FastForward size={20} style={darkIconStyle} />
+                                <Image
+                                    src="/FastForward.svg"
+                                    alt="Fast Forward"
+                                    width={20}
+                                    height={20}
+                                    quality={100}
+                                />
                             </Button>
                             <Button className='inline-flex gap-2' variant="ghost" onClick={handleFastForward}>
-                                <p className='text-sm text-muted-foreground font-semibold font-manrope'>10s</p>
+                                <span className='text-sm text-muted-foreground font-semibold font-manrope'>10s</span>
                                 <Image
                                     src="/ClockClockwise.svg"
-                                    alt="rewind"
+                                    alt="fast forward"
                                     width={20}
                                     height={20}
                                     quality={100}
@@ -141,9 +170,16 @@ const VideoEditor: React.FC = () => {
                         </div>
 
                         <Button className='inline-flex gap-2' variant="ghost" onClick={handleJumpEnd}>
-                            <p className='text-sm text-muted-foreground font-semibold font-manrope'>Jump to end</p>
+                            <span className='text-sm text-muted-foreground font-semibold font-manrope'>Jump to end</span>
                             <div className="w-8 h-8 gap-0 rounded-full border border-zinc-300 flex items-center justify-center">
-                                <ArrowRightToLine size={16} />
+                                <Image
+                                    src="/ArrowLineLeft.svg"
+                                    alt='Jump to End'
+                                    width={16}
+                                    height={16}
+                                    className="transform rotate-180"
+
+                                />
                             </div>
                         </Button>
                     </div>
