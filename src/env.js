@@ -1,13 +1,15 @@
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
+console.log("Database URL:", process.env.DATABASE_URL);
+
 export const env = createEnv({
   /**
    * Specify your server-side environment variables schema here. This way you can ensure the app
    * isn't built with invalid env vars.
    */
   server: {
-    // DATABASE_URL: z.string().url(),
+    DATABASE_URL: z.string().url(),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
@@ -40,7 +42,7 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
-    // DATABASE_URL: process.env.DATABASE_URL,
+    DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,

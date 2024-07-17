@@ -26,9 +26,25 @@ const Modal: React.FC = () => {
     const currentOption = headerOptions[step - 1] ?? headerOptions[0];
 
     const dialogContentClass = `flex flex-col p-8 bg-white shadow-lg ${step === 1 ? 'gap-6  w-[462px]' :
-            step === 2 ? 'gap-6  max-w-4xl' :
-                step === 3 ? 'gap-6 w-[577px]' : ''
+        step === 2 ? 'gap-6  max-w-4xl' :
+            step === 3 ? 'gap-6 w-[577px]' : ''
         }`;
+
+    const submitAds = async () => {
+        try {
+            const response = await fetch('/api/ads', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ ads: selection }) // Assuming `selection` is your array of selected ads
+            });
+            if (!response.ok) throw new Error('Network response was not ok');
+            console.log("Ads successfully added");
+        } catch (error) {
+            console.error("Failed to add ads:", error);
+        }
+    };
 
     return (
         <Dialog>
@@ -101,7 +117,7 @@ const Modal: React.FC = () => {
                     {step === 3 && (
                         <div className="flex justify-end gap-4">
                             <Button variant="outline" onClick={() => { reset() }}>New Test</Button>
-                            <Button variant="default" onClick={reset}>Done</Button>
+                            <Button variant="default" onClick={submitAds}>Done</Button>
                         </div>
                     )}
                 </div>
