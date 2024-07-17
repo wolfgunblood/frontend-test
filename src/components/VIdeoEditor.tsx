@@ -9,7 +9,7 @@ import Admaker from './Admaker';
 import Image from 'next/image';
 import TimelineTest from './TimelineTest';
 
-const darkIconStyle = { fill: '#000' };
+const darkIconStyle = { fill: '#27272A' };
 
 const VideoEditor: React.FC = () => {
     const playerRef = useRef<ReactPlayer | null>(null);
@@ -125,37 +125,40 @@ const VideoEditor: React.FC = () => {
                                 <span className='text-sm text-muted-foreground font-semibold font-manrope'>10s</span>
                             </Button>
                             <Button variant="ghost" onClick={handleRewind}>
-                                <Image
+                                {/* <Image
                                     src="/Rewind.svg"
                                     alt="rewind"
                                     width={20}
                                     height={20}
                                     quality={100}
-                                />
+                                    /> */}
+                                    <Rewind size={20} style={darkIconStyle} />
                             </Button>
                             <Button variant="ghost" onClick={handlePlayPause}>
                                 {
                                     playing ?
                                         <Pause size={32} style={darkIconStyle} />
                                         :
-                                        <Image
-                                            src="/Play.svg"
-                                            alt="Play"
-                                            width={32}
-                                            height={32}
-                                            quality={100}
-                                        />
-
+                                        <Play size={32} style={darkIconStyle} />
+                                        //Some reason width and heigth getting over rid
+                                        // <Image
+                                        //     src="/Play.svg"
+                                        //     alt="Play"
+                                        //     width={32}
+                                        //     height={32}
+                                        //     quality={100}
+                                        // />
                                 }
                             </Button>
                             <Button variant="ghost" onClick={handleFastForward}>
-                                <Image
+                                {/* <Image
                                     src="/FastForward.svg"
                                     alt="Fast Forward"
                                     width={20}
                                     height={20}
                                     quality={100}
-                                />
+                                /> */}
+                                <FastForward size={20} style={darkIconStyle} />
                             </Button>
                             <Button className='inline-flex gap-2' variant="ghost" onClick={handleFastForward}>
                                 <span className='text-sm text-muted-foreground font-semibold font-manrope'>10s</span>
