@@ -14,7 +14,7 @@ const StepTwo: React.FC = () => {
     const filteredOptions = options.filter(option =>
         option.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    
+
 
     const libraryItems = {
         'All folders': ['Product Launch', 'Customer Testimonials'],
@@ -65,7 +65,13 @@ const StepTwo: React.FC = () => {
             <div className='w-[653px] flex flex-col gap-6 items-end'>
                 <div className='flex gap-6'>
                     <Button variant="outline" className='inline-flex gap-2'>
-                        <ArrowDownUp size={16} />
+                        <Image
+                            src="/caret-sort.svg"
+                            alt="logo"
+                            width={16}
+                            height={16}
+                            quality={100}
+                        />
                         <p className='text-sm text-muted-foreground font-semibold font-manrope'>
                             Upload
                         </p>

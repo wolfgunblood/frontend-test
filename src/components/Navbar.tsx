@@ -47,7 +47,13 @@ const Navbar = () => {
             className="cursor-pointer transition-all ease-in-out"
             aria-label="Notification"
           >
-            <Bell size={20} />
+            <Image
+              src="/bell-dot.svg"
+              alt="logo"
+              width={20}
+              height={20}
+              quality={100}
+            />
           </Button>
           <button
             className="px-4 py-3 border border-zinc-200 bg-white rounded-lg shadow-sm flex gap-2 justify-between items-center"
