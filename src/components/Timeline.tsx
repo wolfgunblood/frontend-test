@@ -1,10 +1,9 @@
 // Timeline component
 import React, { useState } from 'react';
 import "../styles/Timeline.css"
-import Image from 'next/image';
-import { Button } from './ui/button';
 import "../styles/Slider.css"
-import { DisplayTime, generateTimeLabels } from '~/helpers/timeformat';
+import { generateTimeLabels } from '~/helpers/timeformat';
+import TimelineHead from './TimelineHead';
 
 
 const markers = [
@@ -42,66 +41,7 @@ const Timeline: React.FC<TimelineProps> = ({
 
     return (
         <div className='p-8 pb-12 bg-white rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between gap-8'>
-            <div className='flex justify-between items-center'>
-                <div className='flex gap-12'>
-                    <Button className='inline-flex gap-3' variant="ghost">
-                        <div className="w-8 h-8 gap-0 rounded-full border border-zinc-300 flex items-center justify-center">
-
-                            <Image
-                                src="/Undo.svg"
-                                alt="undo"
-                                width={16}
-                                height={16}
-                                quality={100}
-                            />
-                        </div>
-                        <span className='text-sm text-muted-foreground font-semibold font-manrope'>Undo</span>
-                    </Button>
-                    <Button className='inline-flex gap-3' variant="ghost">
-                        <div className="w-8 h-8 gap-0 rounded-full border border-zinc-300 flex items-center justify-center">
-
-                            <Image
-                                src="/Redo.svg"
-                                alt="redo"
-                                width={16}
-                                height={16}
-                                quality={100}
-                            />
-                        </div>
-                        <span className='text-sm text-muted-foreground font-semibold font-manrope'>Redo</span>
-                    </Button>
-                </div>
-                <div className='py-2 px-3 rounded-md border'>
-                    <p className=''>{DisplayTime(currentTime)}</p>
-                </div>
-                <div className='flex gap-6'>
-                    <Image
-                        src="/MagnifyingGlassMinus.svg"
-                        alt="Zoom Out"
-                        width={20}
-                        height={20}
-                        quality={100}
-                    />
-                    <div>
-                        <input
-                            type="range"
-                            className="w-full cursor-pointer"
-                            value={0}
-                            // onChange={(e) => setSliderValue(e.target.value)}
-                            min="1"
-                            max="10"
-                            step="1"
-                        />
-                    </div>
-                    <Image
-                        src="/MagnifyingGlassPlus.svg"
-                        alt="Zoom In"
-                        width={20}
-                        height={20}
-                        quality={100}
-                    />
-                </div>
-            </div>
+            <TimelineHead currentTime ={currentTime} />
             <div className="relative w-full h-128px ">
                 <div className="timeline-slider w-full h-full relative z-10">
                     <input
