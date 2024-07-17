@@ -29,8 +29,14 @@ const StepTwo: React.FC = () => {
             <div className='p-4 flex flex-col gap-6 bg-zinc-100 shadow-sm'>
                 <div className="relative">
                     <div className="absolute left-2.5 top-1/2 -translate-y-1/2 opacity-50">
-                        <Search size={16} />
+                        <Image
+                            src="/search.svg"
+                            alt="Search"
+                            width={16}
+                            height={16}
+                            quality={100}
 
+                        />
                     </div>
                     <Input
                         type="text"
@@ -39,7 +45,14 @@ const StepTwo: React.FC = () => {
                     />
                 </div>
                 <div className='inline-flex gap-3'>
-                    <Library size={24} />
+                    <Image
+                        src="/library.svg"
+                        alt="All"
+                        width={24}
+                        height={24}
+                        quality={100}
+
+                    />
                     <h3 className='text-base text-zinc-800 font-bold font-manrope'>
                         All
                     </h3>
@@ -48,11 +61,15 @@ const StepTwo: React.FC = () => {
                     {Object.entries(libraryItems).map(([item, list], index) => (
                         <Accordion type="single" collapsible key={index}>
                             <AccordionItem value={`item-${index}`}>
-                                <AccordionTrigger>{item}</AccordionTrigger>
+                                <AccordionTrigger>
+                                    <h4 className='text-sm text-zinc-800 font-bold'>
+                                        {item}
+                                    </h4>
+                                </AccordionTrigger>
                                 <AccordionContent>
                                     <ul className='px-4 border-l border-zinc-300 flex flex-col gap-4'>
                                         {list.map((entry, index) => (
-                                            <li key={index}>{entry}</li>
+                                            <li key={index} className='text-sm text-zinc-800 font-bold'>{entry}</li>
                                         ))}
                                     </ul>
                                 </AccordionContent>
@@ -72,14 +89,21 @@ const StepTwo: React.FC = () => {
                             height={16}
                             quality={100}
                         />
-                        <p className='text-sm text-muted-foreground font-semibold font-manrope'>
+                        <span className='text-sm text-muted-foreground font-semibold font-manrope'>
                             Upload
-                        </p>
+                        </span>
                     </Button>
 
                     <div className="relative">
                         <div className="absolute left-2.5 top-1/2 -translate-y-1/2 opacity-50">
-                            <Search size={16} />
+                            <Image
+                                src="/search.svg"
+                                alt="Search"
+                                width={16}
+                                height={16}
+                                quality={100}
+
+                            />
                         </div>
                         <Input
                             type="text"
@@ -101,9 +125,9 @@ const StepTwo: React.FC = () => {
                                     height="105"
                                 />
                                 <div className='flex flex-col gap-2 items-start'>
-                                    <div className='text-base text-zinc-800 font-bold font-manrope'>{option.name}</div>
+                                    <span className='text-base text-zinc-800 font-bold font-manrope'>{option.name}</span>
                                     <div className='flex gap-5'>
-                                        <div className='text-sm text-muted-foreground font-semibold font-manrope' >{option.createdOn}</div>
+                                        <span className='text-sm text-muted-foreground font-semibold font-manrope' >{option.createdOn}</span>
                                         <div className='flex  items-center gap-2'>
                                             <Image
                                                 src={option.createdBy.picture}
@@ -112,13 +136,21 @@ const StepTwo: React.FC = () => {
                                                 height={10}
                                                 className="rounded-full object-cover w-5 h-5"
                                             />
-                                            <div className='text-sm text-zinc-800 font-semibold font-manrope'>{option.createdBy.name}</div>
+                                            <span className='text-sm text-zinc-800 font-semibold font-manrope'>{option.createdBy.name}</span>
                                         </div>
                                     </div>
                                     <div className='flex items-center gap-2'>
-                                        <Badge variant="outline" className='text-xs text-zinc-800 font-semibold font-manrope'>{option.badge.category}</Badge>
+                                        <Badge variant="outline" >
+                                            <span className='text-xs text-zinc-800 font-semibold font-manrope'>
+                                                {option.badge.category}
+                                            </span>
+                                        </Badge>
                                         <ArrowRight size={10} />
-                                        <Badge variant="outline" className='text-xs text-zinc-800 font-semibold font-manrope'>{option.badge.subCategory}</Badge>
+                                        <Badge variant="outline" >
+                                            <span className='text-xs text-zinc-800 font-semibold font-manrope'>
+                                                {option.badge.subCategory}
+                                            </span>
+                                        </Badge>
 
                                     </div>
 

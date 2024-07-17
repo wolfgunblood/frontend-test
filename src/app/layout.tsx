@@ -1,10 +1,14 @@
 import "~/styles/globals.css";
 
-import { GeistSans } from "geist/font/sans";
+import { Manrope } from 'next/font/google';
 
 import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "~/trpc/react";
+import { cn } from "~/lib/utils";
+
+const manrope = Manrope({ subsets: ['latin'] });
+
 
 export const metadata: Metadata = {
   title: "Vidpod",
@@ -17,8 +21,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-
-      <body  className="bg-zinc-50">
+      <body className={cn("bg-zinc-50", manrope.className)}>
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
