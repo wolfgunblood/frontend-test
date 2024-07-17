@@ -8,6 +8,12 @@ import "../styles/Slider.css"
 import { DisplayTime, generateTimeLabels } from '~/helpers/timeformat';
 
 
+const markers = [
+    { time: 10, url: '/ad2.svg' },
+    { time: 80, url: '/ad3.svg' },
+    { time: 120, url: '/ad1.svg' }
+];
+
 interface TimelineProps {
     currentTime: number;
     duration: number;
@@ -23,14 +29,20 @@ const Timeline: React.FC<TimelineProps> = ({
     onSeekMouseDown,
     onSeekMouseUp
 }) => {
-    const [sliderValue, setSliderValue] = useState(1);
+    const sliderValue = (currentTime / duration) * 100 || 0;
 
-   
+    const computedMarkers = markers.map(marker => ({
+        ...marker,
+        left: `${(marker.time / duration) * 100}%`
+    }));
+
+    const ticks = Array.from({ length: Math.floor(duration) + 1 }, (_, i) => ({
+        left: (i / duration) * 100
+    }));
     const timeLabels = generateTimeLabels(duration);
 
-
     return (
-        <div className='p-8 bg-white rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between gap-8'>
+        <div className='p-8 pb-12 bg-white rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between gap-8'>
             <div className='flex justify-between items-center'>
                 <div className='flex gap-12'>
                     <Button className='inline-flex gap-3' variant="ghost">
@@ -61,7 +73,7 @@ const Timeline: React.FC<TimelineProps> = ({
                     </Button>
                 </div>
                 <div className='py-2 px-3 rounded-md border'>
-                <p className=''>{DisplayTime(currentTime)}</p>
+                    <p className=''>{DisplayTime(currentTime)}</p>
                 </div>
                 <div className='flex gap-6'>
                     <ZoomOut size={20} />
@@ -69,7 +81,7 @@ const Timeline: React.FC<TimelineProps> = ({
                         <input
                             type="range"
                             className="w-full cursor-pointer"
-                            value={sliderValue}
+                            value={0}
                             // onChange={(e) => setSliderValue(e.target.value)}
                             min="1"
                             max="10"
@@ -79,26 +91,47 @@ const Timeline: React.FC<TimelineProps> = ({
                     <ZoomIn size={20} />
                 </div>
             </div>
-            <div>
-                <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    value={(currentTime / duration) * 100 || 0}
-                    onChange={onSeekChange}
-                    onMouseDown={onSeekMouseDown}
-                    onMouseUp={onSeekMouseUp}
-                    className="timeline-slider w-full h-2 appearance-none cursor-pointer"
-                />
-                <div className="flex justify-between mt-2">
-                {timeLabels.map((label, index) => (
-                    <div key={index} className="text-xs">
-                        {label}
+            <div className="relative w-full h-128px ">
+                <div className="timeline-slider w-full h-full relative z-10">
+                    <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value={sliderValue}
+                        onChange={onSeekChange}
+                        onMouseDown={onSeekMouseDown}
+                        onMouseUp={onSeekMouseUp}
+                        className="w-full h-2 appearance-none cursor-pointer"
+                    />
+                    {computedMarkers.map((marker, index) => (
+                        <img
+                            key={index}
+                            src={marker.url}
+                            className="absolute"
+                            style={{ left: marker.left, bottom: '0', height: '100%' }}
+                            alt="Timeline marker"
+                        />
+                    ))}
+                    {ticks.map((tick, index) => (
+                        <div key={index} className="tick" style={{ left: `${tick.left}%` }}></div>
+                    ))}
+
+                    <div className='w-full absolute -bottom-8'>
+
+                        <div className="flex justify-between items-center overflow-x-hidden ">
+                            {timeLabels.map((label, index) => (
+                                <div key={index} className='border-r px-2'>
+                                    <p className="text-sm font-manrope font-semibold text-muted-foreground">
+                                        {label}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                ))}
+                </div>
             </div>
-            </div>
-            <div className="relative w-full h-2">
+
+            {/* <div className="relative w-full h-2">
                 <Image
                     src="/Frame.svg"
                     alt="scrollbar"
@@ -106,7 +139,7 @@ const Timeline: React.FC<TimelineProps> = ({
                     objectFit="cover"
                     quality={100}
                 />
-            </div>
+            </div> */}
         </div>
     );
 };

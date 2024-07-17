@@ -7,6 +7,7 @@ import { useVideoStore } from 'store/useStore';
 import Timeline from './Timeline';
 import Admaker from './Admaker';
 import Image from 'next/image';
+import TimelineTest from './TimelineTest';
 
 const darkIconStyle = { fill: '#000' };
 
@@ -155,6 +156,13 @@ const VideoEditor: React.FC = () => {
                 onSeekMouseDown={handleSeekMouseDown}
                 onSeekMouseUp={handleSeekMouseUp}
             />
+            {/* <TimelineTest
+                currentTime={currentTime}
+                duration={duration}
+                onSeekChange={handleSeekChange}
+                onSeekMouseDown={handleSeekMouseDown}
+                onSeekMouseUp={handleSeekMouseUp}
+            /> */}
         </div>
     );
 };
