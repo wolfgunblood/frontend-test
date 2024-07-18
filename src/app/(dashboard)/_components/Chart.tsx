@@ -1,6 +1,7 @@
 import { ArrowUp } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
+import { Button } from '~/components/ui/button'
 
 const Chart = () => {
     return (
@@ -38,12 +39,14 @@ const Chart = () => {
                     alt="Rectangle"
                     width={8}
                     height={8}
+                    className='cursor-pointer'
                 />
                 <Image
                     src="/Ellipse6.svg"
                     alt="Ellipse"
                     width={8}
                     height={8}
+                    className='cursor-pointer'
                 />
                 <Image
 
@@ -51,6 +54,7 @@ const Chart = () => {
                     alt="Ellipse"
                     width={8}
                     height={8}
+                    className='cursor-pointer'
                 />
             </div>
         </div>
