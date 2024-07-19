@@ -4,6 +4,8 @@ import { Badge } from '~/components/ui/badge';
 import { Trash2, Wand } from 'lucide-react';
 import Modal from './Modal';
 import Image from 'next/image';
+import { useVideoStore } from 'store/useStore';
+
 
 const badgeStyles: Record<string, { backgroundColor: string; color: string }> = {
     auto: { backgroundColor: '#BBF7D0', color: '#166534' },
@@ -12,6 +14,8 @@ const badgeStyles: Record<string, { backgroundColor: string; color: string }> = 
 };
 
 const Admaker = () => {
+
+
     const items = [
         { id: 1, type: 'auto', timestamp: '00:00:00' },
         { id: 2, type: 'static', timestamp: '00:05:00' },

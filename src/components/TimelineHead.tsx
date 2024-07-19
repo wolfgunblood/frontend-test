@@ -30,7 +30,7 @@ const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime, controlValue, 
 
     return (
         <div className='flex justify-between items-center'>
-            <div className='flex gap-12'>
+            <div className='flex gap-6'>
                 <Button className='inline-flex gap-3' variant="ghost">
                     <div className="w-8 h-8 gap-0 rounded-full border border-zinc-300 flex items-center justify-center">
 
