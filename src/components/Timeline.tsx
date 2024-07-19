@@ -111,9 +111,11 @@ const Timeline: React.FC<TimelineProps> = ({
                                 style={{
                                     left: timestamp.left,
                                 }}
-                                className={`w-full border-l-2 border-zinc-500 text-center ${index === timestamps.length - 1 ? "border-r-2" : ""}`}
+                                className={`w-full border-l-2 border-zinc-300 text-center ${index === timestamps.length - 1 ? "border-r-2" : ""}`}
                             >
-                                {timestamp.time}
+                                <span className='text-sm text-muted-foreground font-semibold font-manrope'>
+                                    {timestamp.time}
+                                </span>
                             </span>
                         ))}
                     </div>
