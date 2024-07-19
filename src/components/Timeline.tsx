@@ -1,17 +1,24 @@
 // Timeline component
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import "../styles/Timeline.css"
 import "../styles/Slider.css"
 import { DisplayTime, generateTimeLabels } from '~/helpers/timeformat';
 import TimelineHead from './TimelineHead';
 import Image from 'next/image';
+import { useAdStore } from 'store/useStore';
 
 
-const markers = [
-    { time: 10, url: '/ad2.svg' },
-    { time: 80, url: '/ad3.svg' },
-    { time: 120, url: '/ad1.svg' }
-];
+// const markers = [
+//     { time: 10, url: '/ad2.svg' },
+//     { time: 80, url: '/ad3.svg' },
+//     { time: 120, url: '/ad1.svg' }
+// ];
+
+const markerUrls = {
+    'AUTO': '/ad2.svg',
+    'STATIC': '/ad3.svg',
+    'AB': '/ad1.svg'
+};
 
 interface TimelineProps {
     currentTime: number;
@@ -33,11 +40,25 @@ const Timeline: React.FC<TimelineProps> = ({
     const [controlValue, setControlValue] = useState(0);
     const [bottomSliderWidth, setBottomSliderWidth] = useState(100);
 
+    const markers = useAdStore(state => state.markers);
+    const initializeMarkers = useAdStore(state => state.initializeMarkers);
+
+    useEffect(() => {
+        // Initialize markers
+        initializeMarkers([
+            { time: 10, type: 'AUTO' },
+            { time: 80, type: 'STATIC' },
+            { time: 120, type: 'AB' }
+        ]);
+    }, [initializeMarkers]);
+
 
     const computedMarkers = markers.map(marker => ({
         ...marker,
+        url: markerUrls[marker.type],
         left: `${(marker.time / duration) * 100}%`
     }));
+
 
     const ticks = Array.from({ length: Math.floor(duration) + 1 }, (_, i) => ({
         left: (i / duration) * 100

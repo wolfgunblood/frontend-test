@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { RadioGroup, RadioGroupItem } from '~/components/ui/radio-group';
 import Image from 'next/image';
-import useModalStore from 'store/useStore';
+import useModalStore, { useAdStore, useVideoStore } from 'store/useStore';
 import { Button } from '../ui/button';
 
 const options = [
@@ -26,30 +26,57 @@ const options = [
         src: "/test-tubes.svg",
         alt: "A/B Test Logo",
         title: "A/B test",
-        description: "Compare the performace of multiple ads",
+        description: "Compare the performance of multiple ads",
         type: "AB",
     }
 ];
 
 const StepOne: React.FC = () => {
-    const { step, nextStep, reset, selections, selectionCount } = useModalStore();
-    // const setStepOneType = useModalStore(state => state.setStepOneType);
-
+    const { step, nextStep, reset, selections, setSelection } = useModalStore();
+    const [selectedOption, setSelectedOption] = useState(selections.stepOne);
+    const {  currentTime, duration } = useVideoStore();
+    const { addMarker } = useAdStore();
 
     const handleSelectionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(event.target.value)
-        // setSelection('stepOne', event.target.value);
+        setSelectedOption(event.target.value);
+        setSelection('stepOne', event.target.value);
     };
 
+    const submitAds = async (event: React.FormEvent) => {
+        event.preventDefault();
+        try {
+            const selectedType = options.find(option => option.value === selectedOption)?.type;
+            if (selectedType === 'AUTO' || selectedType === 'STATIC') {
+                console.log({ type: selectedType, time: currentTime });
+
+                // const response = await fetch('/api/ads', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     },
+                //     body: JSON.stringify({ type: selectedType, time: currentTime })
+                // });
+
+                // if (!response.ok) throw new Error('Network response was not ok');
+
+                addMarker(currentTime, selectedType);
+
+                console.log("Ads successfully added");
+            }
+
+            nextStep();
+        } catch (error) {
+            console.error("Failed to add ads:", error);
+        }
+    };
 
     return (
-        <>
+        <form onSubmit={submitAds}>
             <RadioGroup defaultValue={selections.stepOne} onChange={handleSelectionChange}>
                 {options.map(option => (
                     <div key={option.value}>
                         <div className="py-3 px-4  rounded-lg border border-zinc-200 shadow-sm flex justify-between items-center gap-4">
                             <div className='flex items-center gap-4'>
-
                                 <Image
                                     src={option.src}
                                     alt={option.alt}
@@ -65,8 +92,6 @@ const StepOne: React.FC = () => {
                             </div>
                             <div>
                                 <RadioGroupItem value={option.value} id={option.value} />
-
-                                {/* <Label htmlFor={option.value}>Select</Label> */}
                             </div>
                         </div>
                     </div>
@@ -74,10 +99,10 @@ const StepOne: React.FC = () => {
             </RadioGroup>
 
             <div className="flex justify-end gap-4">
-                <Button variant="outline" className='text-sm text-secondary-foreground font-semibold font-manrope' onClick={reset}>Cancel</Button>
-                <Button variant="default" className='text-sm text-primary-foreground font-semibold font-manrope' onClick={nextStep}>Select Maker</Button>
+                <Button type="button" variant="outline" className='text-sm text-secondary-foreground font-semibold font-manrope' onClick={reset}>Cancel</Button>
+                <Button type="submit" variant="default" className='text-sm text-primary-foreground font-semibold font-manrope'>Select Marker</Button>
             </div>
-        </>
+        </form>
     );
 };
 

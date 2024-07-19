@@ -22,6 +22,7 @@ export const useVideoStore = create<VideoState>((set) => ({
   setDuration: (duration) => set({ duration }),
   setSeeking: (seeking) => set({ seeking }),
 }));
+
 interface Option {
   id: string;
   name: string;
