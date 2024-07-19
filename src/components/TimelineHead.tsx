@@ -6,8 +6,28 @@ import "../styles/TimelineHead.css"
 
 interface TimelineHeadProps {
     currentTime: number;
+    controlValue: number;
+    setControlValue: React.Dispatch<React.SetStateAction<number>>;
+    setBottomSliderWidth: React.Dispatch<React.SetStateAction<number>>;
+    handleControlChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime }) => {
+const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime, controlValue, handleControlChange, setControlValue, setBottomSliderWidth }) => {
+
+
+    const handleZoomIn = () => {
+        if (controlValue < 10) {
+            setControlValue(prev => prev + 1);
+            setBottomSliderWidth(100 + (controlValue + 1) * 10);
+        }
+    };
+
+    const handleZoomOut = () => {
+        if (controlValue > 0) {
+            setControlValue(prev => prev - 1);
+            setBottomSliderWidth(100 + (controlValue - 1) * 10);
+        }
+    };
+
     return (
         <div className='flex justify-between items-center'>
             <div className='flex gap-12'>
@@ -42,30 +62,37 @@ const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime }) => {
                 <span className='text-base text-zinc-500 font-semibold font-manrope'>{DisplayTime(currentTime)}</span>
             </div>
             <div className="flex items-center justify-center gap-6">
+
                 <Image
                     src="/MagnifyingGlassMinus.svg"
                     alt="Zoom Out"
                     width={20}
                     height={20}
                     quality={100}
-                />
+                    onClick={handleZoomOut}
+                    className='cursor-pointer'
+                    />
                 <div className="custom-range w-full h-full relative">
                     <input
                         type="range"
-                        //   value={sliderValue}
-                        //   onChange={(e) => setSliderValue(e.target.value)}
-                        min="1"
+                        value={controlValue}
+                        onChange={handleControlChange}
+                        min="0"
                         max="10"
                         step="1"
-                    />
+                        />
                 </div>
+
                 <Image
                     src="/MagnifyingGlassPlus.svg"
                     alt="Zoom In"
                     width={20}
                     height={20}
                     quality={100}
-                />
+                    onClick={handleZoomIn}
+                    className='cursor-pointer'
+                    />
+
             </div>
         </div>
     )
