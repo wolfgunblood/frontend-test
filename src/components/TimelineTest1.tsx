@@ -62,7 +62,7 @@ const TimelineTest: React.FC<TimelineProps> = ({
                     <input
                         type="range"
                           value={sliderValue}
-                          onChange={(e) => setSliderValue(e.target.value)}
+                        //   onChange={(e) => setSliderValue(e.target.value)}
                         min="1"
                         max="10"
                         step="1"
