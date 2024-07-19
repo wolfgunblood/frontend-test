@@ -93,3 +93,61 @@ const useModalStore = create<ModalState>((set, get) => ({
 }));
 
 export default useModalStore;
+
+interface Marker {
+  time: number;
+  type: 'AUTO' | 'STATIC' | 'AB';
+}
+
+interface AdStoreState {
+  markers: Marker[];
+  undoStack: Marker[][];
+  redoStack: Marker[][];
+  addMarker: (time: number, type: 'AUTO' | 'STATIC' | 'AB') => void;
+  undo: () => void;
+  redo: () => void;
+  initializeMarkers: (defaultMarkers: Marker[]) => void;
+}
+
+
+export const useAdStore = create<AdStoreState>((set, get) => ({
+  markers: [],
+  undoStack: [],
+  redoStack: [],
+
+  addMarker: (time, type) => {
+    const { markers, undoStack } = get();
+    const newMarker = { time, type };
+    set({
+      markers: [...markers, newMarker],
+      undoStack: [...undoStack, markers],
+      redoStack: []
+    });
+  },
+
+  undo: () => {
+    const { markers, undoStack, redoStack } = get();
+    if (undoStack.length === 0) return;
+    const previousState = undoStack[undoStack.length - 1];
+    set({
+      markers: previousState,
+      undoStack: undoStack.slice(0, undoStack.length - 1),
+      redoStack: [...redoStack, markers]
+    });
+  },
+
+  redo: () => {
+    const { markers, undoStack, redoStack } = get();
+    if (redoStack.length === 0) return;
+    const nextState = redoStack[redoStack.length - 1];
+    set({
+      markers: nextState,
+      undoStack: [...undoStack, markers],
+      redoStack: redoStack.slice(0, redoStack.length - 1)
+    });
+  },
+
+  initializeMarkers: (defaultMarkers) => {
+    set({ markers: defaultMarkers, undoStack: [], redoStack: [] });
+  }
+}));

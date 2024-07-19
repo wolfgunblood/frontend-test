@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Button } from './ui/button';
 import "../styles/Slider.css"
 import { DisplayTime, generateTimeLabels } from '~/helpers/timeformat';
+import { useAdStore } from 'store/useStore';
 
 
 interface TimelineProps {
@@ -16,11 +17,18 @@ interface TimelineProps {
     onSeekMouseUp: (e: React.MouseEvent<HTMLInputElement>) => void;
 }
 
-const markers = [
-    { time: 10, url: '/ad1.svg' },
-    { time: 50, url: '/ad2.svg' },
-    { time: 75, url: '/ad3.svg' }
-];
+
+// const markers = [
+//     { time: 10, url: '/ad2.svg' },
+//     { time: 80, url: '/ad3.svg' },
+//     { time: 120, url: '/ad1.svg' }
+// ];
+
+const markerUrls = {
+    'AUTO': '/ad2.svg',
+    'STATIC': '/ad3.svg',
+    'AB': '/ad1.svg'
+};
 
 
 const TimelineTest: React.FC<TimelineProps> = ({
@@ -39,8 +47,21 @@ const TimelineTest: React.FC<TimelineProps> = ({
     const sliderRef = useRef<HTMLDivElement>(null);
     const [lineData, setLineData] = useState([]);
 
+    const markers = useAdStore(state => state.markers);
+    const initializeMarkers = useAdStore(state => state.initializeMarkers);
+
+    useEffect(() => {
+        // Initialize markers
+        initializeMarkers([
+            { time: 10, type: 'AUTO' },
+            { time: 80, type: 'STATIC' },
+            { time: 120, type: 'AB' }
+        ]);
+    }, [initializeMarkers]);
+
     const computedMarkers = markers.map(marker => ({
         ...marker,
+        url: markerUrls[marker.type],
         left: `${(marker.time / duration) * 100}%`
     }));
 
@@ -84,7 +105,9 @@ const TimelineTest: React.FC<TimelineProps> = ({
         }
 
     };
-    console.log(bottomSliderWidth)
+    // console.log(bottomSliderWidth)
+
+    console.log(markers)
 
 
     return (
@@ -115,8 +138,6 @@ const TimelineTest: React.FC<TimelineProps> = ({
                     backgroundSize: `1000px 64px, cover`
                 }}>
 
-
-
                     <input
                         type="range"
                         min="0"
@@ -127,7 +148,7 @@ const TimelineTest: React.FC<TimelineProps> = ({
                         onMouseUp={onSeekMouseUp}
                         className="w-full h-2 appearance-none cursor-pointer"
                     />
-                    {/* {computedMarkers.map((marker, index) => (
+                    {computedMarkers.map((marker, index) => (
                         <img
                         key={index}
                         src={marker.url}
@@ -138,20 +159,9 @@ const TimelineTest: React.FC<TimelineProps> = ({
                         ))}
                         {ticks.map((tick, index) => (
                             <div key={index} className="tick" style={{ left: `${tick.left}%` }}></div>
-                            ))} */}
+                            ))}
 
-                    {/* <div className='w-full absolute -bottom-8'>
-
-<div className="flex justify-between items-center overflow-hidden">
-{timeLabels.map((label, index) => (
-    <div key={index} className='border-r px-2'>
-    <p className="text-sm font-manrope font-semibold text-muted-foreground">
-    {label}
-    </p>
-    </div>
-    ))}
-    </div>
-    </div> */}
+                  
                     <div className="w-full flex justify-between text-xs text-zinc-500" style={{ position: 'relative', bottom: '-50px' }}>
                         {timestamps.map((timestamp, index) => (
                             <span

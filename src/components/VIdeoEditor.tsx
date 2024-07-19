@@ -188,20 +188,20 @@ const VideoEditor: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <Timeline
-                currentTime={currentTime}
-                duration={duration}
-                onSeekChange={handleSeekChange}
-                onSeekMouseDown={handleSeekMouseDown}
-                onSeekMouseUp={handleSeekMouseUp}
-            />
-            {/* <TimelineTest
+            {/* <Timeline
                 currentTime={currentTime}
                 duration={duration}
                 onSeekChange={handleSeekChange}
                 onSeekMouseDown={handleSeekMouseDown}
                 onSeekMouseUp={handleSeekMouseUp}
             /> */}
+            <TimelineTest
+                currentTime={currentTime}
+                duration={duration}
+                onSeekChange={handleSeekChange}
+                onSeekMouseDown={handleSeekMouseDown}
+                onSeekMouseUp={handleSeekMouseUp}
+            />
         </div>
     );
 };
