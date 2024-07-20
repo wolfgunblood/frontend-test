@@ -71,7 +71,7 @@ const StepOne: React.FC = () => {
     };
 
     return (
-        <form onSubmit={submitAds}>
+        <form onSubmit={submitAds} className='flex flex-col gap-6'>
             <RadioGroup defaultValue={selections.stepOne} onChange={handleSelectionChange}>
                 {options.map(option => (
                     <div key={option.value}>

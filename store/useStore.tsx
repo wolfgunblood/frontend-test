@@ -63,7 +63,7 @@ interface ModalState {
 const useModalStore = create<ModalState>((set, get) => ({
   step: 1,
   selections: {
-    stepOne: '',
+    stepOne: 'AUTO',
     stepTwo: [],
     stepThree: ''
   },

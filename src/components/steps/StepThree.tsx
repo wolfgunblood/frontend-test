@@ -27,7 +27,7 @@ const StepThree: React.FC = () => {
     // };
 
     return (
-        <>
+        <div className='flex flex-col gap-6'>
             <div>
                 <ul className='flex flex-col gap-4'>
                     {selections.stepTwo.map((option, index) => (
@@ -78,7 +78,7 @@ const StepThree: React.FC = () => {
                 <Button variant="default" className='text-sm text-primary-foreground font-semibold font-manrope'>Done</Button>
             </div>
 
-        </>
+        </div>
     );
 };
 

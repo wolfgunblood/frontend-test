@@ -46,11 +46,11 @@ const Modal: React.FC = () => {
                     <p className='text-sm text-muted-foreground font-semibold font-manrope'>{currentOption?.description}</p>
                 </div>
 
-                <div>
+                <>
                     {step === 1 && <StepOne />}
                     {step === 2 && <StepTwo />}
                     {step === 3 && <StepThree />}
-                </div>
+                </>
 
             </DialogContent>
         </Dialog>
