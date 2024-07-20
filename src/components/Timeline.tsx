@@ -42,7 +42,7 @@ const Timeline: React.FC<TimelineProps> = ({
 
     // const markers = useAdStore(state => state.markers);
     // const initializeMarkers = useAdStore(state => state.initializeMarkers);
-    const { markers, initializeMarkers,undo,redo } = useAdStore();
+    const { markers, initializeMarkers } = useAdStore();
 
 
     useEffect(() => {

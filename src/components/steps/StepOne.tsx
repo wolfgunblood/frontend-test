@@ -47,14 +47,14 @@ const StepOne: React.FC = () => {
         try {
             const selectedType = options.find(option => option.value === selectedOption)?.type;
             if (selectedType === 'AUTO' || selectedType === 'STATIC' || selectedType === 'AB') {
-                console.log({ type: selectedType, time: currentTime });
+                console.log({ type: selectedType, timestamp: currentTime });
 
                 // const response = await fetch('/api/ads', {
                 //     method: 'POST',
                 //     headers: {
                 //         'Content-Type': 'application/json'
                 //     },
-                //     body: JSON.stringify({ type: selectedType, time: currentTime })
+                //     body: JSON.stringify({ type: selectedType, timestamp: currentTime })
                 // });
 
                 // if (!response.ok) throw new Error('Network response was not ok');

@@ -7,24 +7,24 @@ import { Button } from '../ui/button';
 
 const StepThree: React.FC = () => {
     const { reset,selections } = useModalStore();
-    const submitAds = async () => {
-        try {
+    // const submitAds = async () => {
+    //     try {
 
-            const response = await fetch('/api/ads', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ type: "AUTO", value: "10:08:00" })
-            });
-            if (!response.ok) throw new Error('Network response was not ok');
+    //         const response = await fetch('/api/ads', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({ type: "AUTO", value: "10:08:00" })
+    //         });
+    //         if (!response.ok) throw new Error('Network response was not ok');
 
-            // console.log(selections)
-            console.log("Ads successfully added");
-        } catch (error) {
-            console.error("Failed to add ads:", error);
-        }
-    };
+    //         // console.log(selections)
+    //         console.log("Ads successfully added");
+    //     } catch (error) {
+    //         console.error("Failed to add ads:", error);
+    //     }
+    // };
 
     return (
         <>
@@ -75,7 +75,7 @@ const StepThree: React.FC = () => {
             </div>
             <div className="flex justify-end gap-4">
                 <Button variant="outline" className='text-sm text-secondary-foreground font-semibold font-manrope' onClick={() => { reset() }}>New Test</Button>
-                <Button variant="default" className='text-sm text-primary-foreground font-semibold font-manrope' onClick={submitAds}>Done</Button>
+                <Button variant="default" className='text-sm text-primary-foreground font-semibold font-manrope'>Done</Button>
             </div>
 
         </>

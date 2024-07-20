@@ -5,14 +5,14 @@ import { adSchema } from "~/lib/schema";
 interface Ad {
   id: number;
   type: "AUTO" | "STATIC" | "AB";
-  value: string;
+  timestamp : number;
 }
 
 export async function POST(req: Request) {
   try {
     const ads= await req.json() as Ad;
   
-    // console.log(ads);
+    console.log(ads);
     const validatedAds = adSchema.parse(ads)
 
     const result = await db.ads.create({

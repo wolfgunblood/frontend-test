@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 export const adSchema = z.object({
     type: z.enum(['AUTO', 'STATIC','AB']),  
-    value: z.string(),
+    timestamp: z.number().nonnegative(),
 });
 
 
