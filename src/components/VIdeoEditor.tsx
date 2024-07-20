@@ -61,6 +61,7 @@ const VideoEditor: React.FC = () => {
     }, [playerRef.current]);
 
     const onProgress = (data: { playedSeconds: number }) => {
+        // console.log(data)
         if (!seeking) {
             setCurrentTime(data.playedSeconds);
         }
@@ -68,6 +69,7 @@ const VideoEditor: React.FC = () => {
 
     const handleSeekChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSeeking(true);
+        // console.log(e.target.value)
         const newTime = (parseFloat(e.target.value) / 100) * duration;
         setCurrentTime(newTime);
     };

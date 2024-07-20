@@ -46,7 +46,7 @@ const StepOne: React.FC = () => {
         event.preventDefault();
         try {
             const selectedType = options.find(option => option.value === selectedOption)?.type;
-            if (selectedType === 'AUTO' || selectedType === 'STATIC') {
+            if (selectedType === 'AUTO' || selectedType === 'STATIC' || selectedType === 'AB') {
                 console.log({ type: selectedType, time: currentTime });
 
                 // const response = await fetch('/api/ads', {
