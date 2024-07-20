@@ -24,7 +24,7 @@ const StepTwo: React.FC = () => {
     };
 
     return (
-        <>
+        <div className='flex flex-col gap-6'>
 
             <div className="relative w-full h-1 bg-zinc-200">
                 <Image
@@ -203,7 +203,7 @@ const StepTwo: React.FC = () => {
                     <Button variant="default" onClick={nextStep} className='text-sm font-semibold font-manrope'>Select A/B Test</Button>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
