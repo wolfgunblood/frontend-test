@@ -50,7 +50,7 @@ const Admaker = () => {
     //     { id: 2, type: 'static', timestamp: '00:05:00' },
     //     { id: 3, type: 'AB', timestamp: '00:10:00' },
     // ];
-    const { markers, addMarker, deleteMarker } = useAdStore();
+    const { markers, deleteMarker } = useAdStore();
 
     return (
         <div className=" h-[552px] p-8 bg-white rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between">

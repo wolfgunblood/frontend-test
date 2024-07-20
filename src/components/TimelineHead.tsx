@@ -3,6 +3,7 @@ import React from 'react'
 import { Button } from './ui/button'
 import { DisplayTime } from '~/helpers/timeformat'
 import "../styles/TimelineHead.css"
+import { useAdStore } from 'store/useStore'
 
 interface TimelineHeadProps {
     currentTime: number;
@@ -13,6 +14,7 @@ interface TimelineHeadProps {
 }
 const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime, controlValue, handleControlChange, setControlValue, setBottomSliderWidth }) => {
 
+    const { undo,redo } = useAdStore();
 
     const handleZoomIn = () => {
         if (controlValue < 10) {
@@ -31,7 +33,7 @@ const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime, controlValue, 
     return (
         <div className='flex justify-between items-center'>
             <div className='flex gap-6'>
-                <Button className='inline-flex gap-3' variant="ghost">
+                <Button className='inline-flex gap-3' variant="ghost" onClick={undo}>
                     <div className="w-8 h-8 gap-0 rounded-full border border-zinc-300 flex items-center justify-center">
 
                         <Image
@@ -44,7 +46,7 @@ const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime, controlValue, 
                     </div>
                     <span className='text-sm text-muted-foreground font-semibold font-manrope'>Undo</span>
                 </Button>
-                <Button className='inline-flex gap-3' variant="ghost">
+                <Button className='inline-flex gap-3' variant="ghost" onClick={redo}>
                     <div className="w-8 h-8 gap-0 rounded-full border border-zinc-300 flex items-center justify-center">
 
                         <Image

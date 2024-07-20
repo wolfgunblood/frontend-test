@@ -40,8 +40,10 @@ const Timeline: React.FC<TimelineProps> = ({
     const [controlValue, setControlValue] = useState(0);
     const [bottomSliderWidth, setBottomSliderWidth] = useState(100);
 
-    const markers = useAdStore(state => state.markers);
-    const initializeMarkers = useAdStore(state => state.initializeMarkers);
+    // const markers = useAdStore(state => state.markers);
+    // const initializeMarkers = useAdStore(state => state.initializeMarkers);
+    const { markers, initializeMarkers,undo,redo } = useAdStore();
+
 
     useEffect(() => {
         // Initialize markers
