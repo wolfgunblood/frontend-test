@@ -1,6 +1,6 @@
 import React from 'react'
 import Intro from './Intro';
-import VideoEditor from './VideoEditor';
+import VideoEditor from './video-editor';
 
 
 const Hero = () => {
@@ -8,6 +8,7 @@ const Hero = () => {
         <div className="p-16 flex flex-col gap-8">
             <Intro />
             <VideoEditor />
+            {/* <VideoEditor /> */}
         </div>
     )
 }
