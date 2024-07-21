@@ -8,7 +8,6 @@ const Hero = () => {
         <div className="p-16 flex flex-col gap-8">
             <Intro />
             <VideoEditor />
-            {/* <VideoEditor /> */}
         </div>
     )
 }
