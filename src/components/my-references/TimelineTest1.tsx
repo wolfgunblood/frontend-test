@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import "../styles/TimelineTest.css"
 import { ZoomIn, ZoomOut } from 'lucide-react';
 import Image from 'next/image';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import "../styles/Slider.css"
 import { DisplayTime, generateTimeLabels } from '~/helpers/timeformat';
 

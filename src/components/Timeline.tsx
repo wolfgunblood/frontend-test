@@ -39,6 +39,8 @@ const Timeline: React.FC<TimelineProps> = ({
 
     const [controlValue, setControlValue] = useState(0);
     const [bottomSliderWidth, setBottomSliderWidth] = useState(100);
+    // const [transitionDuration, setTransitionDuration] = useState('0.2s');
+
 
     // const markers = useAdStore(state => state.markers);
     // const initializeMarkers = useAdStore(state => state.initializeMarkers);
@@ -87,6 +89,11 @@ const Timeline: React.FC<TimelineProps> = ({
 
     };
 
+    // useEffect(() => {
+    //     const newDuration = `${bottomSliderWidth / 500}s`;
+    //     setTransitionDuration(newDuration);
+    // }, [bottomSliderWidth]);
+
     return (
         <div className='p-8 pb-12 bg-white rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between gap-8'>
             <TimelineHead
@@ -111,6 +118,7 @@ const Timeline: React.FC<TimelineProps> = ({
                         onMouseDown={onSeekMouseDown}
                         onMouseUp={onSeekMouseUp}
                         className="w-full h-2 appearance-none cursor-pointer"
+                        // style={{ transition: `left ${transitionDuration} ease-in-out` }}
                     // style={{ marginBottom: '16px' }}
                     />
                     {computedMarkers.map((marker, index) => (
