@@ -90,7 +90,7 @@ const VideoEditor: React.FC = () => {
         playerRef.current?.seekTo(newTime, 'seconds');
 
         // setPlaying(true);
-        
+
         // Set to false temporarily to stabilize updates
         setPlaying(false);
         setTimeout(() => {
@@ -106,8 +106,8 @@ const VideoEditor: React.FC = () => {
                     <div className="rounded-lg overflow-hidden ">
                         <ReactPlayer
                             ref={playerRef}
-                            url='https://utfs.io/f/37835069-4b3e-48e8-97b5-da654c1de85b-m0d2yz.mp4'
-                            // url='https://www.youtube.com/watch?v=V0ej29G7ZGg&t=1694s'
+                            // url='https://utfs.io/f/37835069-4b3e-48e8-97b5-da654c1de85b-m0d2yz.mp4'
+                            url='https://www.youtube.com/watch?v=V0ej29G7ZGg&t=1694s'
                             controls={true}
                             playing={playing}
                             onProgress={onProgress}

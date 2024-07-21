@@ -35,7 +35,8 @@ const Timeline: React.FC<TimelineProps> = ({
     onSeekMouseDown,
     onSeekMouseUp
 }) => {
-    const sliderValue = (currentTime / duration) * 100 || 0;
+    // const sliderValue = (currentTime / duration) * 100 || 0;
+    const sliderValue = currentTime ;
 
     const [controlValue, setControlValue] = useState(0);
     const [bottomSliderWidth, setBottomSliderWidth] = useState(100);
@@ -48,9 +49,9 @@ const Timeline: React.FC<TimelineProps> = ({
     useEffect(() => {
         // Initialize markers
         initializeMarkers([
-            { time: 10, type: 'AUTO' },
-            { time: 80, type: 'STATIC' },
-            { time: 120, type: 'AB' }
+            { time: 600, type: 'AUTO' },
+            { time: 1800, type: 'STATIC' },
+            { time: 300, type: 'AB' }
         ]);
     }, [initializeMarkers]);
 
@@ -106,8 +107,8 @@ const Timeline: React.FC<TimelineProps> = ({
                 }}>
                     <input
                         type="range"
-                        min="0"
-                        max="100"
+                        min={0}
+                        max={duration}
                         value={sliderValue}
                         onChange={onSeekChange}
                         onMouseDown={onSeekMouseDown}
@@ -130,7 +131,7 @@ const Timeline: React.FC<TimelineProps> = ({
                     ))}
 
 
-                    <div className="w-full flex justify-between text-xs text-zinc-500" style={{ position: 'relative', bottom: '-50px' }}>
+                    {/* <div className="w-full flex justify-between text-xs text-zinc-500" style={{ position: 'relative', bottom: '-50px' }}>
                         {timestamps.map((timestamp, index) => (
                             <span
                                 key={index}
@@ -144,7 +145,7 @@ const Timeline: React.FC<TimelineProps> = ({
                                 </span>
                             </span>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
