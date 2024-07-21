@@ -62,15 +62,18 @@ const VideoEditor: React.FC = () => {
 
     const onProgress = (data: { playedSeconds: number }) => {
         // console.log(data)
+        // console.log(data.playedSeconds)
         if (!seeking) {
             setCurrentTime(data.playedSeconds);
+
         }
     };
 
     const handleSeekChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSeeking(true);
-        console.log(e.target.value)
-        const newTime = (parseFloat(e.target.value) / 100) * duration;
+        // console.log(e.target.value)
+        // const newTime = (parseFloat(e.target.value) / 100) * duration;
+        const newTime = parseFloat(e.target.value);
         setCurrentTime(newTime);
     };
 
@@ -79,10 +82,20 @@ const VideoEditor: React.FC = () => {
     };
 
     const handleSeekMouseUp = (e: React.MouseEvent<HTMLInputElement>) => {
+        // const newTime = (parseFloat(e.currentTarget.value) / 100) * duration;
+        const newTime = parseFloat(e.currentTarget.value);
+        // console.log(e.currentTarget.value)
+        // console.log(newTime)
         setSeeking(false);
-        const newTime = (parseFloat(e.currentTarget.value) / 100) * duration;
         playerRef.current?.seekTo(newTime, 'seconds');
-        setPlaying(true);
+
+        // setPlaying(true);
+        
+        // Set to false temporarily to stabilize updates
+        setPlaying(false);
+        setTimeout(() => {
+            setPlaying(true);
+        }, 100);
     };
 
     return (
@@ -93,7 +106,8 @@ const VideoEditor: React.FC = () => {
                     <div className="rounded-lg overflow-hidden ">
                         <ReactPlayer
                             ref={playerRef}
-                            url='https://utfs.io/f/37835069-4b3e-48e8-97b5-da654c1de85b-m0d2yz.mp4'
+                            // url='https://utfs.io/f/37835069-4b3e-48e8-97b5-da654c1de85b-m0d2yz.mp4'
+                            url='https://www.youtube.com/watch?v=V0ej29G7ZGg&t=1694s'
                             controls={true}
                             playing={playing}
                             onProgress={onProgress}
@@ -134,7 +148,7 @@ const VideoEditor: React.FC = () => {
                                     height={20}
                                     quality={100}
                                     /> */}
-                                    <Rewind size={20} style={darkIconStyle} />
+                                <Rewind size={20} style={darkIconStyle} />
                             </Button>
                             <Button variant="ghost" onClick={handlePlayPause}>
                                 {
@@ -142,14 +156,14 @@ const VideoEditor: React.FC = () => {
                                         <Pause size={32} style={darkIconStyle} />
                                         :
                                         <Play size={32} style={darkIconStyle} />
-                                        //Some reason width and heigth getting over rid
-                                        // <Image
-                                        //     src="/Play.svg"
-                                        //     alt="Play"
-                                        //     width={32}
-                                        //     height={32}
-                                        //     quality={100}
-                                        // />
+                                    //Some reason width and heigth getting over rid
+                                    // <Image
+                                    //     src="/Play.svg"
+                                    //     alt="Play"
+                                    //     width={32}
+                                    //     height={32}
+                                    //     quality={100}
+                                    // />
                                 }
                             </Button>
                             <Button variant="ghost" onClick={handleFastForward}>

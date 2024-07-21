@@ -39,8 +39,6 @@ const Timeline: React.FC<TimelineProps> = ({
 
     const [controlValue, setControlValue] = useState(0);
     const [bottomSliderWidth, setBottomSliderWidth] = useState(100);
-    // const [transitionDuration, setTransitionDuration] = useState('0.2s');
-
 
     // const markers = useAdStore(state => state.markers);
     // const initializeMarkers = useAdStore(state => state.initializeMarkers);
@@ -89,10 +87,7 @@ const Timeline: React.FC<TimelineProps> = ({
 
     };
 
-    // useEffect(() => {
-    //     const newDuration = `${bottomSliderWidth / 500}s`;
-    //     setTransitionDuration(newDuration);
-    // }, [bottomSliderWidth]);
+
 
     return (
         <div className='p-8 pb-12 bg-white rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between gap-8'>

@@ -8,12 +8,6 @@ import "../../styles/Slider.css"
 import { DisplayTime, generateTimeLabels } from '~/helpers/timeformat';
 import { useAdStore } from 'store/useStore';
 
-import {
-    DragDropContext,
-    Droppable,
-    Draggable,
-    DropResult,
-} from "@hello-pangea/dnd";
 
 
 interface TimelineProps {
@@ -46,7 +40,9 @@ const TimelineTest: React.FC<TimelineProps> = ({
     onSeekMouseUp
 }) => {
 
-    const sliderValue = (currentTime / duration) * 100 || 0;
+    // const sliderValue = (currentTime / duration) * 100 || 0;
+    const sliderValue = currentTime;
+    // const [sliderValue, setSliderValue] = useState((currentTime / duration) * 100);
 
     const [controlValue, setControlValue] = useState(0);
     const [bottomSliderWidth, setBottomSliderWidth] = useState(100);
@@ -57,11 +53,7 @@ const TimelineTest: React.FC<TimelineProps> = ({
     const markers = useAdStore(state => state.markers);
     const initializeMarkers = useAdStore(state => state.initializeMarkers);
 
-    const [isMounted, setIsMounted] = useState(false);
-
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
+ 
 
 
     useEffect(() => {
@@ -119,9 +111,7 @@ const TimelineTest: React.FC<TimelineProps> = ({
 
     console.log(markers)
 
-    if (!isMounted) {
-        return null;
-    }
+  
 
 
     return (
@@ -154,29 +144,23 @@ const TimelineTest: React.FC<TimelineProps> = ({
 
                     <input
                         type="range"
-                        min="0"
-                        max="100"
+                        min={0}
+                        max={duration}
                         value={sliderValue}
                         onChange={onSeekChange}
                         onMouseDown={onSeekMouseDown}
                         onMouseUp={onSeekMouseUp}
                         className="w-full h-2 appearance-none cursor-pointer"
                     />
-
-                                    {computedMarkers.map((marker, index) => (
-
-                                     
-
-                                                <img
-                                                key={index}
-                                                src={marker.url}
-                                                className="absolute"
-                                                style={{ left: marker.left, bottom: '0', height: '100%' }}
-                                                alt="Timeline marker"
-                                                />
-                                            
-                                            
-                                    ))}
+                    {computedMarkers.map((marker, index) => (
+                        <img
+                            key={index}
+                            src={marker.url}
+                            className="absolute"
+                            style={{ left: marker.left, bottom: '0', height: '100%' }}
+                            alt="Timeline marker"
+                        />
+                    ))}
                     {
                         ticks.map((tick, index) => (
                             <div key={index} className="tick" style={{ left: `${tick.left}%` }}></div>
