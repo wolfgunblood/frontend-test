@@ -41,6 +41,8 @@
     cursor: pointer;
     background-size: 40px 167px;  
     z-index: 30;
+    transition: left 0.2s ease-in-out;
+
 }
 
 

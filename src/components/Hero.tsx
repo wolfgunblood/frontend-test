@@ -1,5 +1,5 @@
 import React from 'react'
-import VideoEditor from './VIdeoEditor';
+import VideoEditor from './VideoEditor';
 import Intro from './Intro';
 
 

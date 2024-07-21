@@ -96,6 +96,7 @@ const useModalStore = create<ModalState>((set, get) => ({
 export default useModalStore;
 
 interface Marker {
+  
   time: number;
   type: 'AUTO' | 'STATIC' | 'AB';
 }

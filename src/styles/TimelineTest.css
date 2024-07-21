@@ -30,20 +30,19 @@
   
   
 
-/* Dynamic lines representing a waveform */
 .line {
   position: absolute;
   bottom: 0;
   width: 2px;
   background-color: rgba(255, 255, 255, 0.34);
-  height: var(--line-height); /* Dynamic height set via JS or CSS */
+  height: var(--line-height); 
 }
 
 .timeline-slider img {
   position: absolute;
   bottom: 0;
   height: 100%;
-  z-index: -5;
+  z-index: 5;
   border-radius: 8px;
   border: 2px solid #18181b;
 }

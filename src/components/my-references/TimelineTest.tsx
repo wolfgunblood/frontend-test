@@ -1,12 +1,19 @@
 // Timeline component
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import "../styles/TimelineTest.css"
+import "../../styles/TimelineTest.css"
 import { ZoomIn, ZoomOut } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '../ui/button';
-import "../styles/Slider.css"
+import "../../styles/Slider.css"
 import { DisplayTime, generateTimeLabels } from '~/helpers/timeformat';
 import { useAdStore } from 'store/useStore';
+
+import {
+    DragDropContext,
+    Droppable,
+    Draggable,
+    DropResult,
+} from "@hello-pangea/dnd";
 
 
 interface TimelineProps {
@@ -50,6 +57,13 @@ const TimelineTest: React.FC<TimelineProps> = ({
     const markers = useAdStore(state => state.markers);
     const initializeMarkers = useAdStore(state => state.initializeMarkers);
 
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+
     useEffect(() => {
         // Initialize markers
         initializeMarkers([
@@ -79,10 +93,6 @@ const TimelineTest: React.FC<TimelineProps> = ({
         });
     }, [duration]);
 
-
-
-
-
     // useEffect(() => {
     //     // Log state changes to verify correct update timing
     //     console.log(`Control Value: ${controlValue}, Bottom Slider Width: ${bottomSliderWidth}`);
@@ -108,6 +118,10 @@ const TimelineTest: React.FC<TimelineProps> = ({
     // console.log(bottomSliderWidth)
 
     console.log(markers)
+
+    if (!isMounted) {
+        return null;
+    }
 
 
     return (
@@ -148,21 +162,29 @@ const TimelineTest: React.FC<TimelineProps> = ({
                         onMouseUp={onSeekMouseUp}
                         className="w-full h-2 appearance-none cursor-pointer"
                     />
-                    {computedMarkers.map((marker, index) => (
-                        <img
-                        key={index}
-                        src={marker.url}
-                        className="absolute"
-                        style={{ left: marker.left, bottom: '0', height: '100%' }}
-                        alt="Timeline marker"
-                        />
-                        ))}
-                        {ticks.map((tick, index) => (
-                            <div key={index} className="tick" style={{ left: `${tick.left}%` }}></div>
-                            ))}
 
-                  
-                    <div className="w-full flex justify-between text-xs text-zinc-500" style={{ position: 'relative', bottom: '-50px' }}>
+                                    {computedMarkers.map((marker, index) => (
+
+                                     
+
+                                                <img
+                                                key={index}
+                                                src={marker.url}
+                                                className="absolute"
+                                                style={{ left: marker.left, bottom: '0', height: '100%' }}
+                                                alt="Timeline marker"
+                                                />
+                                            
+                                            
+                                    ))}
+                    {
+                        ticks.map((tick, index) => (
+                            <div key={index} className="tick" style={{ left: `${tick.left}%` }}></div>
+                        ))
+                    }
+
+
+                    < div className="w-full flex justify-between text-xs text-zinc-500" style={{ position: 'relative', bottom: '-50px' }}>
                         {timestamps.map((timestamp, index) => (
                             <span
                                 key={index}
@@ -177,7 +199,7 @@ const TimelineTest: React.FC<TimelineProps> = ({
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
 
     );
 };
