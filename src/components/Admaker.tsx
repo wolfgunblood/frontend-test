@@ -5,6 +5,7 @@ import { Trash2, Wand } from 'lucide-react';
 import Modal from './Modal';
 import Image from 'next/image';
 import { useAdStore, useVideoStore } from 'store/useStore';
+import { EditForm } from './Editform';
 
 
 const badgeStyles: Record<string, { backgroundColor: string; color: string }> = {
@@ -75,11 +76,7 @@ const Admaker = () => {
                                             {formatMarkerType(marker.type)}
                                         </span>
                                     </Badge>
-                                    <Button variant="outline" size="sm" >
-                                        <span className='text-sm text-secondary-foreground font-semibold font-manrope'>
-                                            Edit
-                                        </span>
-                                    </Button>
+                                    <EditForm index={index} />
                                     <Button variant="trash" size="sm" className='flex items-center justify-center' onClick={() => deleteMarker(index)}>
 
                                         <Trash2 size={16} color='#7F1D1D' />

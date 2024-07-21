@@ -107,6 +107,7 @@ interface AdStoreState {
   redoStack: Marker[][];
   addMarker: (time: number, type: 'AUTO' | 'STATIC' | 'AB') => void;
   deleteMarker: (index: number) => void;
+  editMarker: (index: number, newTime: number) => void; 
   undo: () => void;
   redo: () => void;
   initializeMarkers: (defaultMarkers: Marker[]) => void;
@@ -131,6 +132,21 @@ export const useAdStore = create<AdStoreState>((set, get) => ({
   deleteMarker: (index) => {
     const { markers, undoStack } = get();
     const newMarkers = markers.filter((_, i) => i !== index);
+    set({
+      markers: newMarkers,
+      undoStack: [...undoStack, markers],
+      redoStack: []
+    });
+  },
+
+  editMarker: (index, newTime) => {
+    const { markers, undoStack } = get();
+    const newMarkers = markers.map((marker, i) => {
+      if (i === index) {
+        return { ...marker, time: newTime };  
+      }
+      return marker;
+    });
     set({
       markers: newMarkers,
       undoStack: [...undoStack, markers],
