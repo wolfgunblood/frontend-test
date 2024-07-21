@@ -1,13 +1,13 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
-import { Button } from '../ui/button';
 import { Play, Pause, ArrowLeftToLine, ArrowRightToLine, Rewind, FastForward, History } from 'lucide-react';
 import { useVideoStore } from 'store/useStore';
-import Timeline from '../Timeline';
-import Admaker from '../Admaker';
 import Image from 'next/image';
-import TimelineTest from './TimelineTest';
+import Admaker from './Admaker';
+import { Button } from './ui/button';
+import Timeline from './Timeline';
+import TimelineTest from './my-references/TimelineTest';
 
 const darkIconStyle = { fill: '#27272A' };
 
