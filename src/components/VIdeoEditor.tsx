@@ -111,7 +111,7 @@ const VideoEditor: React.FC = () => {
                             controls={true}
                             playing={playing}
                             onProgress={onProgress}
-                            progressInterval={500}
+                            // progressInterval={500}
                             width='100%'
                             heigth='100%'
                         />
