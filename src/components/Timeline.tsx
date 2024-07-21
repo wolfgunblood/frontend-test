@@ -49,9 +49,9 @@ const Timeline: React.FC<TimelineProps> = ({
     useEffect(() => {
         // Initialize markers
         initializeMarkers([
-            { time: 600, type: 'AUTO' },
-            { time: 1800, type: 'STATIC' },
-            { time: 300, type: 'AB' }
+            { time: 300, type: 'AUTO' },
+            { time: 2200, type: 'STATIC' },
+            { time: 2800, type: 'AB' }
         ]);
     }, [initializeMarkers]);
 

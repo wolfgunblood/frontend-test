@@ -139,6 +139,7 @@ const TimelineTest: React.FC<TimelineProps> = ({
             <div className="relative custom-scrollbar w-full h-128px overflow-x-auto overflow-y-visible pt-16">
                 <div className="timeline-slider w-full h-full relative z-10" style={{
                     width: `${bottomSliderWidth}%`,
+                    padding : '0 16px',
                     backgroundSize: `1000px 64px, cover`
                 }}>
 
