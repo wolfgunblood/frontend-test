@@ -100,7 +100,7 @@ export function EditForm({ index }: { index: number }) {
                                         <Input placeholder="00:00:00" {...field} />
                                     </FormControl>
                                     <FormDescription>
-                                        Edit the time.
+                                        Enter time in format hh : mm : ss
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
