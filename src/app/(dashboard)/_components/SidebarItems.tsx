@@ -24,6 +24,7 @@ const SidebarItems = ({ icon, label, href }: SidebarItemProps) => {
                 isActive && "text-zinc-800 hover:text-zinc-800/90 "
 
             )}
+            aria-label={label}
         >
             <Image
                 src={icon}

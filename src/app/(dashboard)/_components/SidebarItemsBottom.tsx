@@ -24,6 +24,7 @@ const SidebarItemsBottom = ({ icon, label, flag }: SidebarItemProps) => {
                 className={cn("text-base font-bold font-manrope text-zinc-500 transition-all hover:text-zinc-600 hover:bg-zinc-300/20",
                     'flex items-center gap-3'
                 )}
+                aria-label={label}
             >
                 <Image
                     src={icon}
