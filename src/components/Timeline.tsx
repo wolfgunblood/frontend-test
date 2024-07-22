@@ -6,6 +6,7 @@ import { DisplayTime, generateTimeLabels } from '~/helpers/timeformat';
 import TimelineHead from './TimelineHead';
 import Image from 'next/image';
 import { useAdStore } from 'store/useStore';
+import Draggable from "react-draggable";
 
 
 // const markers = [
@@ -36,15 +37,17 @@ const Timeline: React.FC<TimelineProps> = ({
     onSeekMouseUp
 }) => {
     // const sliderValue = (currentTime / duration) * 100 || 0;
-    const sliderValue = currentTime ;
+    const sliderValue = currentTime;
 
     const [controlValue, setControlValue] = useState(0);
     const [bottomSliderWidth, setBottomSliderWidth] = useState(100);
 
     // const markers = useAdStore(state => state.markers);
     // const initializeMarkers = useAdStore(state => state.initializeMarkers);
-    const { markers, initializeMarkers } = useAdStore();
+    const { markers, initializeMarkers, editMarker } = useAdStore();
 
+    //Timeline Ref
+    const timelineRef = useRef(null); // Setup ref here
 
     useEffect(() => {
         // Initialize markers
@@ -67,7 +70,7 @@ const Timeline: React.FC<TimelineProps> = ({
             left: `${leftPercentage}%`
         };
     });
-    
+
 
     const ticks = Array.from({ length: Math.floor(duration) + 1 }, (_, i) => ({
         left: (i / duration) * 100
@@ -94,7 +97,31 @@ const Timeline: React.FC<TimelineProps> = ({
 
     };
 
+    //   const [initialPos, setInitialPos] = useState(null);
 
+    //   const handleStart = (e, data) => {
+    //       console.log("Drag started");
+    //       setInitialPos(data.x);
+    //   };
+  
+    //   const handleDrag = (e, data, index : number) => {
+    //       console.log("Dragging");
+        
+    //   };
+  
+    //   const handleStop = (e, data, index :number) => {
+    //       console.log("Dragging stopped");
+          
+    //       const timelineWidth = timelineRef.current ? timelineRef.current.offsetWidth : 0;
+    //       const newLeft = Math.min(Math.max(data.x, 0), timelineWidth);
+    //       const newLeftPercentage = (newLeft / timelineWidth) * 100;
+    //       const newTime = Math.round((newLeftPercentage / 100) * duration);
+          
+    //       console.log(`Final new time (rounded): ${newTime}`);
+          
+    //       editMarker(index, newTime);
+    //       console.log(`Updated markers:`, markers);
+    //   };
 
     return (
         <div className='p-8 pb-12 bg-white rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between gap-8'>
@@ -106,11 +133,12 @@ const Timeline: React.FC<TimelineProps> = ({
                 setBottomSliderWidth={setBottomSliderWidth}
             />
 
-            <div className="relative custom-scrollbar w-full h-128px overflow-x-auto overflow-y-visible pt-12 pb-16">
-                <div className="timeline-slider w-full h-full relative z-10" style={{
-                    width: `${bottomSliderWidth}%`,
-                    padding: '0 16px'
-                }}>
+            <div ref={timelineRef} className="relative custom-scrollbar w-full h-128px overflow-x-auto overflow-y-visible pt-12 pb-16">
+                <div 
+                    className="timeline-slider w-full h-full relative z-10" style={{
+                        width: `${bottomSliderWidth}%`,
+                        padding: '0 16px'
+                    }}>
                     <input
                         type="range"
                         min={0}
@@ -120,17 +148,28 @@ const Timeline: React.FC<TimelineProps> = ({
                         onMouseDown={onSeekMouseDown}
                         onMouseUp={onSeekMouseUp}
                         className="w-full h-2 appearance-none cursor-pointer"
-                        // style={{ transition: `left ${transitionDuration} ease-in-out` }}
+                    // style={{ transition: `left ${transitionDuration} ease-in-out` }}
                     // style={{ marginBottom: '16px' }}
                     />
                     {computedMarkers.map((marker, index) => (
-                        <img
-                            key={index}
-                            src={marker.url}
-                            className="absolute"
-                            style={{ left: marker.left, bottom: '0', height: '100%' }}
-                            alt="Timeline marker"
-                        />
+                        // <Draggable
+                        //     key={index}
+                        //     axis='x'
+                        //     scale={1}
+                        //     position={{x: parseInt(marker.left, 10), y: 0}}
+                        //     onStart={(e, data) => handleStart(e, data)}
+                        //     onDrag={(e, data) => handleDrag(e, data, index)}
+                        //     onStop={(e, data) => handleStop(e, data, index)}
+                        // >
+
+                            <img
+                                key={index}
+                                className="absolute"
+                                src={marker.url}
+                                alt="Timeline marker"
+                                style={{ left: marker.left, bottom: '0', height: '100%' }}
+                            />
+                        // </Draggable>
                     ))}
                     {ticks.map((tick, index) => (
                         <div key={index} className="tick" style={{ left: `${tick.left}%` }}></div>
