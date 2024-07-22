@@ -48,7 +48,7 @@ const Timeline: React.FC<TimelineProps> = ({
     const { markers, initializeMarkers, editMarker } = useAdStore();
 
     //Timeline Ref
-    const timelineRef = useRef(null); // Setup ref here
+    const timelineRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         // Initialize markers
@@ -73,7 +73,7 @@ const Timeline: React.FC<TimelineProps> = ({
         };
     });
 
-    const [ticks, setTicks] = useState([]);
+    const [ticks, setTicks] = useState<Array<{ left: string }>>([]);
 
     const calculateTicks = () => {
         if (timelineRef.current) {
