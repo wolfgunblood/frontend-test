@@ -65,7 +65,7 @@ const Navbar = () => {
               src="https://s3-alpha-sig.figma.com/img/d10f/5275/68fe79886fa0385f81459fd752af3d44?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=RtfLvIVvYUrdpyzKMy8gcwK8XlPXxmwwTtU6SF1ozB-b6PZvY59y0TBo4EDd~Fw4tClZxvqn0ubJE4HVjaYUdYvMXbDEO6GKOfhJKrTQ2Q558A2s5VReKF9P9c9CEuG9Q1flXS7tFtsYUqgqmLQ5QED7cureUHWg4WHpsBpjc8EbG09TXupXyd3NdxGl2YMqlfj~hRJ-rbWjLwyKMSOVMOzGh29~boAdE7vIQdhRzi9wfVCIUvj2JD3nFFiMP6hc5Ds3Zgd~vZwlB~mN6GzFTBZFzVWAKrFmDOtfeNXuWTWuKnQh73VQbMqsmCktW974nH~ikjka8h03YJh2RSgYFw__"
               alt="Emma Warren"
               width={32}
-              height={32}
+              height={21}
               className="w-8 h-8 rounded-full"
             />
             <span className='text-base text-zinc-800 font-bold font-manrope'>
