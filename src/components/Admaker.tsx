@@ -44,12 +44,6 @@ function convertSecondsToHHMMSS(seconds: number) {
     return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
 }
 
-// Example usage:
-console.log(convertSecondsToHHMMSS(3660)); // Should return "01:01:00"
-console.log(convertSecondsToHHMMSS(3600)); // Should return "01:00:00"
-console.log(convertSecondsToHHMMSS(3599)); // Should return "00:59:59"
-
-
 const Admaker = () => {
 
 
