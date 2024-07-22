@@ -5,7 +5,7 @@ import Image from 'next/image'
 const Intro = () => {
     return (
         <div className='w-[616px] flex flex-col items-start gap-4'>
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" aria-label='ads'>
                 <Image
                     src="/Ads.svg"
                     alt="Ads"
