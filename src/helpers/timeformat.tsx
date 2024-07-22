@@ -38,3 +38,19 @@ export function generateTimeLabels(duration : number) {
     return labels;
 }
 
+export function convertSecondsToHHMMSS(seconds: number) {
+    let hours = Math.floor(seconds / 3600);
+    let minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+
+    if (remainingSeconds === 60) {
+        minutes += 1;
+    }
+
+    if (minutes === 60) {
+        minutes = 0;
+        hours += 1;
+    }
+
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+}

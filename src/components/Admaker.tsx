@@ -6,6 +6,8 @@ import Modal from './Modal';
 import Image from 'next/image';
 import { useAdStore, useVideoStore } from 'store/useStore';
 import { EditForm } from './Editform';
+import { convertSecondsToHHMMSS } from '~/helpers/timeformat';
+import { formatMarkerType } from '~/helpers/type-marker';
 
 
 const badgeStyles: Record<string, { backgroundColor: string; color: string }> = {
@@ -13,45 +15,15 @@ const badgeStyles: Record<string, { backgroundColor: string; color: string }> = 
     static: { backgroundColor: '#BFDBFE', color: '#1E40AF' },
     "ab": { backgroundColor: '#FED7AA', color: '#9A3412' }
 };
-const formatMarkerType = (type: string) => {
-    switch (type.toUpperCase()) {
-        case 'AUTO':
-            return 'Auto';
-        case 'STATIC':
-            return 'Static';
-        case 'AB':
-            return 'A/B';
-        default:
-            return type;
-    }
-};
-
-
-function convertSecondsToHHMMSS(seconds: number) {
-    let hours = Math.floor(seconds / 3600);
-    let minutes = Math.floor((seconds % 3600) / 60);
-    const remainingSeconds = Math.floor(seconds % 60);
-
-    if (remainingSeconds === 60) {
-        minutes += 1;
-    }
-
-    if (minutes === 60) {
-        minutes = 0;
-        hours += 1;
-    }
-
-    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
-}
 
 const Admaker = () => {
-
 
     // const items = [
     //     { id: 1, type: 'auto', timestamp: '00:00:00' },
     //     { id: 2, type: 'static', timestamp: '00:05:00' },
     //     { id: 3, type: 'AB', timestamp: '00:10:00' },
     // ];
+
     const { markers, deleteMarker } = useAdStore();
 
     return (
