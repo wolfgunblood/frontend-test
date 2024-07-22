@@ -56,6 +56,7 @@ export function EditForm({ index }: { index: number }) {
 
         const [hours = 0, minutes = 0, seconds = 0] = values.timestamp.split(":").map(Number);
         const newTime = hours * 3600 + minutes * 60 + seconds;
+        // console.log(newTime)
         
         if(newTime > duration){
 

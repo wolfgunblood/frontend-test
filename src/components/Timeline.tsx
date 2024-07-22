@@ -50,18 +50,24 @@ const Timeline: React.FC<TimelineProps> = ({
         // Initialize markers
         initializeMarkers([
             { time: 300, type: 'AUTO' },
-            { time: 2200, type: 'STATIC' },
-            { time: 2800, type: 'AB' }
+            { time: 1500, type: 'STATIC' },
+            { time: 3600, type: 'AB' }
         ]);
     }, [initializeMarkers]);
 
 
-    const computedMarkers = markers.map(marker => ({
-        ...marker,
-        url: markerUrls[marker.type],
-        left: `${(marker.time / duration) * 100}%`
-    }));
-
+    const computedMarkers = markers.map(marker => {
+        // console.log(marker.time)
+        // console.log(duration)
+        const leftPercentage = (marker.time / duration) * 100;
+        // console.log(`Marker at ${marker.time}s, Type: ${marker.type}, Calculated Left: ${leftPercentage}%`);
+        return {
+            ...marker,
+            url: markerUrls[marker.type],
+            left: `${leftPercentage}%`
+        };
+    });
+    
 
     const ticks = Array.from({ length: Math.floor(duration) + 1 }, (_, i) => ({
         left: (i / duration) * 100

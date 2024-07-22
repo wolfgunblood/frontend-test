@@ -28,20 +28,27 @@ const formatMarkerType = (type: string) => {
 
 
 function convertSecondsToHHMMSS(seconds: number) {
-    const hours = Math.floor(seconds / 3600);
+    let hours = Math.floor(seconds / 3600);
     let minutes = Math.floor((seconds % 3600) / 60);
-    let remainingSeconds = Math.round(seconds % 60);
+    const remainingSeconds = Math.floor(seconds % 60);
 
     if (remainingSeconds === 60) {
-        remainingSeconds = 0;
         minutes += 1;
     }
 
-    const roundedMinutes = Math.round(minutes);
-    const roundedHours = Math.round(hours + roundedMinutes / 60);
+    if (minutes === 60) {
+        minutes = 0;
+        hours += 1;
+    }
 
-    return `${String(roundedHours).padStart(2, '0')}:${String(roundedMinutes % 60).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
 }
+
+// Example usage:
+console.log(convertSecondsToHHMMSS(3660)); // Should return "01:01:00"
+console.log(convertSecondsToHHMMSS(3600)); // Should return "01:00:00"
+console.log(convertSecondsToHHMMSS(3599)); // Should return "00:59:59"
+
 
 const Admaker = () => {
 
