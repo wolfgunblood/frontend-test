@@ -7,7 +7,7 @@ const Chart = () => {
         <div className='flex flex-col rounded-lg gap-4 items-center'>
             {/* Charts */}
 
-            <div className="w-full max-w-[256px] h-[201.74px] p-4 border border-zinc-200 rounded-2xl">
+            <div className="w-full max-w-[256px] h-[201.74px] p-4 border bg-white border-zinc-200 rounded-2xl">
                 <div className='flex flex-col justify-between'>
                     <div className='flex justify-between'>
                         <div>
@@ -27,8 +27,8 @@ const Chart = () => {
                     <Image
                         src="/Graph.svg"
                         alt="graph"
-                        width={256}
-                        height={202}
+                        width={224}
+                        height={90}
                         className="object-fit"
                     />
                 </div>
@@ -36,13 +36,13 @@ const Chart = () => {
 
             {/* Three dots */}
 
-            <div className='flex gap-3'>
+            <div className='flex items-center gap-3'>
                 <Image
                     src="/Rectangle.svg"
                     alt="Rectangle"
                     width={8}
-                    height={8}
-                    className='cursor-pointer'
+                    height={24}
+                    className='rounded-lg cursor-pointer'
                 />
                 <Image
                     src="/Ellipse6.svg"
@@ -52,7 +52,6 @@ const Chart = () => {
                     className='cursor-pointer'
                 />
                 <Image
-
                     src="/Ellipse7.svg"
                     alt="Ellipse"
                     width={8}
