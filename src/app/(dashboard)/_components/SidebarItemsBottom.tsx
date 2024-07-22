@@ -5,7 +5,6 @@ import { cn } from '~/lib/utils';
 import { Switch } from "~/components/ui/switch"
 import Image from 'next/image';
 
-
 interface SidebarItemProps {
     icon: string,
     label: string,
@@ -35,8 +34,6 @@ const SidebarItemsBottom = ({ icon, label, flag }: SidebarItemProps) => {
                 <span>
                     {label}
                 </span>
-
-
             </button>
             {
                 flag && <Switch />

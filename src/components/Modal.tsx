@@ -30,8 +30,6 @@ const Modal: React.FC = () => {
             step === 3 ? 'gap-6 w-[577px]' : ''
         }`;
 
- 
-
     return (
         <Dialog>
             <DialogTrigger asChild>

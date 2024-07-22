@@ -7,6 +7,7 @@ import TimelineHead from './TimelineHead';
 import Image from 'next/image';
 import { useAdStore } from 'store/useStore';
 import Draggable from "react-draggable";
+import Timestamps from './Timestamps';
 
 
 // const markers = [
@@ -178,22 +179,10 @@ const Timeline: React.FC<TimelineProps> = ({
                         <div key={index} className="tick" style={{ left: `${tick.left}%` }}></div>
                     ))}
 
+                   <Timestamps 
+                    timestamps={timestamps}
+                   />
 
-                    <div className="w-full flex justify-between text-xs text-zinc-500" style={{ position: 'relative', bottom: '-50px' }}>
-                        {timestamps.map((timestamp, index) => (
-                            <span
-                                key={index}
-                                style={{
-                                    left: timestamp.left,
-                                }}
-                                className={`w-full border-l-2 border-zinc-300 text-center ${index === timestamps.length - 1 ? "border-r-2" : ""}`}
-                            >
-                                <span className='text-sm text-muted-foreground font-semibold font-manrope'>
-                                    {timestamp.time}
-                                </span>
-                            </span>
-                        ))}
-                    </div>
                 </div>
             </div>
 

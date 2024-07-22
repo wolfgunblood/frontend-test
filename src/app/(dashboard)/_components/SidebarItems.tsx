@@ -31,11 +31,9 @@ const SidebarItems = ({ icon, label, href }: SidebarItemProps) => {
                 width={20}
                 height={20}
             />
-            
             <span>
                 {label}
             </span>
-
         </button>
     )
 }
