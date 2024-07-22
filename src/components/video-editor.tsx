@@ -117,7 +117,7 @@ const VideoEditor: React.FC = () => {
                         />
                     </div>
                     <div className='p-4 bg-white rounded-2xl border border-zinc-200 shadow-sm flex justify-between items-center gap-4'>
-                        <Button className='inline-flex gap-2' variant="ghost" onClick={handleJumpStart}>
+                        <Button className='inline-flex gap-2' variant="ghost" onClick={handleJumpStart} aria-label='Jump to Start'>
                             <div className="w-8 h-8 gap-0 rounded-full border border-zinc-300 flex items-center justify-center">
                                 <Image
                                     src="/ArrowLineLeft.svg"
@@ -130,7 +130,7 @@ const VideoEditor: React.FC = () => {
 
                         </Button>
                         <div className='flex justify-between items-center'>
-                            <Button className='inline-flex gap-2' variant="ghost" onClick={handleRewind}>
+                            <Button className='inline-flex gap-2' variant="ghost" onClick={handleRewind} aria-label='10s back'>
                                 <Image
                                     src="/ClockAntiClockwise.svg"
                                     alt="rewind"
@@ -140,10 +140,10 @@ const VideoEditor: React.FC = () => {
                                 />
                                 <span className='text-sm text-muted-foreground font-semibold font-manrope'>10s</span>
                             </Button>
-                            <Button variant="ghost" onClick={handleRewind}>
+                            <Button variant="ghost" onClick={handleRewind} aria-label='Rewind'>
                                 <Rewind size={20} style={darkIconStyle} />
                             </Button>
-                            <Button variant="ghost" onClick={handlePlayPause}>
+                            <Button variant="ghost" onClick={handlePlayPause} aria-label='Play/Pause'>
                                 {
                                     playing ?
                                         <Pause size={32} style={darkIconStyle} />
@@ -151,10 +151,10 @@ const VideoEditor: React.FC = () => {
                                         <Play size={32} style={darkIconStyle} />
                                 }
                             </Button>
-                            <Button variant="ghost" onClick={handleFastForward}>
+                            <Button variant="ghost" onClick={handleFastForward} aria-label='Fast Forward'>
                                 <FastForward size={20} style={darkIconStyle} />
                             </Button>
-                            <Button className='inline-flex gap-2' variant="ghost" onClick={handleFastForward}>
+                            <Button className='inline-flex gap-2' variant="ghost" onClick={handleFastForward} aria-label='10s forward'>
                                 <span className='text-sm text-muted-foreground font-semibold font-manrope'>10s</span>
                                 <Image
                                     src="/ClockClockwise.svg"
@@ -166,7 +166,7 @@ const VideoEditor: React.FC = () => {
                             </Button>
                         </div>
 
-                        <Button className='inline-flex gap-2' variant="ghost" onClick={handleJumpEnd}>
+                        <Button className='inline-flex gap-2' variant="ghost" onClick={handleJumpEnd} aria-label='Jump to End'>
                             <span className='text-sm text-muted-foreground font-semibold font-manrope'>Jump to end</span>
                             <div className="w-8 h-8 gap-0 rounded-full border border-zinc-300 flex items-center justify-center">
                                 <Image
