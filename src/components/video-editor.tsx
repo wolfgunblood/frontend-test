@@ -1,7 +1,7 @@
 "use client"
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
-import { Play, Pause, Rewind, FastForward} from 'lucide-react';
+import { Play, Pause, Rewind, FastForward } from 'lucide-react';
 import { useVideoStore } from 'store/useStore';
 import Image from 'next/image';
 import Admaker from './Admaker';
@@ -18,7 +18,13 @@ const VideoEditor: React.FC = () => {
 
     // const [currentTime, setCurrentTime] = useState<number>(0);
     // const [duration, setDuration] = useState<number>(0);
-    // const [seeking, setSeeking] = useState<boolean>(false); 
+    // const [seeking, setSeeking] = useState<boolean>(false);
+
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
 
     const handlePlayPause = () => {
         setPlaying(!playing);
@@ -104,17 +110,20 @@ const VideoEditor: React.FC = () => {
                 <Admaker />
                 <div className='p-8 bg-white rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between gap-4'>
                     <div className="rounded-lg overflow-hidden ">
-                        <ReactPlayer
-                            ref={playerRef}
-                            // url='https://utfs.io/f/37835069-4b3e-48e8-97b5-da654c1de85b-m0d2yz.mp4'
-                            url='https://www.youtube.com/watch?v=V0ej29G7ZGg&t=1694s'
-                            controls={true}
-                            playing={playing}
-                            onProgress={onProgress}
-                            // progressInterval={500}
-                            width='100%'
-                            heigth='100%'
-                        />
+                        {
+                            isClient &&
+                            <ReactPlayer
+                                ref={playerRef}
+                                // url='https://utfs.io/f/37835069-4b3e-48e8-97b5-da654c1de85b-m0d2yz.mp4'
+                                url='https://www.youtube.com/watch?v=V0ej29G7ZGg&t=1694s'
+                                controls={true}
+                                playing={playing}
+                                onProgress={onProgress}
+                                // progressInterval={500}
+                                width='100%'
+                                heigth='100%'
+                            />
+                        }
                     </div>
                     <div className='p-4 bg-white rounded-2xl border border-zinc-200 shadow-sm flex justify-between items-center gap-4'>
                         <Button className='inline-flex gap-2' variant="ghost" onClick={handleJumpStart} aria-label='Jump to Start'>
