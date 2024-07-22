@@ -77,13 +77,16 @@ const Timeline: React.FC<TimelineProps> = ({
     }));
     const timeLabels = generateTimeLabels(duration);
 
+    const intervals = [8* 60, 8 * 60, 5 * 60, 5 * 60, 5* 60, 3 * 60, 3*60, 3*60, 3*60, 3*60, 3*60, 60];
+    const interval = intervals[Math.min(controlValue, intervals.length - 1)];
+
     const timestamps = useMemo(() => {
-        const numMarks = Math.floor(duration / 60);
+        const numMarks = Math.floor(duration / interval!);
         return Array.from({ length: numMarks + 1 }, (_, index) => {
-            const time = 60 * index;
+            const time = interval! * index;
             return { time: DisplayTime(time), left: `${(time / duration) * 100}%` };
         });
-    }, [duration]);
+    }, [duration, interval]);
 
     const handleControlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newControlValue = Number(e.target.value);
@@ -176,7 +179,7 @@ const Timeline: React.FC<TimelineProps> = ({
                     ))}
 
 
-                    {/* <div className="w-full flex justify-between text-xs text-zinc-500" style={{ position: 'relative', bottom: '-50px' }}>
+                    <div className="w-full flex justify-between text-xs text-zinc-500" style={{ position: 'relative', bottom: '-50px' }}>
                         {timestamps.map((timestamp, index) => (
                             <span
                                 key={index}
@@ -190,7 +193,7 @@ const Timeline: React.FC<TimelineProps> = ({
                                 </span>
                             </span>
                         ))}
-                    </div> */}
+                    </div>
                 </div>
             </div>
 

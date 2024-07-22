@@ -1,10 +1,14 @@
-
-export const DisplayTime = (seconds :number) => {
+export const DisplayTime = (seconds: number) => {
     const h = Math.floor(seconds / 3600);
     const m = Math.floor((seconds % 3600) / 60);
     const s = Math.floor(seconds % 60);
-    return [h, m, s].map(v => v < 10 ? '0' + v : v).join(':');
+
+    const formattedMinutes = m < 10 ? '0' + m : m;
+    const formattedSeconds = s < 10 ? '0' + s : s;
+
+    return h > 0 ? `${h}:${formattedMinutes}:${formattedSeconds}` : `${formattedMinutes}:${formattedSeconds}`;
 };
+
 
 
 const formatTime = (seconds: number) => {
