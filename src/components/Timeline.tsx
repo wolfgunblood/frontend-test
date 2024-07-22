@@ -64,6 +64,7 @@ const Timeline: React.FC<TimelineProps> = ({
         // console.log(marker.time)
         // console.log(duration)
         const leftPercentage = (marker.time / duration) * 100;
+        // const leftPercentage = (marker.time / duration) * bottomSliderWidth;
         // console.log(`Marker at ${marker.time}s, Type: ${marker.type}, Calculated Left: ${leftPercentage}%`);
         return {
             ...marker,
@@ -72,10 +73,33 @@ const Timeline: React.FC<TimelineProps> = ({
         };
     });
 
+    const [ticks, setTicks] = useState([]);
 
-    const ticks = Array.from({ length: Math.floor(duration) + 1 }, (_, i) => ({
-        left: (i / duration) * 100
-    }));
+    const calculateTicks = () => {
+        if (timelineRef.current) {
+            const timelineWidth  = timelineRef.current.offsetWidth; 
+            const numberOfTicks = Math.floor(timelineWidth / 2);    
+
+            const newTicks = Array.from({ length: numberOfTicks }, (_, index) => {
+                const time = (index / numberOfTicks) * duration;   
+                const leftPercentage = (time / duration) * 100;    
+                return { left: `${leftPercentage}%` };
+            });
+
+            setTicks(newTicks);
+        }
+    };
+
+    useEffect(() => {
+        calculateTicks();
+        window.addEventListener('resize', calculateTicks);  // Recalculate on window resize
+
+        return () => {
+            window.removeEventListener('resize', calculateTicks);  // Cleanup
+        };
+    }, [duration]);  // Recalculate when duration changes
+
+
     const timeLabels = generateTimeLabels(duration);
 
     const intervals = [8* 60, 8 * 60, 5 * 60, 5 * 60, 5* 60, 3 * 60, 3*60, 3*60, 3*60, 3*60, 3*60, 60];
@@ -176,7 +200,8 @@ const Timeline: React.FC<TimelineProps> = ({
                         // </Draggable>
                     ))}
                     {ticks.map((tick, index) => (
-                        <div key={index} className="tick" style={{ left: `${tick.left}%` }}></div>
+                        <div key={index} className="tick" style={{ left: tick.left }}></div>
+
                     ))}
 
                    <Timestamps 
