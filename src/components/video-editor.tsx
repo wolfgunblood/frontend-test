@@ -1,7 +1,7 @@
 "use client"
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import ReactPlayer from 'react-player';
-import { Play, Pause, ArrowLeftToLine, ArrowRightToLine, Rewind, FastForward, History } from 'lucide-react';
+import { Play, Pause, Rewind, FastForward} from 'lucide-react';
 import { useVideoStore } from 'store/useStore';
 import Image from 'next/image';
 import Admaker from './Admaker';
