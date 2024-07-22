@@ -50,7 +50,13 @@ const Admaker = () => {
                                         </span>
                                     </Badge>
                                     <EditForm index={index} />
-                                    <Button variant="trash" size="sm" className='flex items-center justify-center' onClick={() => deleteMarker(index)}>
+                                    <Button 
+                                        variant="trash" 
+                                        size="sm" 
+                                        className='flex items-center justify-center' 
+                                        onClick={() => deleteMarker(index)}
+                                        aria-label='Trash'
+                                        >
 
                                         <Trash2 size={16} color='#7F1D1D' />
                                     </Button>
@@ -63,7 +69,11 @@ const Admaker = () => {
             </div>
             <div className="w-full flex flex-col gap-4">
                 <Modal />
-                <Button className="text-sm font-semibold font-manrope inline-flex gap-2 items-center" variant="outline">
+                <Button 
+                    className="text-sm font-semibold font-manrope inline-flex gap-2 items-center" 
+                    variant="outline"
+                    aria-label='Automatically Place Ads'
+                    >
                     Automatically Place
                     {" "}
                     <Wand size={16} />

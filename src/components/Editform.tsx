@@ -76,7 +76,7 @@ export function EditForm({ index }: { index: number }) {
     return (
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-                <Button variant="outline" size="sm" onClick={() => setIsDialogOpen(true)} >
+                <Button variant="outline" size="sm" onClick={() => setIsDialogOpen(true)} aria-label="Edit" >
                     <span className='text-sm text-secondary-foreground font-semibold font-manrope'>
                         Edit
                     </span>
@@ -107,7 +107,7 @@ export function EditForm({ index }: { index: number }) {
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit">Submit</Button>
+                        <Button type="submit" aria-label="Submit">Submit</Button>
                     </form>
                 </Form>
             </DialogContent>

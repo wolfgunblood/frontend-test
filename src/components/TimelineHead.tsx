@@ -36,7 +36,7 @@ const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime, controlValue, 
             {/* Undo & Redo */}
 
             <div className='flex gap-6'>
-                <Button className='inline-flex gap-3' variant="ghost" onClick={undo}>
+                <Button className='inline-flex gap-3' variant="ghost" onClick={undo} aria-label='Undo'>
                     <div className="w-8 h-8 gap-0 rounded-full border border-zinc-300 flex items-center justify-center">
 
                         <Image
@@ -49,7 +49,7 @@ const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime, controlValue, 
                     </div>
                     <span className='text-sm text-muted-foreground font-semibold font-manrope'>Undo</span>
                 </Button>
-                <Button className='inline-flex gap-3' variant="ghost" onClick={redo}>
+                <Button className='inline-flex gap-3' variant="ghost" onClick={redo} aria-label='Redo'>
                     <div className="w-8 h-8 gap-0 rounded-full border border-zinc-300 flex items-center justify-center">
 
                         <Image
@@ -103,7 +103,6 @@ const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime, controlValue, 
                     onClick={handleZoomIn}
                     className='cursor-pointer'
                     />
-
             </div>
         </div>
     )
