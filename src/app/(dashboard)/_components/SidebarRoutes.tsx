@@ -1,10 +1,7 @@
 "use client"
 
 import React from 'react';
-// import { BarChart3,House , CircleDollarSign, Tv, Import, Settings } from 'lucide-react';
 import SidebarItems from './SidebarItems';
-
-// type Props = {}
 
 const mainRoutes = [
     {

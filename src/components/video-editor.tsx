@@ -141,13 +141,6 @@ const VideoEditor: React.FC = () => {
                                 <span className='text-sm text-muted-foreground font-semibold font-manrope'>10s</span>
                             </Button>
                             <Button variant="ghost" onClick={handleRewind}>
-                                {/* <Image
-                                    src="/Rewind.svg"
-                                    alt="rewind"
-                                    width={20}
-                                    height={20}
-                                    quality={100}
-                                    /> */}
                                 <Rewind size={20} style={darkIconStyle} />
                             </Button>
                             <Button variant="ghost" onClick={handlePlayPause}>
@@ -156,24 +149,9 @@ const VideoEditor: React.FC = () => {
                                         <Pause size={32} style={darkIconStyle} />
                                         :
                                         <Play size={32} style={darkIconStyle} />
-                                    //Some reason width and heigth getting over rid
-                                    // <Image
-                                    //     src="/Play.svg"
-                                    //     alt="Play"
-                                    //     width={32}
-                                    //     height={32}
-                                    //     quality={100}
-                                    // />
                                 }
                             </Button>
                             <Button variant="ghost" onClick={handleFastForward}>
-                                {/* <Image
-                                    src="/FastForward.svg"
-                                    alt="Fast Forward"
-                                    width={20}
-                                    height={20}
-                                    quality={100}
-                                /> */}
                                 <FastForward size={20} style={darkIconStyle} />
                             </Button>
                             <Button className='inline-flex gap-2' variant="ghost" onClick={handleFastForward}>

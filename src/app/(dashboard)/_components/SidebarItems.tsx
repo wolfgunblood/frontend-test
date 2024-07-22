@@ -25,15 +25,13 @@ const SidebarItems = ({ icon, label, href }: SidebarItemProps) => {
 
             )}
         >
-
-
             <Image
                 src={icon}
                 alt={label}
                 width={20}
                 height={20}
             />
-
+            
             <span>
                 {label}
             </span>

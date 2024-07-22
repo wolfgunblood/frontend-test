@@ -1,11 +1,12 @@
 import { ArrowUp } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
-import { Button } from '~/components/ui/button'
 
 const Chart = () => {
     return (
         <div className='flex flex-col rounded-lg gap-4 items-center'>
+            {/* Charts */}
+
             <div className="w-full max-w-[256px] h-[201.74px] p-4 border border-zinc-200 rounded-2xl">
                 <div className='flex flex-col justify-between'>
                     <div className='flex justify-between'>
@@ -32,6 +33,8 @@ const Chart = () => {
                     />
                 </div>
             </div>
+
+            {/* Three dots */}
 
             <div className='flex gap-3'>
                 <Image

@@ -3,7 +3,6 @@
 import React from 'react';
 import SidebarItemsBottom from './SidebarItemsBottom';
 
-
 const mainRoutes = [
     {
         icon:  '/play-circle.svg',
