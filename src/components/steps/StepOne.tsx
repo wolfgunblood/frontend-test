@@ -99,8 +99,8 @@ const StepOne: React.FC = () => {
             </RadioGroup>
 
             <div className="flex justify-end gap-4">
-                <Button type="button" variant="outline" className='text-sm text-secondary-foreground font-semibold font-manrope' onClick={reset}>Cancel</Button>
-                <Button type="submit" variant="default" className='text-sm text-primary-foreground font-semibold font-manrope'>Select Marker</Button>
+                <Button type="button" variant="outline" className='text-sm text-secondary-foreground font-semibold font-manrope' onClick={reset} aria-label='Cancel'>Cancel</Button>
+                <Button type="submit" variant="default" className='text-sm text-primary-foreground font-semibold font-manrope' aria-label='Select Marker'>Select Marker</Button>
             </div>
         </form>
     );

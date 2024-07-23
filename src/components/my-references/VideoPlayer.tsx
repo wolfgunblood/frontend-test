@@ -89,24 +89,24 @@ const VideoPlayer: React.FC = () => {
                 progressInterval={500} // Update progress every 500 ms for smoother slider movement
             />
             <div className='w-full py-5 flex justify-between'>
-                <Button variant="ghost" onClick={handleJumpStart}>
+                <Button variant="ghost" onClick={handleJumpStart} aria-label='Jump to Start'>
                     <ArrowLeftToLine />
                     Jump to start
                 </Button>
                 <div>
-                    <Button variant="ghost" onClick={handleRewind}>
+                    <Button variant="ghost" onClick={handleRewind} aria-label='Rewind'>
                         <Rewind />
                         Rewind 10s
                     </Button>
-                    <Button variant="ghost" onClick={handlePlayPause}>
+                    <Button variant="ghost" onClick={handlePlayPause} aria-label='Play/Pause'>
                         {playing ? <Pause /> : <Play />}
                     </Button>
-                    <Button variant="ghost" onClick={handleFastForward}>
+                    <Button variant="ghost" onClick={handleFastForward} aria-label='Fast Forward'>
                         <FastForward />
                         Fast Forward 10s
                     </Button>
                 </div>
-                <Button variant="ghost" onClick={handleJumpEnd}>
+                <Button variant="ghost" onClick={handleJumpEnd} aria-label='Jump to End'>
                     <ArrowRightToLine />
                     Jump to end
                 </Button>

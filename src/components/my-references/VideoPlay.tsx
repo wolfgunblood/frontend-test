@@ -35,24 +35,24 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                 progressInterval={500}
             />
             <div className='w-full py-5 flex justify-between'>
-                <Button variant="ghost" onClick={onJumpStart}>
+                <Button variant="ghost" onClick={onJumpStart} aria-label='Jump to Start'>
                     <ArrowLeftToLine />
                     Jump to start
                 </Button>
                 <div>
-                    <Button variant="ghost" onClick={onRewind}>
+                    <Button variant="ghost" onClick={onRewind} aria-label='Rewind'>
                         <Rewind />
                         Rewind 10s
                     </Button>
-                    <Button variant="ghost" onClick={onPlayPause}>
+                    <Button variant="ghost" onClick={onPlayPause} aria-label='Play/Pause'>
                         {playing ? <Pause /> : <Play />}
                     </Button>
-                    <Button variant="ghost" onClick={onFastForward}>
+                    <Button variant="ghost" onClick={onFastForward} aria-label='Fast Forward'>
                         <FastForward />
                         Fast Forward 10s
                     </Button>
                 </div>
-                <Button variant="ghost" onClick={onJumpEnd}>
+                <Button variant="ghost" onClick={onJumpEnd} aria-label='Jump to End'>
                     <ArrowRightToLine />
                     Jump to end
                 </Button>

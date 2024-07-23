@@ -41,6 +41,7 @@ export function LatestPost() {
           type="submit"
           className="rounded-full bg-white/10 px-10 py-3 font-semibold transition hover:bg-white/20"
           disabled={createPost.isPending}
+          aria-label="submit"
         >
           {createPost.isPending ? "Submitting..." : "Submit"}
         </button>

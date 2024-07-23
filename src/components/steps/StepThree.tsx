@@ -74,8 +74,8 @@ const StepThree: React.FC = () => {
                 </ul>
             </div>
             <div className="flex justify-end gap-4">
-                <Button variant="outline" className='text-sm text-secondary-foreground font-semibold font-manrope' onClick={() => { reset() }}>New Test</Button>
-                <Button variant="default" className='text-sm text-primary-foreground font-semibold font-manrope'>Done</Button>
+                <Button variant="outline" className='text-sm text-secondary-foreground font-semibold font-manrope' onClick={() => { reset() }} aria-label='New Test'>New Test</Button>
+                <Button variant="default" className='text-sm text-primary-foreground font-semibold font-manrope' aria-label='Done'>Done</Button>
             </div>
 
         </div>

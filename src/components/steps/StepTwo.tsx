@@ -93,7 +93,7 @@ const StepTwo: React.FC = () => {
 
                 <div className='w-[653px] flex flex-col gap-6 items-end'>
                     <div className='flex gap-6'>
-                        <Button variant="outline" className='inline-flex gap-2'>
+                        <Button variant="outline" className='inline-flex gap-2' aria-label='Upload'>
                             <Image
                                 src="/caret-sort.svg"
                                 alt="logo"
@@ -195,12 +195,12 @@ const StepTwo: React.FC = () => {
             </div>
 
             <div className="flex justify-between">
-                <Button variant="outline" className='text-sm text-secondary-foreground font-semibold font-manrope' onClick={reset}>Cancel</Button>
+                <Button variant="outline" className='text-sm text-secondary-foreground font-semibold font-manrope' onClick={reset} aria-label='Cancel'>Cancel</Button>
                 <div className='inline-flex gap-2 items-center'>
                     <span className='text-sm text-zinc-800 font-semibold font-manrope'>
                         {selectionCount}{" "} ads selected
                     </span>
-                    <Button variant="default" onClick={nextStep} className='text-sm font-semibold font-manrope'>Select A/B Test</Button>
+                    <Button variant="default" onClick={nextStep} className='text-sm font-semibold font-manrope' aria-label='Select A/B Test'>Select A/B Test</Button>
                 </div>
             </div>
         </div>
