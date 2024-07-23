@@ -17,7 +17,7 @@
     position: absolute;
     bottom: 0;
     height: 100%;
-    z-index: -5; 
+    z-index: 5; 
     border-radius: 8px;
     border: 2px solid #18181B; 
 }
