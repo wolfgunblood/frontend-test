@@ -163,7 +163,7 @@ const Timeline: React.FC<TimelineProps> = ({
     };
 
     return (
-        <div className='p-8 pb-12 bg-white rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between gap-8'>
+        <div className='p-8 pb-12 bg-white rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between'>
             <TimelineHead
                 currentTime={currentTime}
                 controlValue={controlValue}
@@ -172,7 +172,7 @@ const Timeline: React.FC<TimelineProps> = ({
                 setBottomSliderWidth={setBottomSliderWidth}
             />
 
-            <div ref={timelineRef} className="relative custom-scrollbar w-full h-128px overflow-x-auto overflow-y-visible pt-12 pb-16">
+            <div ref={timelineRef} className="relative custom-scrollbar w-full h-128px overflow-x-auto overflow-y-visible pt-16 pb-16">
                 <div 
                     className="timeline-slider w-full h-full relative z-10" style={{
                         width: `${bottomSliderWidth}%`,
