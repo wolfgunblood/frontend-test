@@ -42,6 +42,8 @@ const Timeline: React.FC<TimelineProps> = ({
 
     const [controlValue, setControlValue] = useState(0);
     const [bottomSliderWidth, setBottomSliderWidth] = useState(100);
+    const [zoomFactor, setZoomFactor] = useState(1);
+
 
     // const markers = useAdStore(state => state.markers);
     // const initializeMarkers = useAdStore(state => state.initializeMarkers);
@@ -119,37 +121,46 @@ const Timeline: React.FC<TimelineProps> = ({
         console.log(controlValue)
         if (newControlValue === 0) {
             setBottomSliderWidth(100);
+            setZoomFactor(1); 
         } else {
-            setBottomSliderWidth(100 + newControlValue * 10);
+            const newWidth = 100 + newControlValue * 10;
+            setBottomSliderWidth(newWidth);
+            setZoomFactor(newWidth / 100);
         }
 
     };
 
-    //   const [initialPos, setInitialPos] = useState(null);
+    const handleDragStart = (e: React.DragEvent<HTMLImageElement>, index: number) => {
+        e.dataTransfer.setData('text/plain', index.toString());
+        e.currentTarget.classList.add('dragging');
 
-    //   const handleStart = (e, data) => {
-    //       console.log("Drag started");
-    //       setInitialPos(data.x);
-    //   };
-  
-    //   const handleDrag = (e, data, index : number) => {
-    //       console.log("Dragging");
-        
-    //   };
-  
-    //   const handleStop = (e, data, index :number) => {
-    //       console.log("Dragging stopped");
-          
-    //       const timelineWidth = timelineRef.current ? timelineRef.current.offsetWidth : 0;
-    //       const newLeft = Math.min(Math.max(data.x, 0), timelineWidth);
-    //       const newLeftPercentage = (newLeft / timelineWidth) * 100;
-    //       const newTime = Math.round((newLeftPercentage / 100) * duration);
-          
-    //       console.log(`Final new time (rounded): ${newTime}`);
-          
-    //       editMarker(index, newTime);
-    //       console.log(`Updated markers:`, markers);
-    //   };
+
+        // const img = new Image();
+        // img.src = e.currentTarget.src;
+        // e.dataTransfer.setDragImage(img, 0, 0);
+
+    };
+
+    const handleDragEnd = (e: React.DragEvent<HTMLImageElement>) => {
+        e.currentTarget.classList.remove('dragging');
+    };
+
+    const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+        e.preventDefault();
+        const index = parseInt(e.dataTransfer.getData('text/plain'), 10);
+        const timelineWidth = timelineRef.current ? timelineRef.current.scrollWidth : 0;
+        const scrollLeft = timelineRef.current ? timelineRef.current.scrollLeft : 0;
+        const scaledWidth = timelineWidth * zoomFactor;
+        const newLeft = Math.min(Math.max(e.clientX - timelineRef.current!.getBoundingClientRect().left + scrollLeft, 0), scaledWidth);
+        const newLeftPercentage = (newLeft / scaledWidth) * 100;
+        const newTime = Math.round((newLeftPercentage / 100) * duration);
+
+        editMarker(index, newTime);
+    };
+
+    const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+        e.preventDefault();
+    };
 
     return (
         <div className='p-8 pb-12 bg-white rounded-2xl border border-zinc-200 shadow-sm flex flex-col justify-between gap-8'>
@@ -166,7 +177,10 @@ const Timeline: React.FC<TimelineProps> = ({
                     className="timeline-slider w-full h-full relative z-10" style={{
                         width: `${bottomSliderWidth}%`,
                         padding: '0 16px'
-                    }}>
+                    }}
+                    onDrop={handleDrop}
+                    onDragOver={handleDragOver}
+                    >
                     <input
                         type="range"
                         min={0}
@@ -188,6 +202,9 @@ const Timeline: React.FC<TimelineProps> = ({
                                 src={marker.url}
                                 alt="Timeline marker"
                                 style={{ left: marker.left, bottom: '0', height: '100%' }}
+                                draggable
+                                onDragStart={(e) => handleDragStart(e, index)}
+                                onDragEnd={handleDragEnd}
                             />
                     
                     ))}

@@ -86,6 +86,19 @@
     border-radius: 10px;
     width: 100px;
   }
+
+  .draggable-marker {
+    transition: none; 
+    opacity: 1; 
+    cursor: grab; 
+  }
+  
+  .draggable-marker.dragging {
+    cursor: grabbing; 
+    opacity: 1; 
+  }
+  
+  
   
 
 
