@@ -67,6 +67,8 @@ const Navbar = () => {
               width={32}
               height={21}
               className="w-8 h-8 rounded-full"
+              // layout={'fill'} 
+              objectFit={'contain'}
             />
             <span className='text-base text-zinc-800 font-bold font-manrope'>
               Emma Warren
