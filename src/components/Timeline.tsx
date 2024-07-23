@@ -180,15 +180,7 @@ const Timeline: React.FC<TimelineProps> = ({
                     // style={{ marginBottom: '16px' }}
                     />
                     {computedMarkers.map((marker, index) => (
-                        // <Draggable
-                        //     key={index}
-                        //     axis='x'
-                        //     scale={1}
-                        //     position={{x: parseInt(marker.left, 10), y: 0}}
-                        //     onStart={(e, data) => handleStart(e, data)}
-                        //     onDrag={(e, data) => handleDrag(e, data, index)}
-                        //     onStop={(e, data) => handleStop(e, data, index)}
-                        // >
+            
 
                             <img
                                 key={index}
@@ -197,7 +189,7 @@ const Timeline: React.FC<TimelineProps> = ({
                                 alt="Timeline marker"
                                 style={{ left: marker.left, bottom: '0', height: '100%' }}
                             />
-                        // </Draggable>
+                    
                     ))}
                     {ticks.map((tick, index) => (
                         <div key={index} className="tick" style={{ left: tick.left }}></div>
