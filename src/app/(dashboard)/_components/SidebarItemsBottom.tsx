@@ -37,7 +37,7 @@ const SidebarItemsBottom = ({ icon, label, flag }: SidebarItemProps) => {
                 </span>
             </button>
             {
-                flag && <Switch />
+                flag && <Switch aria-label='demo/pro switch' />
             }
         </div>
 
