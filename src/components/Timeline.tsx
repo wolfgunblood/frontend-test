@@ -104,7 +104,7 @@ const Timeline: React.FC<TimelineProps> = ({
 
     const timeLabels = generateTimeLabels(duration);
 
-    const intervals = [8* 60, 8 * 60, 5 * 60, 5 * 60, 5* 60, 3 * 60, 3*60, 3*60, 3*60, 3*60, 3*60, 60];
+    const intervals = [10* 60, 10 * 60, 10 * 60, 10 * 60, 5* 60, 5* 60, 5*60, 5*60, 5*60, 5*60, 5*60, 60];
     const interval = intervals[Math.min(controlValue, intervals.length - 1)];
 
     const timestamps = useMemo(() => {

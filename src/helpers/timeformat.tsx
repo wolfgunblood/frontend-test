@@ -3,12 +3,12 @@ export const DisplayTime = (seconds: number) => {
     const m = Math.floor((seconds % 3600) / 60);
     const s = Math.floor(seconds % 60);
 
+    const formattedHours = h < 10 ? '0' + h : h;
     const formattedMinutes = m < 10 ? '0' + m : m;
     const formattedSeconds = s < 10 ? '0' + s : s;
 
-    return h > 0 ? `${h}:${formattedMinutes}:${formattedSeconds}` : `${formattedMinutes}:${formattedSeconds}`;
+    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 };
-
 
 
 const formatTime = (seconds: number) => {
