@@ -42,9 +42,9 @@ const Chart = () => {
         <Image
           src="/Rectangle.svg"
           alt="Rectangle"
-          width={8}
-          height={24}
-          className="cursor-pointer rounded-lg"
+          width={24}
+          height={8}
+          className="cursor-pointer rounded-full"
         />
         <Image
           src="/Ellipse6.svg"
