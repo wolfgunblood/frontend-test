@@ -47,7 +47,6 @@ const Timeline: React.FC<TimelineProps> = ({
   // const initializeMarkers = useAdStore(state => state.initializeMarkers);
   const { markers, initializeMarkers, editMarker } = useAdStore();
 
-  //Timeline Ref
   const timelineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -72,6 +71,8 @@ const Timeline: React.FC<TimelineProps> = ({
     };
   });
 
+  // Ticks calculation
+
   const [ticks, setTicks] = useState<Array<{ left: string }>>([]);
 
   const calculateTicks = () => {
@@ -91,14 +92,14 @@ const Timeline: React.FC<TimelineProps> = ({
 
   useEffect(() => {
     calculateTicks();
-    window.addEventListener("resize", calculateTicks); // Recalculate on window resize
+    window.addEventListener("resize", calculateTicks);
 
     return () => {
-      window.removeEventListener("resize", calculateTicks); // Cleanup
+      window.removeEventListener("resize", calculateTicks);
     };
-  }, [duration]); // Recalculate when duration changes
+  }, [duration]);
 
-  const timeLabels = generateTimeLabels(duration);
+  // Timestamp calculations
 
   const intervals = [
     10 * 60,
@@ -138,16 +139,14 @@ const Timeline: React.FC<TimelineProps> = ({
     }
   };
 
+  // Ad Marker Dragging logic
+
   const handleDragStart = (
     e: React.DragEvent<HTMLImageElement>,
     index: number,
   ) => {
     e.dataTransfer.setData("text/plain", index.toString());
     e.currentTarget.classList.add("dragging");
-
-    // const img = new Image();
-    // img.src = e.currentTarget.src;
-    // e.dataTransfer.setDragImage(img, 0, 0);
   };
 
   const handleDragEnd = (e: React.DragEvent<HTMLImageElement>) => {
@@ -228,9 +227,16 @@ const Timeline: React.FC<TimelineProps> = ({
               onDragEnd={handleDragEnd}
             />
           ))}
-          {ticks.map((tick, index) => (
-            <div key={index} className="tick" style={{ left: tick.left }}></div>
-          ))}
+          {ticks.map(
+            (tick, index) =>
+              index % 2 !== 0 && (
+                <div
+                  key={index}
+                  className="tick"
+                  style={{ left: tick.left }}
+                ></div>
+              ),
+          )}
 
           <Timestamps timestamps={timestamps} />
         </div>

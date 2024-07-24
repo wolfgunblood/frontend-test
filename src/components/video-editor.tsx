@@ -29,6 +29,8 @@ const VideoEditor: React.FC = () => {
   // const [duration, setDuration] = useState<number>(0);
   // const [seeking, setSeeking] = useState<boolean>(false);
 
+  // Hydration
+
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
