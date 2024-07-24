@@ -78,7 +78,7 @@ const Admaker = () => {
           </ol>
         </div>
       </div>
-      <div className="flex w-full min-w-96 flex-col gap-4">
+      <div className="flex w-full flex-col gap-4">
         <Modal />
         <Button
           className="inline-flex items-center gap-2 font-manrope text-sm font-semibold"
