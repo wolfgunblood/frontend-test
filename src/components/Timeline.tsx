@@ -146,12 +146,12 @@ const Timeline: React.FC<TimelineProps> = ({
     index: number,
   ) => {
     e.dataTransfer.setData("text/plain", index.toString());
-    e.currentTarget.classList.add("dragging");
+    // e.currentTarget.classList.add("dragging");
   };
 
-  const handleDragEnd = (e: React.DragEvent<HTMLImageElement>) => {
-    e.currentTarget.classList.remove("dragging");
-  };
+  // const handleDragEnd = (e: React.DragEvent<HTMLImageElement>) => {
+  //   e.currentTarget.classList.remove("dragging");
+  // };
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -161,6 +161,7 @@ const Timeline: React.FC<TimelineProps> = ({
       : 0;
     const scrollLeft = timelineRef.current ? timelineRef.current.scrollLeft : 0;
     const scaledWidth = timelineWidth * zoomFactor;
+    // const scaledWidth = timelineWidth * (bottomSliderWidth / 100);
     const newLeft = Math.min(
       Math.max(
         e.clientX -
@@ -224,7 +225,7 @@ const Timeline: React.FC<TimelineProps> = ({
               style={{ left: marker.left, bottom: "0", height: "100%" }}
               draggable
               onDragStart={(e) => handleDragStart(e, index)}
-              onDragEnd={handleDragEnd}
+              // onDragEnd={handleDragEnd}
             />
           ))}
           {ticks.map(
