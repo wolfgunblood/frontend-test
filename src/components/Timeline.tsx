@@ -41,7 +41,6 @@ const Timeline: React.FC<TimelineProps> = ({
 
   const [controlValue, setControlValue] = useState(0);
   const [bottomSliderWidth, setBottomSliderWidth] = useState(100);
-  const [zoomFactor, setZoomFactor] = useState(1);
 
   // const markers = useAdStore(state => state.markers);
   // const initializeMarkers = useAdStore(state => state.initializeMarkers);
@@ -131,11 +130,9 @@ const Timeline: React.FC<TimelineProps> = ({
     console.log(controlValue);
     if (newControlValue === 0) {
       setBottomSliderWidth(100);
-      setZoomFactor(1);
     } else {
       const newWidth = 100 + newControlValue * 10;
       setBottomSliderWidth(newWidth);
-      setZoomFactor(newWidth / 100);
     }
   };
 
@@ -156,24 +153,23 @@ const Timeline: React.FC<TimelineProps> = ({
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const index = parseInt(e.dataTransfer.getData("text/plain"), 10);
-    const timelineWidth = timelineRef.current
-      ? timelineRef.current.scrollWidth
-      : 0;
-    const scrollLeft = timelineRef.current ? timelineRef.current.scrollLeft : 0;
-    const scaledWidth = timelineWidth * zoomFactor;
-    // const scaledWidth = timelineWidth * (bottomSliderWidth / 100);
-    const newLeft = Math.min(
-      Math.max(
-        e.clientX -
-          timelineRef.current!.getBoundingClientRect().left +
-          scrollLeft,
-        0,
-      ),
-      scaledWidth,
-    );
-    const newLeftPercentage = (newLeft / scaledWidth) * 100;
-    const newTime = Math.round((newLeftPercentage / 100) * duration);
 
+    if (!timelineRef.current) {
+      console.log("Timeline reference is not set");
+      return;
+    }
+
+    const timelineWidth = timelineRef.current.scrollWidth;
+
+    const scrollLeft = timelineRef.current.scrollLeft;
+
+    const mouseX =
+      e.clientX - timelineRef.current.getBoundingClientRect().left + scrollLeft;
+    const newLeft = Math.min(Math.max(mouseX, 0), timelineWidth);
+
+    const newLeftPercentage = (newLeft / timelineWidth) * 100;
+
+    const newTime = Math.round((newLeftPercentage / 100) * duration);
     editMarker(index, newTime);
   };
 
