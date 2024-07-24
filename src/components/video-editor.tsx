@@ -37,6 +37,26 @@ const VideoEditor: React.FC = () => {
     setIsClient(true);
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      switch (event.code) {
+        case "Space":
+          event.preventDefault();
+          handlePlayPause();
+          break;
+        case "ArrowLeft":
+          handleRewind();
+          break;
+        case "ArrowRight":
+          handleFastForward();
+          break;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [playing]);
+
   const handlePlayPause = () => {
     setPlaying(!playing);
   };
