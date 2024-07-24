@@ -5,15 +5,15 @@ import { adSchema } from "~/lib/schema";
 interface Ad {
   id: number;
   type: "AUTO" | "STATIC" | "AB";
-  timestamp : number;
+  timestamp: number;
 }
 
 export async function POST(req: Request) {
   try {
-    const ads= await req.json() as Ad;
-  
+    const ads = (await req.json()) as Ad;
+
     console.log(ads);
-    const validatedAds = adSchema.parse(ads)
+    const validatedAds = adSchema.parse(ads);
 
     const result = await db.ads.create({
       data: validatedAds,
@@ -29,11 +29,11 @@ export async function POST(req: Request) {
 }
 export async function GET(req: Request) {
   try {
-      const result = await db.ads.findMany();
+    const result = await db.ads.findMany();
 
-      return new NextResponse(JSON.stringify(result), { status: 200 });
+    return new NextResponse(JSON.stringify(result), { status: 200 });
   } catch (error) {
-      console.error("[ADS] Fetching Error:", error);
-      return new NextResponse("Internal server error", { status: 500 });
+    console.error("[ADS] Fetching Error:", error);
+    return new NextResponse("Internal server error", { status: 500 });
   }
 }

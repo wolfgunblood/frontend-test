@@ -2,29 +2,25 @@
 import Link from "next/link";
 import Image from "next/image";
 
-
 const Footer = () => {
-
   return (
-    <footer className="px-16 py-9 border-t border-zinc-200">
+    <footer className="border-t border-zinc-200 px-16 py-9">
       <div className="flex items-center justify-between">
-        <span className="text-base text-zinc-500 font-semibold font-manrope">
+        <span className="font-manrope text-base font-semibold text-zinc-500">
           Video first podcasts
         </span>
-          <Link
-            href="/"
-            className="flex justify-center items-center gap-4"
-          >
-            <Image
-              src="/logo.svg"
-              alt="logo"
-              width={24}
-              height={24}
-              quality={100}
-
-            />
-            <span className="text-2xl text-zinc-800 font-bold font-manrope">Vidpod</span>
-          </Link>
+        <Link href="/" className="flex items-center justify-center gap-4">
+          <Image
+            src="/logo.svg"
+            alt="logo"
+            width={24}
+            height={24}
+            quality={100}
+          />
+          <span className="font-manrope text-2xl font-bold text-zinc-800">
+            Vidpod
+          </span>
+        </Link>
       </div>
     </footer>
   );

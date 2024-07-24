@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -6,28 +6,24 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 
 const Navbar = () => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
 
   return (
-    <nav
-      className="w-full px-16 py-6 border-b border-zinc-200 "
-    >
+    <nav className="w-full border-b border-zinc-200 px-16 py-6">
       <div className="flex items-center justify-between">
-        <Link
-          href="/"
-          className="flex justify-center items-center gap-4"
-        >
+        <Link href="/" className="flex items-center justify-center gap-4">
           <Image
             src="/logo.svg"
             alt="logo"
             width={24}
             height={24}
             quality={100}
-
           />
-          <span className="text-2xl text-zinc-800 font-bold font-manrope">Vidpod</span>
+          <span className="font-manrope text-2xl font-bold text-zinc-800">
+            Vidpod
+          </span>
         </Link>
-        <div className="flex gap-8 items-center">
+        <div className="flex items-center gap-8">
           <Button
             variant="ghost"
             size="sm"
@@ -40,7 +36,6 @@ const Navbar = () => {
               width={20}
               height={20}
               quality={100}
-
             />
           </Button>
           <Button
@@ -58,7 +53,7 @@ const Navbar = () => {
             />
           </Button>
           <button
-            className="px-4 py-3 border border-zinc-200 bg-white rounded-lg shadow-sm flex gap-2 justify-between items-center"
+            className="flex items-center justify-between gap-2 rounded-lg border border-zinc-200 bg-white px-4 py-3 shadow-sm"
             aria-label="User Button"
           >
             <Image
@@ -66,11 +61,11 @@ const Navbar = () => {
               alt="Emma Warren"
               width={32}
               height={21}
-              className="w-8 h-8 rounded-full"
-              // layout={'fill'} 
-              objectFit={'contain'}
+              className="h-8 w-8 rounded-full"
+              // layout={'fill'}
+              objectFit={"contain"}
             />
-            <span className='text-base text-zinc-800 font-bold font-manrope'>
+            <span className="font-manrope text-base font-bold text-zinc-800">
               Emma Warren
             </span>
             <Image
@@ -79,11 +74,10 @@ const Navbar = () => {
               width={16}
               height={16}
             />
-
           </button>
         </div>
       </div>
-    </nav >
+    </nav>
   );
 };
 
