@@ -14,7 +14,7 @@ interface TimelineHeadProps {
 }
 const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime, controlValue, handleControlChange, setControlValue, setBottomSliderWidth }) => {
 
-    const { undo,redo } = useAdStore();
+    const { undo, redo } = useAdStore();
 
     const handleZoomIn = () => {
         if (controlValue < 10) {
@@ -32,8 +32,10 @@ const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime, controlValue, 
 
     return (
         <div className='flex justify-between items-center'>
-            
+
             {/* Undo & Redo */}
+            <button className="text-white px-4 sm:px-8 py-2 sm:py-3 bg-sky-700 hover:bg-sky-800">...</button>
+
 
             <div className='flex gap-6'>
                 <Button className='inline-flex gap-3' variant="ghost" onClick={undo} aria-label='Undo'>
@@ -63,7 +65,7 @@ const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime, controlValue, 
                     <span className='text-sm text-muted-foreground font-semibold font-manrope'>Redo</span>
                 </Button>
             </div>
-            
+
             {/* Current Time */}
 
             <div className='py-2 px-3 rounded-md border'>
@@ -71,7 +73,7 @@ const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime, controlValue, 
             </div>
 
             {/* Zoom level */}
-            
+
             <div className="flex items-center justify-center gap-6">
 
                 <Image
@@ -82,7 +84,7 @@ const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime, controlValue, 
                     quality={100}
                     onClick={handleZoomOut}
                     className='cursor-pointer'
-                    />
+                />
                 <div className="custom-range w-full h-full relative">
                     <input
                         type="range"
@@ -91,7 +93,7 @@ const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime, controlValue, 
                         min="0"
                         max="10"
                         step="1"
-                        />
+                    />
                 </div>
 
                 <Image
@@ -102,7 +104,7 @@ const TimelineHead: React.FC<TimelineHeadProps> = ({ currentTime, controlValue, 
                     quality={100}
                     onClick={handleZoomIn}
                     className='cursor-pointer'
-                    />
+                />
             </div>
         </div>
     )

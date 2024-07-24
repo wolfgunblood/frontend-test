@@ -79,12 +79,12 @@ const Timeline: React.FC<TimelineProps> = ({
 
     const calculateTicks = () => {
         if (timelineRef.current) {
-            const timelineWidth  = timelineRef.current.offsetWidth; 
-            const numberOfTicks = Math.floor(timelineWidth / 2);    
+            const timelineWidth = timelineRef.current.offsetWidth;
+            const numberOfTicks = Math.floor(timelineWidth / 2);
 
             const newTicks = Array.from({ length: numberOfTicks }, (_, index) => {
-                const time = (index / numberOfTicks) * duration;   
-                const leftPercentage = (time / duration) * 100;    
+                const time = (index / numberOfTicks) * duration;
+                const leftPercentage = (time / duration) * 100;
                 return { left: `${leftPercentage}%` };
             });
 
@@ -104,7 +104,7 @@ const Timeline: React.FC<TimelineProps> = ({
 
     const timeLabels = generateTimeLabels(duration);
 
-    const intervals = [10* 60, 10 * 60, 10 * 60, 10 * 60, 5* 60, 5* 60, 5*60, 5*60, 5*60, 5*60, 5*60, 60];
+    const intervals = [10 * 60, 10 * 60, 10 * 60, 10 * 60, 5 * 60, 5 * 60, 5 * 60, 5 * 60, 5 * 60, 5 * 60, 5 * 60, 60];
     const interval = intervals[Math.min(controlValue, intervals.length - 1)];
 
     const timestamps = useMemo(() => {
@@ -121,7 +121,7 @@ const Timeline: React.FC<TimelineProps> = ({
         console.log(controlValue)
         if (newControlValue === 0) {
             setBottomSliderWidth(100);
-            setZoomFactor(1); 
+            setZoomFactor(1);
         } else {
             const newWidth = 100 + newControlValue * 10;
             setBottomSliderWidth(newWidth);
@@ -173,14 +173,14 @@ const Timeline: React.FC<TimelineProps> = ({
             />
 
             <div ref={timelineRef} className="relative custom-scrollbar w-full h-128px overflow-x-auto overflow-y-visible pt-16 pb-16">
-                <div 
+                <div
                     className="timeline-slider w-full h-full relative z-10" style={{
                         width: `${bottomSliderWidth}%`,
                         padding: '0 16px'
                     }}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
-                    >
+                >
                     <input
                         type="range"
                         min={0}
@@ -194,28 +194,28 @@ const Timeline: React.FC<TimelineProps> = ({
                     // style={{ marginBottom: '16px' }}
                     />
                     {computedMarkers.map((marker, index) => (
-            
 
-                            <img
-                                key={index}
-                                className="absolute"
-                                src={marker.url}
-                                alt="Timeline marker"
-                                style={{ left: marker.left, bottom: '0', height: '100%' }}
-                                draggable
-                                onDragStart={(e) => handleDragStart(e, index)}
-                                onDragEnd={handleDragEnd}
-                            />
-                    
+
+                        <img
+                            key={index}
+                            className="absolute"
+                            src={marker.url}
+                            alt="Timeline marker"
+                            style={{ left: marker.left, bottom: '0', height: '100%' }}
+                            draggable
+                            onDragStart={(e) => handleDragStart(e, index)}
+                            onDragEnd={handleDragEnd}
+                        />
+
                     ))}
                     {ticks.map((tick, index) => (
                         <div key={index} className="tick" style={{ left: tick.left }}></div>
 
                     ))}
 
-                   <Timestamps 
-                    timestamps={timestamps}
-                   />
+                    <Timestamps
+                        timestamps={timestamps}
+                    />
 
                 </div>
             </div>
