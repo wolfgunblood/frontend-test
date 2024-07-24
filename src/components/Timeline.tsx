@@ -127,7 +127,7 @@ const Timeline: React.FC<TimelineProps> = ({
   const handleControlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newControlValue = Number(e.target.value);
     setControlValue(newControlValue);
-    console.log(controlValue);
+    // console.log(controlValue);
     if (newControlValue === 0) {
       setBottomSliderWidth(100);
     } else {
