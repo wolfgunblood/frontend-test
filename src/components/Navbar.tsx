@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { useState } from "react";
 import { Button } from "./ui/button";
+import { Settings } from "lucide-react";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
@@ -30,13 +31,7 @@ const Navbar = () => {
             className="cursor-pointer transition-all ease-in-out"
             aria-label="Settings"
           >
-            <Image
-              src="/settings.svg"
-              alt="setting"
-              width={20}
-              height={20}
-              quality={100}
-            />
+            <Settings size={20} stroke="#71717A" strokeWidth={1} />
           </Button>
           <Button
             variant="ghost"
