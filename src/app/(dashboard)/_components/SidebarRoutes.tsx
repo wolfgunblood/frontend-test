@@ -2,35 +2,43 @@
 
 import React from "react";
 import SidebarItems from "./SidebarItems";
+import {
+  BarChart3,
+  CircleDollarSign,
+  Home,
+  Import,
+  Settings,
+  Tv,
+} from "lucide-react";
 
 const mainRoutes = [
   {
-    icon: "/home.svg",
+    icon: Home,
     label: "Dashboard",
     href: "/dashboard",
   },
   {
-    icon: "/bar-chart-3.svg",
+    icon: BarChart3,
     label: "Analytics",
     href: "/",
   },
   {
-    icon: "/circle-dollar-sign.svg",
+    icon: CircleDollarSign,
     label: "Ads",
     href: "/ads",
   },
   {
-    icon: "/tv.svg",
+    icon: Tv,
     label: "Channels",
     href: "/channels",
   },
   {
-    icon: "/import.svg",
+    icon: Import,
     label: "Import",
     href: "/import",
   },
   {
-    icon: "/settings.svg",
+    icon: Settings,
     label: "Settings",
     href: "/settings",
   },

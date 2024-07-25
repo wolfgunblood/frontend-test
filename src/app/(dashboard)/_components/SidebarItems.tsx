@@ -2,16 +2,17 @@
 
 import React from "react";
 import { usePathname } from "next/navigation";
+import { LucideIcon } from "lucide-react";
 import { cn } from "~/lib/utils";
 import Image from "next/image";
 
 interface SidebarItemProps {
-  icon: string;
+  icon: LucideIcon;
   label: string;
   href: string;
 }
 
-const SidebarItems = ({ icon, label, href }: SidebarItemProps) => {
+const SidebarItems = ({ icon: Icon, label, href }: SidebarItemProps) => {
   const pathname = usePathname();
   const isActive =
     (pathname === "/" && href === "/") ||
@@ -27,7 +28,12 @@ const SidebarItems = ({ icon, label, href }: SidebarItemProps) => {
       )}
       aria-label={label}
     >
-      <Image src={icon} alt={label} width={20} height={20} />
+      {/* <Image src={icon} alt={label} width={20} height={20} /> */}
+      <Icon
+        size={20}
+        strokeWidth={1}
+        stroke={`${isActive ? "#27272A" : "#71717A"}`}
+      />
       <span>{label}</span>
     </button>
   );
