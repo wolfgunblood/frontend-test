@@ -32,6 +32,7 @@ const VideoEditor: React.FC = () => {
   // Hydration
 
   const [isClient, setIsClient] = useState(false);
+  const [playbackRate, setPlaybackRate] = useState(1);
   const [markerZIndex, setMarkerZIndex] = useState(5);
 
   useEffect(() => {
@@ -46,10 +47,10 @@ const VideoEditor: React.FC = () => {
           handlePlayPause();
           break;
         case "ArrowLeft":
-          handleRewind();
+          handleBackwardTenSeconds();
           break;
         case "ArrowRight":
-          handleFastForward();
+          handleForwardTenSeconds();
           break;
       }
     };
@@ -74,7 +75,17 @@ const VideoEditor: React.FC = () => {
     }
   };
 
-  const handleFastForward = () => {
+  const increasePlaybackRate = () => {
+    const newRate = Math.min(playbackRate + 0.5, 2);
+    setPlaybackRate(newRate);
+  };
+
+  const decreasePlaybackRate = () => {
+    const newRate = Math.max(playbackRate - 0.5, 0.5);
+    setPlaybackRate(newRate);
+  };
+
+  const handleForwardTenSeconds = () => {
     if (playerRef.current) {
       playerRef.current.seekTo(
         playerRef.current.getCurrentTime() + 10,
@@ -84,7 +95,7 @@ const VideoEditor: React.FC = () => {
     }
   };
 
-  const handleRewind = () => {
+  const handleBackwardTenSeconds = () => {
     if (playerRef.current) {
       playerRef.current.seekTo(
         Math.max(playerRef.current.getCurrentTime() - 10, 0),
@@ -157,6 +168,7 @@ const VideoEditor: React.FC = () => {
                 controls={true}
                 playing={playing}
                 onProgress={onProgress}
+                playbackRate={playbackRate}
                 // progressInterval={500}
                 width="100%"
                 heigth="100%"
@@ -186,7 +198,7 @@ const VideoEditor: React.FC = () => {
               <Button
                 className="inline-flex gap-2"
                 variant="ghost"
-                onClick={handleRewind}
+                onClick={handleBackwardTenSeconds}
                 aria-label="10s back"
               >
                 <Image
@@ -202,7 +214,7 @@ const VideoEditor: React.FC = () => {
               </Button>
               <Button
                 variant="ghost"
-                onClick={handleRewind}
+                onClick={decreasePlaybackRate}
                 aria-label="Rewind"
               >
                 <Rewind size={20} style={darkIconStyle} />
@@ -220,7 +232,7 @@ const VideoEditor: React.FC = () => {
               </Button>
               <Button
                 variant="ghost"
-                onClick={handleFastForward}
+                onClick={increasePlaybackRate}
                 aria-label="Fast Forward"
               >
                 <FastForward size={20} style={darkIconStyle} />
@@ -228,7 +240,7 @@ const VideoEditor: React.FC = () => {
               <Button
                 className="inline-flex gap-2"
                 variant="ghost"
-                onClick={handleFastForward}
+                onClick={handleForwardTenSeconds}
                 aria-label="10s forward"
               >
                 <span className="font-manrope text-sm font-semibold text-muted-foreground">
