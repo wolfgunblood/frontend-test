@@ -145,7 +145,7 @@ const Timeline: React.FC<TimelineProps> = ({
     e.currentTarget.classList.remove("dragging");
   };
 
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+  const handleDrop = async (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const index = parseInt(e.dataTransfer.getData("text/plain"), 10);
     const timelineWidth = timelineRef.current
@@ -165,7 +165,7 @@ const Timeline: React.FC<TimelineProps> = ({
     const newLeftPercentage = (newLeft / scaledWidth) * 100;
     const newTime = Math.round((newLeftPercentage / 100) * duration);
 
-    editMarker(index, newTime);
+    await editMarker(index, newTime);
   };
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {

@@ -43,6 +43,7 @@ const Timeline: React.FC<TimelineProps> = ({
 
   const [controlValue, setControlValue] = useState(0);
   const [bottomSliderWidth, setBottomSliderWidth] = useState(100);
+  const [isLoading, setLoading] = useState(false);
 
   // const markers = useAdStore(state => state.markers);
   // const initializeMarkers = useAdStore(state => state.initializeMarkers);
@@ -151,8 +152,10 @@ const Timeline: React.FC<TimelineProps> = ({
   //   e.currentTarget.classList.remove("dragging");
   // };
 
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+  const handleDrop = async (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
+    setLoading(true);
+
     const index = parseInt(e.dataTransfer.getData("text/plain"), 10);
 
     if (!timelineRef.current) {
@@ -171,7 +174,15 @@ const Timeline: React.FC<TimelineProps> = ({
     const newLeftPercentage = (newLeft / timelineWidth) * 100;
 
     const newTime = Math.round((newLeftPercentage / 100) * duration);
-    editMarker(index, newTime);
+
+    await editMarker(index, newTime)
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Something went wrong", error);
+        setLoading(false);
+      });
   };
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
@@ -193,7 +204,7 @@ const Timeline: React.FC<TimelineProps> = ({
         className="custom-scrollbar h-128px relative w-full overflow-x-auto overflow-y-visible pb-16 pt-16"
       >
         <div
-          className="timeline-slider relative z-10 h-full w-full"
+          className={`timeline-slider relative z-10 h-full w-full ${isLoading ? "blur" : "blur-none"} transition-all ease-in-out`}
           style={{
             width: `${bottomSliderWidth}%`,
             padding: "0 16px",
@@ -209,7 +220,7 @@ const Timeline: React.FC<TimelineProps> = ({
             onChange={onSeekChange}
             onMouseDown={onSeekMouseDown}
             onMouseUp={onSeekMouseUp}
-            className="h-2 w-full cursor-pointer appearance-none"
+            className={`h-2 w-full cursor-pointer appearance-none`}
             // style={{ transition: `left ${transitionDuration} ease-in-out` }}
             // style={{ marginBottom: '16px' }}
           />
