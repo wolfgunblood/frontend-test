@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactPlayer from "react-player";
 import Admaker from "../Admaker";
 import VideoPlayer from "./VideoPlay";
@@ -18,6 +18,8 @@ const Editor: React.FC = () => {
     setDuration,
     setSeeking,
   } = useVideoStore();
+
+  const [markerZIndex, setMarkerZIndex] = useState(5);
 
   const handlePlayPause = () => {
     setPlaying(!playing);
@@ -99,6 +101,7 @@ const Editor: React.FC = () => {
 
   const handleSeekMouseDown = () => {
     setSeeking(true);
+    setMarkerZIndex(-5);
   };
 
   const handleSeekMouseUp = (e: React.MouseEvent<HTMLInputElement>) => {
@@ -107,6 +110,7 @@ const Editor: React.FC = () => {
     setCurrentTime(newTime);
     playerRef.current?.seekTo(newTime, "seconds");
     setPlaying(true); // You might want to conditionally set playing based on previous state
+    setMarkerZIndex(5);
   };
 
   return (
@@ -130,6 +134,7 @@ const Editor: React.FC = () => {
         onSeekChange={handleSeekChange}
         onSeekMouseDown={handleSeekMouseDown}
         onSeekMouseUp={handleSeekMouseUp}
+        markerZIndex={markerZIndex}
       />
     </div>
   );
