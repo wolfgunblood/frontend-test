@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
 import { Trash2, Wand } from "lucide-react";
@@ -17,6 +17,13 @@ const badgeStyles: Record<string, { backgroundColor: string; color: string }> =
     ab: { backgroundColor: "#FED7AA", color: "#9A3412" },
   };
 
+interface Marker {
+  id: string;
+  type: "AUTO" | "STATIC" | "AB";
+  timestamp: number;
+  createdOn: Date;
+}
+
 const Admaker = () => {
   // const items = [
   //     { id: 1, type: 'auto', timestamp: '00:00:00' },
@@ -24,7 +31,28 @@ const Admaker = () => {
   //     { id: 3, type: 'AB', timestamp: '00:10:00' },
   // ];
 
-  const { markers, deleteMarker } = useAdStore();
+  const { markers, deleteMarker, initializeMarkers } = useAdStore();
+
+  useEffect(() => {
+    const fetchAds = async () => {
+      try {
+        const response = await fetch("/api/ads", {
+          method: "GET",
+        });
+
+        if (!response.ok) throw new Error("Network response not ok");
+        const data = (await response.json()) as Marker[];
+        console.log(data);
+        initializeMarkers(data);
+      } catch (error) {
+        console.log("Something went wrong");
+      }
+    };
+
+    fetchAds().catch((error) => {
+      console.error("Failed to fetch ads", error);
+    });
+  }, []);
 
   return (
     <div className="flex h-[552px] flex-col justify-between rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm">

@@ -11,15 +11,18 @@ export async function POST(req: Request) {
   try {
     const ads = (await req.json()) as Ad;
 
-    console.log(ads);
+    // console.log(ads);
     const validatedAds = adSchema.parse(ads);
 
-    const result = await db.ads.create({
+    const createdAd = await db.ads.create({
       data: validatedAds,
     });
 
-    return new NextResponse(JSON.stringify({ result: result }), {
+    return new NextResponse(JSON.stringify(createdAd), {
       status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
   } catch (error) {
     console.error("[ADS]", error);

@@ -105,10 +105,11 @@ const useModalStore = create<ModalState>((set, get) => ({
 export default useModalStore;
 
 interface Marker {
+  id: string;
   type: "AUTO" | "STATIC" | "AB";
   timestamp: number;
+  createdOn: Date;
 }
-
 interface AdStoreState {
   markers: Marker[];
   undoStack: Marker[][];
@@ -144,8 +145,10 @@ export const useAdStore = create<AdStoreState>((set, get) => ({
 
       if (!response.ok) throw new Error("Network response was not ok");
 
+      const savedMarker = (await response.json()) as Marker;
+
       set({
-        markers: [...markers, newMarker],
+        markers: [...markers, savedMarker],
         undoStack: [...undoStack, markers],
         redoStack: [],
       });
