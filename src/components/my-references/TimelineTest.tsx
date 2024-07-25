@@ -50,19 +50,10 @@ const Timeline: React.FC<TimelineProps> = ({
   //Timeline Ref
   const timelineRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // Initialize markers
-    initializeMarkers([
-      { time: 300, type: "AUTO" },
-      { time: 1500, type: "STATIC" },
-      { time: 3600, type: "AB" },
-    ]);
-  }, [initializeMarkers]);
-
   const computedMarkers = markers.map((marker) => {
     // console.log(marker.time)
     // console.log(duration)
-    const leftPercentage = (marker.time / duration) * 100;
+    const leftPercentage = (marker.timestamp / duration) * 100;
     // const leftPercentage = (marker.time / duration) * bottomSliderWidth;
     // console.log(`Marker at ${marker.time}s, Type: ${marker.type}, Calculated Left: ${leftPercentage}%`);
     return {
