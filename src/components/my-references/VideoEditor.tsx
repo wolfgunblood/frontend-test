@@ -37,6 +37,8 @@ const VideoEditor: React.FC = () => {
   // const [duration, setDuration] = useState<number>(0);
   // const [seeking, setSeeking] = useState<boolean>(false);
 
+  const [markerZIndex, setMarkerZIndex] = useState(5);
+
   const handlePlayPause = () => {
     setPlaying(!playing);
   };
@@ -268,6 +270,7 @@ const VideoEditor: React.FC = () => {
       <Timeline
         currentTime={currentTime}
         duration={duration}
+        markerZIndex={markerZIndex}
         onSeekChange={handleSeekChange}
         onSeekMouseDown={handleSeekMouseDown}
         onSeekMouseUp={handleSeekMouseUp}

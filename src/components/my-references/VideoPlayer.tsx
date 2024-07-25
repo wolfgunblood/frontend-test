@@ -32,6 +32,8 @@ const VideoPlayer: React.FC = () => {
   // const [duration, setDuration] = useState<number>(0);
   // const [seeking, setSeeking] = useState<boolean>(false); // State to handle if seeking is active
 
+  const [markerZIndex, setMarkerZIndex] = useState(5);
+
   const handlePlayPause = () => {
     setPlaying(!playing);
   };
@@ -153,6 +155,7 @@ const VideoPlayer: React.FC = () => {
       <Timeline
         currentTime={currentTime}
         duration={duration}
+        markerZIndex={markerZIndex}
         onSeekChange={handleSeekChange}
         onSeekMouseDown={handleSeekMouseDown}
         onSeekMouseUp={handleSeekMouseUp}
