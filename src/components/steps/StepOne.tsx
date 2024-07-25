@@ -57,25 +57,14 @@ const StepOne: React.FC = () => {
       ) {
         console.log({ type: selectedType, timestamp: currentTime });
 
-        // const response = await fetch('/api/ads', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({ type: selectedType, timestamp: currentTime })
-        // });
-
-        // if (!response.ok) throw new Error('Network response was not ok');
-
-        addMarker(currentTime, selectedType);
+        await addMarker(currentTime, selectedType);
 
         console.log("Ads successfully added");
       }
-
-      nextStep();
     } catch (error) {
       console.error("Failed to add ads:", error);
     }
+    nextStep();
   };
 
   return (

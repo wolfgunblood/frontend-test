@@ -8,6 +8,7 @@ import { useAdStore, useVideoStore } from "store/useStore";
 import { EditForm } from "./Editform";
 import { convertSecondsToHHMMSS } from "~/helpers/timeformat";
 import { formatMarkerType } from "~/helpers/type-marker";
+import { db } from "~/server/db";
 
 const badgeStyles: Record<string, { backgroundColor: string; color: string }> =
   {
@@ -49,7 +50,7 @@ const Admaker = () => {
                 </span>
                 <div className="flex flex-grow items-center justify-between gap-4 rounded-lg border border-zinc-200 px-4 py-3 shadow-sm">
                   <span className="font-manrope text-base font-semibold text-zinc-800">
-                    {convertSecondsToHHMMSS(marker.time)}
+                    {convertSecondsToHHMMSS(marker.timestamp)}
                   </span>
                   <Badge
                     style={{

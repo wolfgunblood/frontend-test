@@ -3,7 +3,6 @@ import { db } from "~/server/db";
 import { adSchema } from "~/lib/schema";
 
 interface Ad {
-  id: number;
   type: "AUTO" | "STATIC" | "AB";
   timestamp: number;
 }
@@ -27,6 +26,7 @@ export async function POST(req: Request) {
     return new NextResponse("Something went wrong", { status: 500 });
   }
 }
+
 export async function GET(req: Request) {
   try {
     const result = await db.ads.findMany();

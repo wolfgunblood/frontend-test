@@ -81,9 +81,10 @@ enum StatisticType {
 }
 
 model Ads {
-    id        Int           @id @default(autoincrement())
+    id        String        @id @default(uuid())
     type      StatisticType @default(AUTO)
     timestamp Int
+    createdOn DateTime      @default(now())
 
     @@index([type])
 }
