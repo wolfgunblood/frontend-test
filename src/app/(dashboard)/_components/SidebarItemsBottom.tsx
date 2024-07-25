@@ -4,14 +4,15 @@ import React from "react";
 import { cn } from "~/lib/utils";
 import { Switch } from "~/components/ui/switch";
 import Image from "next/image";
+import { LucideIcon } from "lucide-react";
 
 interface SidebarItemProps {
-  icon: string;
+  icon: LucideIcon;
   label: string;
   flag: boolean;
 }
 
-const SidebarItemsBottom = ({ icon, label, flag }: SidebarItemProps) => {
+const SidebarItemsBottom = ({ icon: Icon, label, flag }: SidebarItemProps) => {
   return (
     <div className="flex items-center gap-3">
       <button
@@ -22,7 +23,8 @@ const SidebarItemsBottom = ({ icon, label, flag }: SidebarItemProps) => {
         )}
         aria-label={label}
       >
-        <Image src={icon} alt={label} width={20} height={20} />
+        {/* <Image src={icon} alt={label} width={20} height={20} /> */}
+        <Icon size={20} stroke="#71717A" strokeWidth={1} />
         <span>{label}</span>
       </button>
       {flag && <Switch aria-label="demo/pro switch" />}

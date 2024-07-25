@@ -2,25 +2,26 @@
 
 import React from "react";
 import SidebarItemsBottom from "./SidebarItemsBottom";
+import { HelpCircle, Lightbulb, MailPlus, PlayCircle } from "lucide-react";
 
 const mainRoutes = [
   {
-    icon: "/play-circle.svg",
+    icon: PlayCircle,
     label: "Demo",
     flag: true,
   },
   {
-    icon: "/mail-plus.svg",
+    icon: MailPlus,
     label: "Invite your team",
     flag: false,
   },
   {
-    icon: "/lightbulb.svg",
+    icon: Lightbulb,
     label: "Give feedback",
     flag: false,
   },
   {
-    icon: "/help-circle.svg",
+    icon: HelpCircle,
     label: "Help & support",
     flag: false,
   },
