@@ -24,6 +24,7 @@ const markerUrls = {
 interface TimelineProps {
   currentTime: number;
   duration: number;
+  markerZIndex: number;
   onSeekChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSeekMouseDown: () => void;
   onSeekMouseUp: (e: React.MouseEvent<HTMLInputElement>) => void;
@@ -32,6 +33,7 @@ interface TimelineProps {
 const Timeline: React.FC<TimelineProps> = ({
   currentTime,
   duration,
+  markerZIndex,
   onSeekChange,
   onSeekMouseDown,
   onSeekMouseUp,
@@ -218,7 +220,12 @@ const Timeline: React.FC<TimelineProps> = ({
               className="absolute"
               src={marker.url}
               alt="Timeline marker"
-              style={{ left: marker.left, bottom: "0", height: "100%" }}
+              style={{
+                left: marker.left,
+                bottom: "0",
+                height: "100%",
+                zIndex: markerZIndex,
+              }}
               draggable
               onDragStart={(e) => handleDragStart(e, index)}
               // onDragEnd={handleDragEnd}

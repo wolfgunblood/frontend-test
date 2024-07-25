@@ -32,6 +32,7 @@ const VideoEditor: React.FC = () => {
   // Hydration
 
   const [isClient, setIsClient] = useState(false);
+  const [markerZIndex, setMarkerZIndex] = useState(5);
 
   useEffect(() => {
     setIsClient(true);
@@ -121,6 +122,7 @@ const VideoEditor: React.FC = () => {
 
   const handleSeekMouseDown = () => {
     setSeeking(true);
+    setMarkerZIndex(-5);
   };
 
   const handleSeekMouseUp = (e: React.MouseEvent<HTMLInputElement>) => {
@@ -138,6 +140,7 @@ const VideoEditor: React.FC = () => {
     setTimeout(() => {
       setPlaying(true);
     }, 100);
+    setMarkerZIndex(5);
   };
 
   return (
@@ -266,6 +269,7 @@ const VideoEditor: React.FC = () => {
       <Timeline
         currentTime={currentTime}
         duration={duration}
+        markerZIndex={markerZIndex}
         onSeekChange={handleSeekChange}
         onSeekMouseDown={handleSeekMouseDown}
         onSeekMouseUp={handleSeekMouseUp}
