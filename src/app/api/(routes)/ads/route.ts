@@ -47,7 +47,10 @@ export async function GET(req: Request) {
     return new NextResponse(JSON.stringify(result), { status: 200 });
   } catch (error) {
     console.error("[ADS] Fetching Error:", error);
-    return new NextResponse("Internal server error", { status: 500 });
+    return new NextResponse(
+      JSON.stringify({ messgae: "Something went wrong", error: error }),
+      { status: 500 },
+    );
   }
 }
 

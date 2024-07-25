@@ -46,7 +46,7 @@ const Admaker = () => {
         console.log(data);
         initializeMarkers(data);
       } catch (error) {
-        console.log("Something went wrong");
+        console.log("Something went wrong", error);
       }
     };
 
