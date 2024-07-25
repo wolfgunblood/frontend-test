@@ -48,7 +48,7 @@ export function EditForm({ index }: { index: number }) {
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     const [hours = 0, minutes = 0, seconds = 0] = values.timestamp
       .split(":")
       .map(Number);
@@ -63,8 +63,13 @@ export function EditForm({ index }: { index: number }) {
 
       return;
     }
+    console.log(index);
+    console.log(newTime);
 
-    editMarker(index, newTime);
+    await editMarker(index, newTime).catch((error) => {
+      console.error("Something went wrong");
+    });
+
     setIsDialogOpen(false);
   }
 

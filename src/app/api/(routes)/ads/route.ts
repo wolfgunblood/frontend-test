@@ -1,10 +1,20 @@
 import { NextResponse } from "next/server";
 import { db } from "~/server/db";
-import { adSchema, adSchemaDB, type ZodAdDB } from "~/lib/schema";
+import {
+  adSchema,
+  adSchemaDB,
+  adSchemaUpdate,
+  type ZodAdDB,
+} from "~/lib/schema";
 
 interface Ad {
   type: "AUTO" | "STATIC" | "AB";
   timestamp: number;
+}
+
+interface UpdateAd {
+  updateTime: number;
+  id: string;
 }
 
 export async function POST(req: Request) {
@@ -41,6 +51,35 @@ export async function GET(req: Request) {
   }
 }
 
+export async function PATCH(req: Request) {
+  try {
+    const body = (await req.json()) as UpdateAd;
+
+    const { updatedTime, id } = adSchemaUpdate.parse(body);
+
+    await db.ads.update({
+      where: {
+        id: id,
+      },
+      data: {
+        timestamp: updatedTime,
+      },
+    });
+
+    const markers = await db.ads.findMany();
+
+    return new NextResponse(JSON.stringify(markers), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    console.log("PATCH ROUTE ERROR", error);
+    return new NextResponse("Internal Error", { status: 500 });
+  }
+}
+
 export async function DELETE(req: Request) {
   try {
     const marker = (await req.json()) as ZodAdDB;
@@ -61,7 +100,7 @@ export async function DELETE(req: Request) {
       },
     });
   } catch (error) {
-    console.log("ATTACHMENT_ID", error);
+    console.log("DELETE ROUTE ERROR", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }

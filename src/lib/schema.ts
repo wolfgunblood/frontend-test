@@ -13,3 +13,8 @@ export const adSchemaDB = z.object({
 
 export type ZodAd = z.infer<typeof adSchema>;
 export type ZodAdDB = z.infer<typeof adSchemaDB>;
+
+export const adSchemaUpdate = z.object({
+  updatedTime: z.number(),
+  id: z.string(),
+});

@@ -116,7 +116,7 @@ interface AdStoreState {
   redoStack: Marker[][];
   addMarker: (time: number, type: "AUTO" | "STATIC" | "AB") => Promise<void>;
   deleteMarker: (index: number) => Promise<void>;
-  editMarker: (index: number, newTime: number) => void;
+  editMarker: (index: number, newTime: number) => Promise<void>;
   undo: () => void;
   redo: () => void;
   initializeMarkers: (defaultMarkers: Marker[]) => void;
@@ -184,19 +184,37 @@ export const useAdStore = create<AdStoreState>((set, get) => ({
     }
   },
 
-  editMarker: (index, newTime) => {
+  editMarker: async (index, newTime) => {
     const { markers, undoStack } = get();
-    const newMarkers = markers.map((marker, i) => {
-      if (i === index) {
-        return { ...marker, time: newTime };
-      }
-      return marker;
-    });
-    set({
-      markers: newMarkers,
-      undoStack: [...undoStack, markers],
-      redoStack: [],
-    });
+    // const newMarkers = markers.map((marker, i) => {
+    //   if (i === index) {
+    //     return { ...marker, time: newTime };
+    //   }
+    //   return marker;
+    // });
+    const bodyData = {
+      id: markers[index]?.id,
+      updatedTime: newTime,
+    };
+    try {
+      const response = await fetch("/api/ads", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(bodyData),
+      });
+
+      const data = (await response.json()) as Marker[];
+
+      set({
+        markers: data,
+        undoStack: [...undoStack, markers],
+        redoStack: [],
+      });
+    } catch (error) {
+      console.log("Something went wrong", error);
+    }
   },
 
   undo: () => {
