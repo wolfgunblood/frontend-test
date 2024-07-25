@@ -9,6 +9,7 @@ import { EditForm } from "./Editform";
 import { convertSecondsToHHMMSS } from "~/helpers/timeformat";
 import { formatMarkerType } from "~/helpers/type-marker";
 import { db } from "~/server/db";
+import { error } from "console";
 
 const badgeStyles: Record<string, { backgroundColor: string; color: string }> =
   {
@@ -54,6 +55,12 @@ const Admaker = () => {
     });
   }, []);
 
+  const handleDeleteMarker = async (index: number) => {
+    await deleteMarker(index).catch((error) => {
+      console.error("Failed to delete Ads", error);
+    });
+  };
+
   return (
     <div className="flex h-[552px] flex-col justify-between rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm">
       <div className="flex flex-col gap-4">
@@ -96,7 +103,7 @@ const Admaker = () => {
                     variant="trash"
                     size="sm"
                     className="flex items-center justify-center"
-                    onClick={() => deleteMarker(index)}
+                    onClick={() => handleDeleteMarker(index)}
                     aria-label="Trash"
                   >
                     <Trash2 size={16} color="#7F1D1D" />

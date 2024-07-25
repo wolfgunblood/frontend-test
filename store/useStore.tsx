@@ -115,7 +115,7 @@ interface AdStoreState {
   undoStack: Marker[][];
   redoStack: Marker[][];
   addMarker: (time: number, type: "AUTO" | "STATIC" | "AB") => Promise<void>;
-  deleteMarker: (index: number) => void;
+  deleteMarker: (index: number) => Promise<void>;
   editMarker: (index: number, newTime: number) => void;
   undo: () => void;
   redo: () => void;
@@ -159,14 +159,29 @@ export const useAdStore = create<AdStoreState>((set, get) => ({
     }
   },
 
-  deleteMarker: (index) => {
+  deleteMarker: async (index) => {
     const { markers, undoStack } = get();
-    const newMarkers = markers.filter((_, i) => i !== index);
-    set({
-      markers: newMarkers,
-      undoStack: [...undoStack, markers],
-      redoStack: [],
-    });
+    // const newMarkers = markers.filter((_, i) => i !== index);
+    try {
+      console.log("hi");
+      const response = await fetch("/api/ads", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(markers[index]),
+      });
+
+      const data = (await response.json()) as Marker[];
+
+      set({
+        markers: data,
+        undoStack: [...undoStack, markers],
+        redoStack: [],
+      });
+    } catch (error) {
+      console.log("something went wrong", error);
+    }
   },
 
   editMarker: (index, newTime) => {
