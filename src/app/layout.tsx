@@ -1,6 +1,7 @@
 import "~/styles/globals.css";
 
-import { Manrope } from 'next/font/google';
+import { Manrope } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 
 import { type Metadata } from "next";
 
@@ -8,8 +9,7 @@ import { TRPCReactProvider } from "~/trpc/react";
 import { cn } from "~/lib/utils";
 import { Toaster } from "~/components/ui/toaster";
 
-const manrope = Manrope({ subsets: ['latin'] });
-
+const manrope = Manrope({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Vidpod",
@@ -23,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("bg-zinc-50", manrope.className)}>
+        <Analytics />
         <TRPCReactProvider>{children}</TRPCReactProvider>
         <Toaster />
       </body>
