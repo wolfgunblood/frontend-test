@@ -1,16 +1,11 @@
 import { create } from "zustand";
 import { string } from "zod";
-
-interface VideoState {
-  playing: boolean;
-  currentTime: number;
-  duration: number;
-  seeking: boolean;
-  setPlaying: (playing: boolean) => void;
-  setCurrentTime: (time: number) => void;
-  setDuration: (duration: number) => void;
-  setSeeking: (seeking: boolean) => void;
-}
+import {
+  Marker,
+  type AdStoreState,
+  type ModalState,
+  type VideoState,
+} from "~/lib/types";
 
 export const useVideoStore = create<VideoState>((set) => ({
   playing: false,
@@ -22,45 +17,6 @@ export const useVideoStore = create<VideoState>((set) => ({
   setDuration: (duration) => set({ duration }),
   setSeeking: (seeking) => set({ seeking }),
 }));
-
-interface Option {
-  id: string;
-  name: string;
-  createdOn: string;
-  picture: string;
-  createdBy: {
-    picture: string;
-    name: string;
-  };
-  badge: {
-    category: string;
-    subCategory: string;
-  };
-}
-
-interface ModalState {
-  step: number;
-  selections: {
-    stepOne: string;
-    stepTwo: Option[];
-    stepThree: string;
-  };
-  selectionCount: number;
-  options: Option[];
-  searchTerm: string;
-  setSearchTerm: (term: string) => void;
-  setOptions: (options: Option[]) => void;
-  setStepOneType: (type: string) => void;
-  setStep: (step: number) => void;
-  nextStep: () => void;
-  previousStep: () => void;
-  setSelection: (
-    step: keyof ModalState["selections"],
-    value: string | Option[],
-  ) => void;
-  toggleSelection: (option: Option) => void;
-  reset: () => void;
-}
 
 const useModalStore = create<ModalState>((set, get) => ({
   step: 1,
@@ -103,24 +59,6 @@ const useModalStore = create<ModalState>((set, get) => ({
 }));
 
 export default useModalStore;
-
-interface Marker {
-  id: string;
-  type: "AUTO" | "STATIC" | "AB";
-  timestamp: number;
-  createdOn: Date;
-}
-interface AdStoreState {
-  markers: Marker[];
-  undoStack: Marker[][];
-  redoStack: Marker[][];
-  addMarker: (time: number, type: "AUTO" | "STATIC" | "AB") => Promise<void>;
-  deleteMarker: (index: number) => Promise<void>;
-  editMarker: (index: number, newTime: number) => Promise<void>;
-  undo: () => void;
-  redo: () => void;
-  initializeMarkers: (defaultMarkers: Marker[]) => void;
-}
 
 export const useAdStore = create<AdStoreState>((set, get) => ({
   markers: [],

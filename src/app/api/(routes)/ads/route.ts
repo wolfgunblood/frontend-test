@@ -6,16 +6,7 @@ import {
   adSchemaUpdate,
   type ZodAdDB,
 } from "~/lib/schema";
-
-interface Ad {
-  type: "AUTO" | "STATIC" | "AB";
-  timestamp: number;
-}
-
-interface UpdateAd {
-  updateTime: number;
-  id: string;
-}
+import { Ad, UpdateAd } from "~/lib/types";
 
 export async function POST(req: Request) {
   try {
