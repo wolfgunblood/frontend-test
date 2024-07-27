@@ -190,9 +190,9 @@ export const useAdStore = create<AdStoreState>((set, get) => ({
 
     try {
       const response = await fetch("/api/save", {
-        method: "PATCH",
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ markers }),
+        body: JSON.stringify(markers),
       });
 
       if (!response.ok) throw new Error("Failed to save changes");
