@@ -45,26 +45,15 @@ const Timeline = ({
   const [bottomSliderWidth, setBottomSliderWidth] = useState(100);
   const [isLoading, setLoading] = useState(false);
 
-  // const markers = useAdStore(state => state.markers);
-  // const initializeMarkers = useAdStore(state => state.initializeMarkers);
   const { markers, initializeMarkers, editMarker } = useAdStore();
 
   const timelineRef = useRef<HTMLDivElement>(null);
-
-  // useEffect(() => {
-  //   initializeMarkers([
-  //     { time: 300, type: "AUTO" },
-  //     { time: 1500, type: "STATIC" },
-  //     { time: 3600, type: "AB" },
-  //   ]);
-  // }, [initializeMarkers]);
 
   const computedMarkers = markers.map((marker) => {
     // console.log(marker.time)
     // console.log(duration)
     const leftPercentage = (marker.timestamp / duration) * 100;
-    // const leftPercentage = (marker.time / duration) * bottomSliderWidth;
-    // console.log(`Marker at ${marker.time}s, Type: ${marker.type}, Calculated Left: ${leftPercentage}%`);
+
     return {
       ...marker,
       url: markerUrls[marker.type],

@@ -5,13 +5,11 @@ import StepOne from "./steps/StepOne";
 import StepTwo from "./steps/StepTwo";
 import StepThree from "./steps/StepThree";
 import { Plus } from "lucide-react";
-
 import { options } from "../../constants/data";
-import Image from "next/image";
 import useModalStore from "~/store/useStore";
 
 const Modal = () => {
-  const { step, nextStep, reset, selections, selectionCount } = useModalStore();
+  const { step, selectionCount } = useModalStore();
   const setOptions = useModalStore((state) => state.setOptions);
 
   const headerOptions = [
@@ -28,6 +26,7 @@ const Modal = () => {
       description: `${selectionCount} ads selected`,
     },
   ];
+
   useEffect(() => {
     setOptions(options);
   }, [setOptions]);
