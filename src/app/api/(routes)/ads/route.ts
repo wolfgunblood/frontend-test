@@ -34,7 +34,7 @@ export async function POST(req: Request) {
 export async function GET(req: Request) {
   try {
     const result = await db.ads.findMany();
-    console.log(result);
+    // console.log(result);
 
     return new NextResponse(JSON.stringify(result), { status: 200 });
   } catch (error) {
