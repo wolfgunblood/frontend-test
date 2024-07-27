@@ -94,3 +94,12 @@ export interface Timestamp {
 export interface TimestampProps {
   timestamps: Timestamp[];
 }
+
+export interface TimelineProps {
+  currentTime: number;
+  duration: number;
+  markerZIndex: number;
+  onSeekChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onSeekMouseDown: () => void;
+  onSeekMouseUp: (e: React.MouseEvent<HTMLInputElement>) => void;
+}

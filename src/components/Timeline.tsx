@@ -1,26 +1,12 @@
 // Timeline component
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Timeline.css";
 import "../styles/Slider.css";
-import { DisplayTime, generateTimeLabels } from "~/helpers/timeformat";
 import TimelineHead from "./TimelineHead";
 import Timestamps from "./Timestamps";
 import { useAdStore } from "~/store/useStore";
-
-const markerUrls = {
-  AUTO: "/ad2.svg",
-  STATIC: "/ad3.svg",
-  AB: "/ad1.svg",
-};
-
-interface TimelineProps {
-  currentTime: number;
-  duration: number;
-  markerZIndex: number;
-  onSeekChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onSeekMouseDown: () => void;
-  onSeekMouseUp: (e: React.MouseEvent<HTMLInputElement>) => void;
-}
+import useTimeline from "~/app/hooks/timeline";
+import { type TimelineProps } from "~/lib/types";
 
 const Timeline = ({
   currentTime,
@@ -32,23 +18,22 @@ const Timeline = ({
 }: TimelineProps) => {
   const sliderValue = currentTime;
 
-  const [controlValue, setControlValue] = useState(0);
-  const [bottomSliderWidth, setBottomSliderWidth] = useState(100);
+  // const [controlValue, setControlValue] = useState(0);
+  // const [bottomSliderWidth, setBottomSliderWidth] = useState(100);
   const [isLoading, setLoading] = useState(false);
 
+  const {
+    controlValue,
+    setControlValue,
+    bottomSliderWidth,
+    setBottomSliderWidth,
+    computedMarkers,
+    handleControlChange,
+    timelineRef,
+    timestamps,
+  } = useTimeline(duration);
+
   const { markers, editMarker } = useAdStore();
-
-  const timelineRef = useRef<HTMLDivElement>(null);
-
-  const computedMarkers = markers.map((marker) => {
-    const leftPercentage = (marker.timestamp / duration) * 100;
-
-    return {
-      ...marker,
-      url: markerUrls[marker.type],
-      left: `${leftPercentage}%`,
-    };
-  });
 
   // Ticks calculation
 
@@ -78,44 +63,6 @@ const Timeline = ({
     };
   }, [duration]);
 
-  // Timestamp calculations
-
-  const intervals = [
-    10 * 60,
-    10 * 60,
-    10 * 60,
-    10 * 60,
-    5 * 60,
-    5 * 60,
-    5 * 60,
-    5 * 60,
-    5 * 60,
-    5 * 60,
-    5 * 60,
-    60,
-  ];
-  const interval = intervals[Math.min(controlValue, intervals.length - 1)];
-
-  const timestamps = useMemo(() => {
-    const numMarks = Math.floor(duration / interval!);
-    return Array.from({ length: numMarks + 1 }, (_, index) => {
-      const time = interval! * index;
-      return { time: DisplayTime(time), left: `${(time / duration) * 100}%` };
-    });
-  }, [duration, interval]);
-
-  const handleControlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newControlValue = Number(e.target.value);
-    setControlValue(newControlValue);
-    // console.log(controlValue);
-    if (newControlValue === 0) {
-      setBottomSliderWidth(100);
-    } else {
-      const newWidth = 100 + newControlValue * 10;
-      setBottomSliderWidth(newWidth);
-    }
-  };
-
   // Ad Marker Dragging logic
 
   const handleDragStart = (
@@ -123,12 +70,7 @@ const Timeline = ({
     index: number,
   ) => {
     e.dataTransfer.setData("text/plain", index.toString());
-    // e.currentTarget.classList.add("dragging");
   };
-
-  // const handleDragEnd = (e: React.DragEvent<HTMLImageElement>) => {
-  //   e.currentTarget.classList.remove("dragging");
-  // };
 
   const handleDrop = async (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
