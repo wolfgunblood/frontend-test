@@ -7,25 +7,6 @@ import useModalStore from "~/store/useStore";
 
 const StepThree = () => {
   const { reset, selections } = useModalStore();
-  // const submitAds = async () => {
-  //     try {
-
-  //         const response = await fetch('/api/ads', {
-  //             method: 'POST',
-  //             headers: {
-  //                 'Content-Type': 'application/json'
-  //             },
-  //             body: JSON.stringify({ type: "AUTO", value: "10:08:00" })
-  //         });
-  //         if (!response.ok) throw new Error('Network response was not ok');
-
-  //         // console.log(selections)
-  //         console.log("Ads successfully added");
-  //     } catch (error) {
-  //         console.error("Failed to add ads:", error);
-  //     }
-  // };
-
   return (
     <div className="flex flex-col gap-6">
       <div>
