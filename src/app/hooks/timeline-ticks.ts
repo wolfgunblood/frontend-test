@@ -6,11 +6,10 @@ function useTimelineTicks(
 ) {
   const [ticks, setTicks] = useState<Array<{ left: string }>>([]);
 
-  // Function to calculate the position of ticks based on the timeline's width
   const calculateTicks = useCallback(() => {
     if (timelineRef.current) {
       const timelineWidth = timelineRef.current.offsetWidth;
-      const numberOfTicks = Math.floor(timelineWidth / 50); // Modify 50 to adjust tick spacing
+      const numberOfTicks = Math.floor(timelineWidth / 50);
 
       const newTicks = Array.from({ length: numberOfTicks }, (_, index) => {
         const time = (index / numberOfTicks) * duration;

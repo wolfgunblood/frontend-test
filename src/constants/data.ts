@@ -111,5 +111,11 @@ export const options = [
       subCategory: "Back to school 24",
     },
   },
- 
 ];
+
+export const libraryItems = {
+  "All folders": ["Product Launch", "Customer Testimonials"],
+  "Eigth Sleep": ["Pod 3", "Q3 Promo", "Athlete Campaign"],
+  Brilliant: ["Summer Sale", "New Features"],
+  Milligram: ["Design Award", "New Arrivals"],
+};

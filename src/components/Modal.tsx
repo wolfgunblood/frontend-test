@@ -5,7 +5,7 @@ import StepOne from "./steps/StepOne";
 import StepTwo from "./steps/StepTwo";
 import StepThree from "./steps/StepThree";
 import { Plus } from "lucide-react";
-import { options } from "../../constants/data";
+import { options } from "../constants/data";
 import useModalStore from "~/store/useStore";
 
 const Modal = () => {

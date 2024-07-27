@@ -11,6 +11,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import useModalStore from "~/store/useStore";
+import { libraryItems } from "~/constants/data";
 
 const StepTwo = () => {
   const {
@@ -28,13 +29,6 @@ const StepTwo = () => {
   const filteredOptions = options.filter((option) =>
     option.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
-
-  const libraryItems = {
-    "All folders": ["Product Launch", "Customer Testimonials"],
-    "Eigth Sleep": ["Pod 3", "Q3 Promo", "Athlete Campaign"],
-    Brilliant: ["Summer Sale", "New Features"],
-    Milligram: ["Design Award", "New Arrivals"],
-  };
 
   return (
     <div className="flex flex-col gap-6">
