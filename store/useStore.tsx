@@ -220,10 +220,13 @@ export const useAdStore = create<AdStoreState>((set, get) => ({
   undo: () => {
     const { markers, undoStack, redoStack } = get();
     if (undoStack.length === 0) return;
-    const previousState = undoStack[undoStack.length - 1];
+    // const previousState = undoStack[undoStack.length - 1];
+    const previousState = undoStack.pop();
+
     set({
       markers: previousState,
-      undoStack: undoStack.slice(0, undoStack.length - 1),
+      // undoStack: undoStack.slice(0, undoStack.length - 1),
+      undoStack: [...undoStack],
       redoStack: [...redoStack, markers],
     });
   },
@@ -231,11 +234,13 @@ export const useAdStore = create<AdStoreState>((set, get) => ({
   redo: () => {
     const { markers, undoStack, redoStack } = get();
     if (redoStack.length === 0) return;
-    const nextState = redoStack[redoStack.length - 1];
+    // const nextState = redoStack[redoStack.length - 1];
+    const nextState = redoStack.pop();
     set({
       markers: nextState,
       undoStack: [...undoStack, markers],
-      redoStack: redoStack.slice(0, redoStack.length - 1),
+      // redoStack: redoStack.slice(0, redoStack.length - 1),
+      redoStack: [...redoStack],
     });
   },
 
