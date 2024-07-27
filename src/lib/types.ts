@@ -65,6 +65,7 @@ export interface AdStoreState {
   undo: () => void;
   redo: () => void;
   initializeMarkers: (defaultMarkers: Marker[]) => void;
+  saveChanges: () => Promise<void>;
 }
 
 export interface Ad {

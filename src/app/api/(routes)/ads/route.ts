@@ -6,7 +6,7 @@ import {
   adSchemaUpdate,
   type ZodAdDB,
 } from "~/lib/schema";
-import { Ad, UpdateAd } from "~/lib/types";
+import { type Ad, type UpdateAd } from "~/lib/types";
 
 export async function POST(req: Request) {
   try {

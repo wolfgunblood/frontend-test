@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { string } from "zod";
 import {
-  Marker,
+  type Marker,
   type AdStoreState,
   type ModalState,
   type VideoState,
@@ -184,5 +184,23 @@ export const useAdStore = create<AdStoreState>((set, get) => ({
 
   initializeMarkers: (defaultMarkers) => {
     set({ markers: defaultMarkers, undoStack: [], redoStack: [] });
+  },
+  saveChanges: async () => {
+    const { markers } = get();
+
+    try {
+      const response = await fetch("/api/save", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ markers }),
+      });
+
+      if (!response.ok) throw new Error("Failed to save changes");
+
+      console.log("Changes successfully saved");
+      // set({ undoStack: [], redoStack: [] });
+    } catch (error) {
+      console.error("Failed to save changes:", error);
+    }
   },
 }));

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "./ui/button";
 import { DisplayTime } from "~/helpers/timeformat";
 import "../styles/TimelineHead.css";
@@ -19,7 +19,32 @@ const TimelineHead: React.FC<TimelineHeadProps> = ({
   setControlValue,
   setBottomSliderWidth,
 }) => {
-  const { undo, redo } = useAdStore();
+  const { undo, redo, undoStack, redoStack, saveChanges } = useAdStore();
+
+  const showIndicatorDot = undoStack.length > 0 || redoStack.length > 0;
+
+  useEffect(() => {
+    const handleSaveChanges = async () => {
+      try {
+        await saveChanges();
+        console.log("Changes have been saved successfully.");
+      } catch (error) {
+        console.error("Failed to save Ads", error);
+      }
+    };
+
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.ctrlKey && event.key === "s") {
+        event.preventDefault();
+        handleSaveChanges().catch((error) => {
+          console.error("Failed to delete Ads", error);
+        });
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, [saveChanges]); // Dependencies array includes saveChanges to ensure updates
 
   const handleZoomIn = () => {
     if (controlValue < 10) {
@@ -39,7 +64,10 @@ const TimelineHead: React.FC<TimelineHeadProps> = ({
     <div className="flex items-center justify-between">
       {/* Undo & Redo */}
 
-      <div className="flex gap-6">
+      <div className="relative flex gap-6">
+        {showIndicatorDot && (
+          <span className="absolute right-0 top-0 block h-2 w-2 -translate-y-1/2 translate-x-1/2 transform rounded-full bg-zinc-500"></span>
+        )}
         <Button
           className="inline-flex gap-3"
           variant="ghost"
