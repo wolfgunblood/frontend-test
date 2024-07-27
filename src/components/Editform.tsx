@@ -53,7 +53,6 @@ export function EditForm({ index }: { index: number }) {
       .split(":")
       .map(Number);
     const newTime = hours * 3600 + minutes * 60 + seconds;
-    // console.log(newTime)
 
     if (newTime > duration) {
       toast({
@@ -63,8 +62,6 @@ export function EditForm({ index }: { index: number }) {
 
       return;
     }
-    console.log(index);
-    console.log(newTime);
 
     await editMarker(index, newTime).catch((error) => {
       console.error("Something went wrong");

@@ -4,16 +4,8 @@ import "../styles/Timeline.css";
 import "../styles/Slider.css";
 import { DisplayTime, generateTimeLabels } from "~/helpers/timeformat";
 import TimelineHead from "./TimelineHead";
-import Image from "next/image";
-import Draggable from "react-draggable";
 import Timestamps from "./Timestamps";
 import { useAdStore } from "~/store/useStore";
-
-// const markers = [
-//     { time: 10, url: '/ad2.svg' },
-//     { time: 80, url: '/ad3.svg' },
-//     { time: 120, url: '/ad1.svg' }
-// ];
 
 const markerUrls = {
   AUTO: "/ad2.svg",
@@ -38,20 +30,17 @@ const Timeline = ({
   onSeekMouseDown,
   onSeekMouseUp,
 }: TimelineProps) => {
-  // const sliderValue = (currentTime / duration) * 100 || 0;
   const sliderValue = currentTime;
 
   const [controlValue, setControlValue] = useState(0);
   const [bottomSliderWidth, setBottomSliderWidth] = useState(100);
   const [isLoading, setLoading] = useState(false);
 
-  const { markers, initializeMarkers, editMarker } = useAdStore();
+  const { markers, editMarker } = useAdStore();
 
   const timelineRef = useRef<HTMLDivElement>(null);
 
   const computedMarkers = markers.map((marker) => {
-    // console.log(marker.time)
-    // console.log(duration)
     const leftPercentage = (marker.timestamp / duration) * 100;
 
     return {
