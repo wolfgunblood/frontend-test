@@ -7,6 +7,7 @@ import { EditForm } from "./Editform";
 import { convertSecondsToHHMMSS } from "~/helpers/timeformat";
 import { formatMarkerType } from "~/helpers/type-marker";
 import { useAdStore } from "~/store/useStore";
+import useGetAds from "~/app/hooks/get-ads";
 
 const badgeStyles: Record<string, { backgroundColor: string; color: string }> =
   {
@@ -15,42 +16,12 @@ const badgeStyles: Record<string, { backgroundColor: string; color: string }> =
     ab: { backgroundColor: "#FED7AA", color: "#9A3412" },
   };
 
-interface Marker {
-  id: string;
-  type: "AUTO" | "STATIC" | "AB";
-  timestamp: number;
-  createdOn: Date;
-}
-
 const Admaker = () => {
-  // const items = [
-  //     { id: 1, type: 'auto', timestamp: '00:00:00' },
-  //     { id: 2, type: 'static', timestamp: '00:05:00' },
-  //     { id: 3, type: 'AB', timestamp: '00:10:00' },
-  // ];
+  const { markers, deleteMarker } = useAdStore();
 
-  const { markers, deleteMarker, initializeMarkers } = useAdStore();
+  //Get All Ads
 
-  useEffect(() => {
-    const fetchAds = async () => {
-      try {
-        const response = await fetch("/api/ads", {
-          method: "GET",
-        });
-
-        if (!response.ok) throw new Error("Network response not ok");
-        const data = (await response.json()) as Marker[];
-        // console.log(data);
-        initializeMarkers(data);
-      } catch (error) {
-        console.log("Something went wrong", error);
-      }
-    };
-
-    fetchAds().catch((error) => {
-      console.error("Failed to fetch ads", error);
-    });
-  }, []);
+  useGetAds();
 
   const handleDeleteMarker = async (index: number) => {
     await deleteMarker(index).catch((error) => {
