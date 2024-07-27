@@ -6,13 +6,13 @@ import "../styles/TimelineHead.css";
 import { useAdStore } from "~/store/useStore";
 import { type TimelineHeadProps } from "~/lib/types";
 
-const TimelineHead: React.FC<TimelineHeadProps> = ({
+const TimelineHead = ({
   currentTime,
   controlValue,
   handleControlChange,
   setControlValue,
   setBottomSliderWidth,
-}) => {
+}: TimelineHeadProps) => {
   const { undo, redo, undoStack, redoStack, saveChanges } = useAdStore();
 
   const showIndicatorDot = undoStack.length > 0 || redoStack.length > 0;

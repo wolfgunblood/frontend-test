@@ -11,7 +11,7 @@ import { useVideoStore } from "~/store/useStore";
 
 const darkIconStyle = { fill: "#27272A" };
 
-const VideoEditor: React.FC = () => {
+const VideoEditor = () => {
   const playerRef = useRef<ReactPlayer | null>(null);
   const {
     playing,

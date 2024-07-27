@@ -12,7 +12,7 @@ import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import useModalStore from "~/store/useStore";
 
-const StepTwo: React.FC = () => {
+const StepTwo = () => {
   const {
     step,
     nextStep,

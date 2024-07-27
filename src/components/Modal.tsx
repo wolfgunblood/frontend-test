@@ -10,7 +10,7 @@ import { options } from "../../constants/data";
 import Image from "next/image";
 import useModalStore from "~/store/useStore";
 
-const Modal: React.FC = () => {
+const Modal = () => {
   const { step, nextStep, reset, selections, selectionCount } = useModalStore();
   const setOptions = useModalStore((state) => state.setOptions);
 

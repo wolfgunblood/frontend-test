@@ -31,7 +31,7 @@ const options = [
   },
 ];
 
-const StepOne: React.FC = () => {
+const StepOne = () => {
   const { step, nextStep, reset, selections, setSelection } = useModalStore();
   const [selectedOption, setSelectedOption] = useState(selections.stepOne);
   const { currentTime, duration } = useVideoStore();

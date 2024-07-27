@@ -30,14 +30,14 @@ interface TimelineProps {
   onSeekMouseUp: (e: React.MouseEvent<HTMLInputElement>) => void;
 }
 
-const Timeline: React.FC<TimelineProps> = ({
+const Timeline = ({
   currentTime,
   duration,
   markerZIndex,
   onSeekChange,
   onSeekMouseDown,
   onSeekMouseUp,
-}) => {
+}: TimelineProps) => {
   // const sliderValue = (currentTime / duration) * 100 || 0;
   const sliderValue = currentTime;
 

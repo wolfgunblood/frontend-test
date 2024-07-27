@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 import useModalStore from "~/store/useStore";
 
-const StepThree: React.FC = () => {
+const StepThree = () => {
   const { reset, selections } = useModalStore();
   // const submitAds = async () => {
   //     try {
