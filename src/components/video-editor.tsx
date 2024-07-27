@@ -8,32 +8,40 @@ import { Button } from "./ui/button";
 import Timeline from "./Timeline";
 import TimelineTest from "./my-references/TimelineTest";
 import { useVideoStore } from "~/store/useStore";
+import useVideoControls from "~/app/hooks/video-controls";
 
 const darkIconStyle = { fill: "#27272A" };
 
 const VideoEditor = () => {
-  const playerRef = useRef<ReactPlayer | null>(null);
   const {
     playing,
-    currentTime,
     duration,
-    seeking,
     setPlaying,
-    setCurrentTime,
+    currentTime,
     setDuration,
+    setCurrentTime,
+    seeking,
     setSeeking,
   } = useVideoStore();
-  // const [playing, setPlaying] = useState<boolean>(false);
 
-  // const [currentTime, setCurrentTime] = useState<number>(0);
-  // const [duration, setDuration] = useState<number>(0);
-  // const [seeking, setSeeking] = useState<boolean>(false);
-
-  // Hydration
+  const {
+    playerRef,
+    markerZIndex,
+    setMarkerZIndex,
+    playbackRate,
+    handleJumpStart,
+    handleJumpEnd,
+    increasePlaybackRate,
+    decreasePlaybackRate,
+    handleForwardTenSeconds,
+    handleBackwardTenSeconds,
+    handleSeekChange,
+    handleSeekMouseDown,
+  } = useVideoControls();
 
   const [isClient, setIsClient] = useState(false);
-  const [playbackRate, setPlaybackRate] = useState(1);
-  const [markerZIndex, setMarkerZIndex] = useState(5);
+
+  // Hydration
 
   useEffect(() => {
     setIsClient(true);
@@ -63,48 +71,6 @@ const VideoEditor = () => {
     setPlaying(!playing);
   };
 
-  const handleJumpStart = () => {
-    playerRef.current?.seekTo(0);
-    setPlaying(true);
-  };
-
-  const handleJumpEnd = () => {
-    if (playerRef.current) {
-      playerRef.current.seekTo(playerRef.current.getDuration(), "seconds");
-      setPlaying(false);
-    }
-  };
-
-  const increasePlaybackRate = () => {
-    const newRate = Math.min(playbackRate + 0.5, 2);
-    setPlaybackRate(newRate);
-  };
-
-  const decreasePlaybackRate = () => {
-    const newRate = Math.max(playbackRate - 0.5, 0.5);
-    setPlaybackRate(newRate);
-  };
-
-  const handleForwardTenSeconds = () => {
-    if (playerRef.current) {
-      playerRef.current.seekTo(
-        playerRef.current.getCurrentTime() + 10,
-        "seconds",
-      );
-      setPlaying(true);
-    }
-  };
-
-  const handleBackwardTenSeconds = () => {
-    if (playerRef.current) {
-      playerRef.current.seekTo(
-        Math.max(playerRef.current.getCurrentTime() - 10, 0),
-        "seconds",
-      );
-      setPlaying(true);
-    }
-  };
-
   useEffect(() => {
     const player = playerRef.current;
     if (player) {
@@ -116,37 +82,18 @@ const VideoEditor = () => {
   }, [playerRef.current]);
 
   const onProgress = (data: { playedSeconds: number }) => {
-    // console.log(data)
-    // console.log(data.playedSeconds)
     if (!seeking) {
       setCurrentTime(data.playedSeconds);
     }
   };
 
-  const handleSeekChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSeeking(true);
-    // console.log(e.target.value)
-    // const newTime = (parseFloat(e.target.value) / 100) * duration;
-    const newTime = parseFloat(e.target.value);
-    setCurrentTime(newTime);
-  };
-
-  const handleSeekMouseDown = () => {
-    setSeeking(true);
-    setMarkerZIndex(-5);
-  };
-
   const handleSeekMouseUp = (e: React.MouseEvent<HTMLInputElement>) => {
-    // const newTime = (parseFloat(e.currentTarget.value) / 100) * duration;
     const newTime = parseFloat(e.currentTarget.value);
-    // console.log(e.currentTarget.value)
-    // console.log(newTime)
     setSeeking(false);
     playerRef.current?.seekTo(newTime, "seconds");
 
     // setPlaying(true);
 
-    // Set to false temporarily to stabilize updates
     setPlaying(false);
     setTimeout(() => {
       setPlaying(true);
