@@ -5,9 +5,9 @@ import "../styles/Slider.css";
 import { DisplayTime, generateTimeLabels } from "~/helpers/timeformat";
 import TimelineHead from "./TimelineHead";
 import Image from "next/image";
-import { useAdStore } from "store/useStore";
 import Draggable from "react-draggable";
 import Timestamps from "./Timestamps";
+import { useAdStore } from "~/store/useStore";
 
 // const markers = [
 //     { time: 10, url: '/ad2.svg' },

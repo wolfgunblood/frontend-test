@@ -4,7 +4,7 @@ import ReactPlayer from "react-player";
 import Admaker from "../Admaker";
 import VideoPlayer from "./VideoPlay";
 import Timeline from "../Timeline";
-import { useVideoStore } from "store/useStore";
+import { useVideoStore } from "~/store/useStore";
 
 const Editor: React.FC = () => {
   const playerRef = useRef<ReactPlayer | null>(null);

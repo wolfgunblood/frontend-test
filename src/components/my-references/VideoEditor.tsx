@@ -11,11 +11,11 @@ import {
   FastForward,
   History,
 } from "lucide-react";
-import { useVideoStore } from "store/useStore";
 import Timeline from "../Timeline";
 import Admaker from "../Admaker";
 import Image from "next/image";
 import TimelineTest from "./TimelineTest";
+import { useVideoStore } from "~/store/useStore";
 
 const darkIconStyle = { fill: "#27272A" };
 

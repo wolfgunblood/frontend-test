@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React from "react";
-import useModalStore from "store/useStore";
 import { Badge } from "../ui/badge";
 import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
+import useModalStore from "~/store/useStore";
 
 const StepThree: React.FC = () => {
   const { reset, selections } = useModalStore();

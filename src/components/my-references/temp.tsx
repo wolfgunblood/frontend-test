@@ -11,8 +11,8 @@ import {
   FastForward,
   History,
 } from "lucide-react";
-import { useVideoStore } from "store/useStore";
 import Timeline from "../Timeline";
+import { useVideoStore } from "~/store/useStore";
 
 const VideoPlayer: React.FC = () => {
   const playerRef = useRef<ReactPlayer | null>(null);

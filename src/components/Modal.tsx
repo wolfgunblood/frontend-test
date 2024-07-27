@@ -4,11 +4,11 @@ import { Button } from "./ui/button";
 import StepOne from "./steps/StepOne";
 import StepTwo from "./steps/StepTwo";
 import StepThree from "./steps/StepThree";
-import useModalStore from "store/useStore";
 import { Plus } from "lucide-react";
 
 import { options } from "../../constants/data";
 import Image from "next/image";
+import useModalStore from "~/store/useStore";
 
 const Modal: React.FC = () => {
   const { step, nextStep, reset, selections, selectionCount } = useModalStore();

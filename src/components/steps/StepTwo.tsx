@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import useModalStore from "store/useStore";
 import { Input } from "../ui/input";
 import {
   Accordion,
@@ -11,6 +10,7 @@ import {
 import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
+import useModalStore from "~/store/useStore";
 
 const StepTwo: React.FC = () => {
   const {

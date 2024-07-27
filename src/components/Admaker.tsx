@@ -4,12 +4,12 @@ import { Badge } from "~/components/ui/badge";
 import { Trash2, Wand } from "lucide-react";
 import Modal from "./Modal";
 import Image from "next/image";
-import { useAdStore, useVideoStore } from "store/useStore";
 import { EditForm } from "./Editform";
 import { convertSecondsToHHMMSS } from "~/helpers/timeformat";
 import { formatMarkerType } from "~/helpers/type-marker";
 import { db } from "~/server/db";
 import { error } from "console";
+import { useAdStore } from "~/store/useStore";
 
 const badgeStyles: Record<string, { backgroundColor: string; color: string }> =
   {

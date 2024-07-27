@@ -30,9 +30,9 @@ import {
 } from "~/components/ui/dialog";
 
 import { Input } from "~/components/ui/input";
-import { useAdStore, useVideoStore } from "store/useStore";
 import { toast } from "./ui/use-toast";
 import { useState } from "react";
+import { useAdStore, useVideoStore } from "~/store/useStore";
 
 export function EditForm({ index }: { index: number }) {
   const { duration } = useVideoStore();

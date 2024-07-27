@@ -3,7 +3,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import { DisplayTime } from "~/helpers/timeformat";
 import "../styles/TimelineHead.css";
-import { useAdStore } from "store/useStore";
+import { useAdStore } from "~/store/useStore";
 
 interface TimelineHeadProps {
   currentTime: number;

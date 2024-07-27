@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
 import Image from "next/image";
-import useModalStore, { useAdStore, useVideoStore } from "store/useStore";
 import { Button } from "../ui/button";
+import useModalStore, { useAdStore, useVideoStore } from "~/store/useStore";
 
 const options = [
   {

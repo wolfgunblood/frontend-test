@@ -2,12 +2,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactPlayer from "react-player";
 import { Play, Pause, Rewind, FastForward } from "lucide-react";
-import { useVideoStore } from "store/useStore";
 import Image from "next/image";
 import Admaker from "./Admaker";
 import { Button } from "./ui/button";
 import Timeline from "./Timeline";
 import TimelineTest from "./my-references/TimelineTest";
+import { useVideoStore } from "~/store/useStore";
 
 const darkIconStyle = { fill: "#27272A" };
 
