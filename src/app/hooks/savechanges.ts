@@ -14,7 +14,7 @@ function useSaveChanges() {
     };
 
     const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.ctrlKey && event.key === "s") {
+      if ((event.ctrlKey || event.metaKey) && event.key === "s") {
         event.preventDefault();
         handleSaveChanges().catch((error) => {
           console.error("Failed to delete Ads", error);
@@ -25,6 +25,8 @@ function useSaveChanges() {
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
   }, [saveChanges]);
+
+  return null;
 }
 
 export default useSaveChanges;
