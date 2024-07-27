@@ -198,7 +198,7 @@ export const useAdStore = create<AdStoreState>((set, get) => ({
       if (!response.ok) throw new Error("Failed to save changes");
 
       console.log("Changes successfully saved");
-      // set({ undoStack: [], redoStack: [] });
+      set({ undoStack: [], redoStack: [] });
     } catch (error) {
       console.error("Failed to save changes:", error);
     }
