@@ -1,10 +1,11 @@
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { Button } from "./ui/button";
 import { DisplayTime } from "~/helpers/timeformat";
 import "../styles/TimelineHead.css";
 import { useAdStore } from "~/store/useStore";
 import { type TimelineHeadProps } from "~/lib/types";
+import useUnsavedChangesWarning from "~/app/hooks/unsavedchanges";
 
 const TimelineHead = ({
   currentTime,
@@ -16,6 +17,8 @@ const TimelineHead = ({
   const { undo, redo, undoStack, redoStack, saveChanges } = useAdStore();
 
   const showIndicatorDot = undoStack.length > 0 || redoStack.length > 0;
+
+  // Save changes
 
   useEffect(() => {
     const handleSaveChanges = async () => {
@@ -38,7 +41,9 @@ const TimelineHead = ({
 
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [saveChanges]); // Dependencies array includes saveChanges to ensure updates
+  }, [saveChanges]);
+
+  useUnsavedChangesWarning();
 
   const handleZoomIn = () => {
     if (controlValue < 10) {
