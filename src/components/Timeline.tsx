@@ -4,9 +4,9 @@ import "../styles/Timeline.css";
 import "../styles/Slider.css";
 import TimelineHead from "./TimelineHead";
 import Timestamps from "./Timestamps";
-import { useAdStore } from "~/store/useStore";
 import useTimeline from "~/app/hooks/timeline";
 import { type TimelineProps } from "~/lib/types";
+import useDragAndDrop from "~/app/hooks/drag-n-drop";
 
 const Timeline = ({
   currentTime,
@@ -17,10 +17,6 @@ const Timeline = ({
   onSeekMouseUp,
 }: TimelineProps) => {
   const sliderValue = currentTime;
-
-  // const [controlValue, setControlValue] = useState(0);
-  // const [bottomSliderWidth, setBottomSliderWidth] = useState(100);
-  const [isLoading, setLoading] = useState(false);
 
   const {
     controlValue,
@@ -33,9 +29,9 @@ const Timeline = ({
     timestamps,
   } = useTimeline(duration);
 
-  const { markers, editMarker } = useAdStore();
-
   // Ticks calculation
+
+  // const ticks = useTimelineTicks(duration, timelineRef);
 
   const [ticks, setTicks] = useState<Array<{ left: string }>>([]);
 
@@ -65,49 +61,8 @@ const Timeline = ({
 
   // Ad Marker Dragging logic
 
-  const handleDragStart = (
-    e: React.DragEvent<HTMLImageElement>,
-    index: number,
-  ) => {
-    e.dataTransfer.setData("text/plain", index.toString());
-  };
-
-  const handleDrop = async (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setLoading(true);
-
-    const index = parseInt(e.dataTransfer.getData("text/plain"), 10);
-
-    if (!timelineRef.current) {
-      console.log("Timeline reference is not set");
-      return;
-    }
-
-    const timelineWidth = timelineRef.current.scrollWidth;
-
-    const scrollLeft = timelineRef.current.scrollLeft;
-
-    const mouseX =
-      e.clientX - timelineRef.current.getBoundingClientRect().left + scrollLeft;
-    const newLeft = Math.min(Math.max(mouseX, 0), timelineWidth);
-
-    const newLeftPercentage = (newLeft / timelineWidth) * 100;
-
-    const newTime = Math.round((newLeftPercentage / 100) * duration);
-
-    await editMarker(index, newTime)
-      .then(() => {
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Something went wrong", error);
-        setLoading(false);
-      });
-  };
-
-  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-  };
+  const { isLoading, handleDragStart, handleDrop, handleDragOver } =
+    useDragAndDrop(timelineRef, duration);
 
   return (
     <div className="flex flex-col justify-between rounded-2xl border border-zinc-200 bg-white p-8 pb-12 shadow-sm">
