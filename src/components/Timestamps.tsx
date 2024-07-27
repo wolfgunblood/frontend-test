@@ -1,13 +1,5 @@
 import React from "react";
-
-interface Timestamp {
-  time: string;
-  left: string;
-}
-
-interface TimestampProps {
-  timestamps: Timestamp[];
-}
+import { type TimestampProps } from "~/lib/types";
 
 const Timestamps = ({ timestamps }: TimestampProps) => {
   return (

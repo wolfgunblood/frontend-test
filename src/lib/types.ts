@@ -77,3 +77,20 @@ export interface UpdateAd {
   updateTime: number;
   id: string;
 }
+
+export interface TimelineHeadProps {
+  currentTime: number;
+  controlValue: number;
+  setControlValue: React.Dispatch<React.SetStateAction<number>>;
+  setBottomSliderWidth: React.Dispatch<React.SetStateAction<number>>;
+  handleControlChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface Timestamp {
+  time: string;
+  left: string;
+}
+
+export interface TimestampProps {
+  timestamps: Timestamp[];
+}

@@ -4,14 +4,8 @@ import { Button } from "./ui/button";
 import { DisplayTime } from "~/helpers/timeformat";
 import "../styles/TimelineHead.css";
 import { useAdStore } from "~/store/useStore";
+import { type TimelineHeadProps } from "~/lib/types";
 
-interface TimelineHeadProps {
-  currentTime: number;
-  controlValue: number;
-  setControlValue: React.Dispatch<React.SetStateAction<number>>;
-  setBottomSliderWidth: React.Dispatch<React.SetStateAction<number>>;
-  handleControlChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
 const TimelineHead: React.FC<TimelineHeadProps> = ({
   currentTime,
   controlValue,
