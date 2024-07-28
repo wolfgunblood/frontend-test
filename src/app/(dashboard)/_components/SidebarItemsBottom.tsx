@@ -3,8 +3,7 @@
 import React from "react";
 import { cn } from "~/lib/utils";
 import { Switch } from "~/components/ui/switch";
-import Image from "next/image";
-import { LucideIcon } from "lucide-react";
+import { type LucideIcon } from "lucide-react";
 
 interface SidebarItemProps {
   icon: LucideIcon;

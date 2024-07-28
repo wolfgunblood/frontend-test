@@ -2,9 +2,8 @@
 
 import React from "react";
 import { usePathname } from "next/navigation";
-import { LucideIcon } from "lucide-react";
+import { type LucideIcon } from "lucide-react";
 import { cn } from "~/lib/utils";
-import Image from "next/image";
 
 interface SidebarItemProps {
   icon: LucideIcon;
