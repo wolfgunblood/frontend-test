@@ -59,7 +59,7 @@ export async function PUT(req: Request) {
       },
     );
   } catch (error) {
-    console.error("[ADS]", error);
+    console.error("SAVE ROUTE ERROR", error);
     return new NextResponse("Something went wrong", { status: 500 });
   }
 }
