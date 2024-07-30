@@ -59,7 +59,7 @@ npm run dev
 
 **Homepage** - Displays the dashboard for editing and adding of ads.
 
-**Video Player** - An awesome video player with play/pause,skip,fast forward and rewind funcyionality.
+**Video Player** - An awesome video player with play/pause,skip,fast forward and rewind functionality.
 
 **Custom Video Slider** - Built a custom video silder using the design which has zoom and drag functionality.
 
