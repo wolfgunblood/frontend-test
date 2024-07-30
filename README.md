@@ -75,7 +75,7 @@ npm run dev
 ## Design Patterns
 
 <div align="center">
-<img src="public/design-patterns.jpeg" alt="Banner Image for The Cocktail Corner" width="300">
+<img src="public/design-patterns.jpeg" alt="Banner Image for Design pattern" width="300">
 </div>
 **Maintainability** - I have tried to keep components modular and scalable and dynamic, with an emphasis on reusability and readability.
 
