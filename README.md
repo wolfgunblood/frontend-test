@@ -33,7 +33,7 @@ This app is build using T3 stack.
    ```
 1. **Navigate to the project directory:**
    ```bash
-   cd cocktail_app
+   cd frontend-test
    ```
 1. **Install dependencies:**
    ```bash
