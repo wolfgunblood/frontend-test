@@ -19,7 +19,7 @@ This app is build using T3 stack.
 
 ## Showcase 🎬
 
-You can see a GIF of my application below. I am using the autofill functionality to preview the main functionality of the app. <br /> <br />
+You can see a GIF of my application below.Preview the main functionality of the app. <br /> <br />
 ![](https://github.com/wolfgunblood/frontend-test/blob/main/public/videoedit.gif?raw=true)
 
 ## Table of Contents
