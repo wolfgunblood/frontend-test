@@ -48,6 +48,47 @@ This app is build using T3 stack.
 npm run dev
 ```
 
+## Features
+
+**Homepage** - Displays the dashboard for editing and adding of ads.
+
+**Video Player** - An awesome video player with play/pause,skip,fast forward and rewind funcyionality.
+
+**Custom Video Slider** - Built a custom video silder using the design which has zoom and drag functionality.
+
+**Dynamic ads insertion** - One can add ads on the desired time.
+
+**Dynamic ads edit** - After ads placement ads can be edited through drag and drop or just through a edit form.
+
+**Dynamic ads deletion** - One can delete ads without any hassle.
+
+**Undo and Redo** - One can undo and redo without any hassle.
+
+**Server-side Rendering** - This site leverages NextJS server side rendering for faster load times and greater user experience.
+
+**Custom Animations** - Custom animations are featured throughout the application.
+
+**ShadCN components** - Highly customisable pre built components are featured throught the app.
+
+**Simulated Database Response** - I have intentional made the API fetch the data slower to simulate a database and to show user feedback as well as showcasing loading and fetching states.
+
+## Design Patterns
+
+<div align="center">
+<img src="public/design-patterns.jpeg" alt="Banner Image for The Cocktail Corner" width="300">
+</div>
+**Maintainability** - I have tried to keep components modular and scalable and dynamic, with an emphasis on reusability and readability.
+
+**Server fetching and formatting** - I am handling fetching and formatting of data on the backend, allowing for tsx components to render data without unnecessary logic or formatting on the front end. I have achieved this by creating dynamic helper functions that process and reformat the data.
+
+**Dynamic fetch function** - I have created two highly flexible server functions to handle all the data fetching necessary for the application.
+
+**Type Safety** - The use of types and interfaces is constant throughout the app, without a single use of the word 'any' to override the type check.
+
+**File and folder structure** - The app is organised to seperate components based on their role, as well as separating types, utils, server functions and constants.
+
+**Saving and committing work often** - I regularly made commits and pull requests to github using a total of 36 pull requests with clear commit messages. This keeps the project organised and allows me to work on tasks without altering the main codebase.
+
 ## Technologies Used
 
 This tool is built using these technologies:
@@ -70,11 +111,11 @@ This tool is built using these technologies:
 [![twitter](https://skillicons.dev/icons?i=twitter)](https://www.x.com/jalajdu/)
 [![github](https://skillicons.dev/icons?i=github)](https://github.com/wolfgunblood/)
 
-#### Made by Glen McCallum
+#### Made by Jalaj Doraiburu
 
-#### Email: **glen.mccallum@live.co.uk**
+#### Email: **jalajdorai@gmail.com**
 
-#### Tel: **+44 7984 365789**
+#### Tel: **+91 7209787530**
 
 ### Thank you for reading
 
