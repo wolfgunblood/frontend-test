@@ -5,7 +5,7 @@
 </div>
 <br />
 
-<img width="800" height="600" alt="Vidpod" src="https://utfs.io/f/c6620fef-cfcc-43ec-b8d5-69c4046b6671-2487m.png">
+<!-- <img width="800" height="600" alt="Vidpod" src="https://utfs.io/f/c6620fef-cfcc-43ec-b8d5-69c4046b6671-2487m.png"> -->
 
 # VidPod
 
@@ -84,6 +84,7 @@ npm run dev
 <div align="center">
 <img src="public/design-patterns.jpeg" alt="Banner Image for Design pattern" width="300">
 </div>
+
 **Maintainability** - I have tried to keep components modular and scalable and dynamic, with an emphasis on reusability and readability.
 
 **Server fetching and formatting** - I am handling fetching and formatting of data on the backend, allowing for tsx components to render data without unnecessary logic or formatting on the front end. I have achieved this by creating dynamic helper functions that process and reformat the data.
