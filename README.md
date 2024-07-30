@@ -9,7 +9,7 @@
 
 # VidPod
 
-Vidpod is a full stack web application that allows vide creators,podcasters and content creators to analyze and place ads dynamically.
+Vidpod is a full stack web application that allows video creators,podcasters and content creators to analyze and place ads dynamically.
 This app is build using T3 stack.
 <br /><br />
 
