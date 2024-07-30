@@ -26,10 +26,8 @@ You can see a GIF of my application below.Preview the main functionality of the 
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [API Reference](#api-reference)
 - [Features](#features)
 - [Design Patterns](#design-patterns)
-- [Screenshots](#screenshots)
 - [Technologies Used](#technologies-used)
 - [Contact Information](#contact-information)
 - [Resources](#resources)
