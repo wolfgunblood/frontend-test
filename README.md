@@ -5,7 +5,7 @@
 </div>
 <br />
 
-<!-- <img width="800" height="600" alt="Vidpod" src="https://utfs.io/f/c6620fef-cfcc-43ec-b8d5-69c4046b6671-2487m.png"> -->
+<img width="800" height="600" alt="Vidpod" src="https://utfs.io/f/c6620fef-cfcc-43ec-b8d5-69c4046b6671-2487m.png">
 
 # VidPod
 
