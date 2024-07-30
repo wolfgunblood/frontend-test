@@ -5,13 +5,22 @@
 </div>
 <br />
 
-<img width="1359" alt="image" src="https://utfs.io/f/c6620fef-cfcc-43ec-b8d5-69c4046b6671-2487m.png">
+<img width="1000" height="400" alt="Vidpod" src="https://utfs.io/f/c6620fef-cfcc-43ec-b8d5-69c4046b6671-2487m.png">
 
 # VidPod
 
 Vidpod is a full stack web application that allows video creators,podcasters and content creators to analyze and place ads dynamically.
 This app is build using T3 stack.
 <br /><br />
+
+## 🔴 Demo
+
+🧪 [Live Demo](https://frontend-test-coral.vercel.app/) available. Click "Live Demo" to open it.
+
+## Showcase 🎬
+
+You can see a GIF of my application below. I am using the autofill functionality to preview the main functionality of the app. <br /> <br />
+![](https://github.com/wolfgunblood/frontend-test/blob/main/public/videoedit.gif?raw=true)
 
 ## Table of Contents
 
